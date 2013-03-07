@@ -9,9 +9,7 @@
  */
 
 get_header(); ?>
-
-	<section id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
+	<div id="content" class="site-content" role="main">
 
 		<?php if ( have_posts() ) : ?>
 
@@ -80,16 +78,12 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
-			<?php infoscreen_content_nav( 'nav-below' ); ?>
-
 		<?php else : ?>
 
 			<?php get_template_part( 'no-results', 'archive' ); ?>
 
 		<?php endif; ?>
 
-		</div><!-- #content -->
-	</section><!-- #primary -->
+	</div><!-- #content -->
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

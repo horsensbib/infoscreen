@@ -65,13 +65,6 @@ function infoscreen_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	/**
-	 * This theme uses wp_nav_menu() in one location.
-	 */
-	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'infoscreen' ),
-	) );
-
-	/**
 	 * Enable support for Post Formats
 	 */
 	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
@@ -109,6 +102,29 @@ function infoscreen_register_custom_background() {
 	}
 }
 add_action( 'after_setup_theme', 'infoscreen_register_custom_background' );
+
+/**
+ * Get the thumbnail src url - for use inside The Loop only:
+ *
+ * http://wpengineer.com/2123/use-wordpress-post-thumbnail-as-background-image/
+ */
+function infoscreen_img_src($size) {
+	if ( !has_post_thumbnail($post->ID) ) {
+		// default image, if no post thumbnail
+		$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/skyline.jpg';
+	} else {
+		// get post thumbnail
+		$image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), $size); // size for image; defined via add_image_size
+		$img_url = esc_attr($image[0]);
+	}
+	echo $img_url;
+}
+
+/**
+ * Thumbnail support & Image sizes
+ */
+add_theme_support( 'post-thumbnails' );
+add_image_size( 'slide-img', 1920, 1080, true );
 
 /**
  * Register widgetized area and update sidebar with default widgets

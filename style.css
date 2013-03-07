@@ -94,6 +94,11 @@ a img {
 /* =Global
 ----------------------------------------------- */
 
+html,
+body {
+	overflow: hidden;
+}
+
 body,
 button,
 input,
@@ -339,13 +344,6 @@ a:active {
 	margin: 0 auto;
 }
 
-/* Text meant only for screen readers */
-.assistive-text {
-	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-	clip: rect(1px, 1px, 1px, 1px);
-	position: absolute !important;
-}
-
 /* Clearing */
 .clear:before,
 .clear:after,
@@ -364,104 +362,32 @@ a:active {
 }
 
 
-/* =Menu
------------------------------------------------ */
-
-.navigation-main {
-	clear: both;
-	display: block;
-	float: left;
-	width: 100%;
-}
-.navigation-main ul {
-	list-style: none;
-	margin: 0;
-	padding-left: 0;
-}
-.navigation-main li {
-	float: left;
-	position: relative;
-}
-.navigation-main a {
-	display: block;
-	text-decoration: none;
-}
-.navigation-main ul ul {
-	-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow:    0 3px 3px rgba(0, 0, 0, 0.2);
-	box-shadow:         0 3px 3px rgba(0, 0, 0, 0.2);
-	display: none;
-	float: left;
-	position: absolute;
-		top: 1.5em;
-		left: 0;
-	z-index: 99999;
-}
-.navigation-main ul ul ul {
-	left: 100%;
-	top: 0;
-}
-.navigation-main ul ul a {
-	width: 200px;
-}
-.navigation-main ul ul li {
-}
-.navigation-main li:hover > a {
-}
-.navigation-main ul ul :hover > a {
-}
-.navigation-main ul ul a:hover {
-}
-.navigation-main ul li:hover > ul {
-	display: block;
-}
-.navigation-main li.current_page_item a,
-.navigation-main li.current-menu-item a {
-}
-
-/* Small menu */
-.menu-toggle {
-	display: none;
-	cursor: pointer;
-}
-
-.main-small-navigation ul {
-	display: none;
-}
-
-@media screen and (max-width: 600px) {
-	.menu-toggle,
-	.main-small-navigation ul.nav-menu.toggled-on {
-		display: block;
-	}
-
-	.navigation-main ul {
-		display: none;
-	}
-}
-
 /* =Content
 ----------------------------------------------- */
+.site-header,
+.site-footer {
+	position: absolute;
+	z-index: 3;
+}
+.post {
+	background-size: cover;
+	background-position: center center;
+	position:relative;
+	top: 0;
+	left: 0;
+	min-height: 1080px;
+	width: 100%;
+}
 
-.sticky {
+.slide-content {
+	background: rgba(0,0,0,.8);
+	min-height:1080px;
+	width:38%;
 }
-.hentry {
-	margin: 0 0 1.5em;
-}
-.byline {
-	display: none;
-}
-.single .byline,
-.group-blog .byline {
-	display: inline;
-}
-.entry-content,
-.entry-summary {
-	margin: 1.5em 0 0;
-}
-.page-links {
-	clear: both;
-	margin: 0 0 1.5em;
+
+.entry-header,
+.entry-content {
+	margin: 0 0 0 38%;
 }
 
 
@@ -542,62 +468,4 @@ embed,
 iframe,
 object {
 	max-width: 100%;
-}
-
-
-/* =Navigation
------------------------------------------------ */
-
-.site-content [class*="navigation"] {
-	margin: 0 0 1.5em;
-	overflow: hidden;
-}
-[class*="navigation"] .previous {
-	float: left;
-	width: 50%;
-}
-[class*="navigation"] .next {
-	float: right;
-	text-align: right;
-	width: 50%;
-}
-
-/* =Comments
------------------------------------------------ */
-
-.comment-content a {
-	word-wrap: break-word;
-}
-.bypostauthor {
-}
-
-/* =Widgets
------------------------------------------------ */
-
-.widget {
-	margin: 0 0 1.5em;
-}
-
-/* Make sure select elements fit in widgets */
-.widget select {
-	max-width: 100%;
-}
-
-/* Search widget */
-.widget_search .submit {
-	display: none;
-}
-
-/* =Infinite Scroll
------------------------------------------------ */
-
-/* Globally hidden elements when Infinite Scroll is supported and in use. */
-.infinite-scroll .navigation-paging, /* Older / Newer Posts Navigation (always hidden) */
-.infinite-scroll.neverending .site-footer { /* Theme Footer (when set to scrolling) */
-	display: none;
-}
-
-/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before */
-.infinity-end.neverending .site-footer {
-	display: block;
 }
