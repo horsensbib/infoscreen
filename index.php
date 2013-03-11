@@ -14,8 +14,6 @@
 
 get_header(); ?>
 
-	<div id="content" class="site-content" role="main">
-
 		<?php if ( have_posts() ) : ?>
 
 			<?php /* Start the Loop */ ?>
@@ -38,7 +36,5 @@ get_header(); ?>
 			<?php get_template_part( 'no-results', 'index' ); ?>
 
 		<?php endif; ?>
-
-	</div><!-- #content -->
 
 <?php get_footer(); ?>
