@@ -84,6 +84,15 @@ body > .post {
   height: auto;
   min-height: 100%; }
 
+.layout-img-left {
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 30%;
+  padding: 3em 4%; }
+
 /* =Content
 ----------------------------------------------- */
 .site-header,
@@ -98,31 +107,65 @@ body > .post {
   left: 0;
   width: 100%; }
 
-.slide-content {
-  background: rgba(0, 0, 0, 0.8);
-  height: 100%;
-  width: 38%; }
+/* Alignment */
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em; }
 
-.entry-header,
-.entry-content {
-  margin: 0 0 0 38%; }
+.alignright {
+  display: inline;
+  float: right;
+  margin-left: 1.5em; }
 
-/* =Global
------------------------------------------------ */
+.aligncenter {
+  clear: both;
+  display: block;
+  margin: 0 auto; }
+
+/* Clearing */
+.clear:before,
+.clear:after,
+[class*="content"]:before,
+[class*="content"]:after,
+[class*="site"]:before,
+[class*="site"]:after {
+  content: '';
+  display: table; }
+
+.clear:after,
+[class*="content"]:after,
+[class*="site"]:after {
+  clear: both; }
+
 body,
 button,
 input,
 select,
 textarea {
-  color: #404040;
+  color: white;
   font-family: sans-serif;
-  font-size: 16px;
-  font-size: 1.6rem;
+  font-size: 4rem;
   line-height: 1.5; }
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   clear: both; }
+
+h1 {
+  font-size: 8rem; }
+
+h2 {
+  font-size: 6rem; }
+
+h3 {
+  font-size: 5rem; }
+
+h4 {
+  font-size: 4rem; }
+
+h5 {
+  font-size: 4rem; }
 
 hr {
   background-color: #ccc;
@@ -218,167 +261,10 @@ table {
 th {
   font-weight: bold; }
 
-button,
-input,
-select,
-textarea {
-  font-size: 100%;
-  /* Corrects font size not being inherited in all browsers */
-  margin: 0;
-  /* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
-  vertical-align: baseline;
-  /* Improves appearance and consistency in all browsers */
-  *vertical-align: middle;
-  /* Improves appearance and consistency in all browsers */ }
-
-button,
-input {
-  line-height: normal;
-  /* Addresses FF3/4 setting line-height using !important in the UA stylesheet */
-  *overflow: visible;
-  /* Corrects inner spacing displayed oddly in IE6/7 */ }
-
-button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  border: 1px solid #cccccc;
-  border-color: #cccccc #cccccc #bbbbbb #cccccc;
-  border-radius: 3px;
-  background: #e6e6e6;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 15px 17px rgba(255, 255, 255, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 15px 17px rgba(255, 255, 255, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 15px 17px rgba(255, 255, 255, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.8);
-  cursor: pointer;
-  /* Improves usability and consistency of cursor style between image-type 'input' and others */
-  -webkit-appearance: button;
-  /* Corrects inability to style clickable 'input' types in iOS */
-  font-size: 12px;
-  font-size: 1.2rem;
-  line-height: 1;
-  padding: 0.6em 1em 0.4em;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8); }
-
-button:hover,
-html input[type="button"]:hover,
-input[type="reset"]:hover,
-input[type="submit"]:hover {
-  border-color: #cccccc #bbbbbb #aaaaaa #bbbbbb;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 15px 17px rgba(255, 255, 255, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02);
-  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 15px 17px rgba(255, 255, 255, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 15px 17px rgba(255, 255, 255, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02); }
-
-button:focus,
-html input[type="button"]:focus,
-input[type="reset"]:focus,
-input[type="submit"]:focus,
-button:active,
-html input[type="button"]:active,
-input[type="reset"]:active,
-input[type="submit"]:active {
-  border-color: #aaaaaa #bbbbbb #bbbbbb #bbbbbb;
-  -webkit-box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.15);
-  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.15); }
-
-input[type="checkbox"],
-input[type="radio"] {
-  box-sizing: border-box;
-  /* Addresses box sizing set to content-box in IE8/9 */
-  padding: 0;
-  /* Addresses excess padding in IE8/9 */ }
-
-input[type="search"] {
-  -webkit-appearance: textfield;
-  /* Addresses appearance set to searchfield in S5, Chrome */
-  -webkit-box-sizing: content-box;
-  /* Addresses box sizing set to border-box in S5, Chrome (include -moz to future-proof) */
-  -moz-box-sizing: content-box;
-  box-sizing: content-box; }
-
-input[type="search"]::-webkit-search-decoration {
-  /* Corrects inner padding displayed oddly in S5, Chrome on OSX */
-  -webkit-appearance: none; }
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  /* Corrects inner padding and border displayed oddly in FF3/4 www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/ */
-  border: 0;
-  padding: 0; }
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="search"],
-textarea {
-  color: #666;
-  border: 1px solid #cccccc;
-  border-radius: 3px; }
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-textarea:focus {
-  color: #111; }
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="search"] {
-  padding: 3px; }
-
-textarea {
-  overflow: auto;
-  /* Removes default vertical scrollbar in IE6/7/8/9 */
-  padding-left: 3px;
-  vertical-align: top;
-  /* Improves readability and alignment in all browsers */
-  width: 98%; }
-
 /* Links */
 a {
-  color: royalblue; }
-
-a:visited {
-  color: purple; }
-
-a:hover,
-a:focus,
-a:active {
-  color: midnightblue; }
-
-/* Alignment */
-.alignleft {
-  display: inline;
-  float: left;
-  margin-right: 1.5em; }
-
-.alignright {
-  display: inline;
-  float: right;
-  margin-left: 1.5em; }
-
-.aligncenter {
-  clear: both;
-  display: block;
-  margin: 0 auto; }
-
-/* Clearing */
-.clear:before,
-.clear:after,
-[class*="content"]:before,
-[class*="content"]:after,
-[class*="site"]:before,
-[class*="site"]:after {
-  content: '';
-  display: table; }
-
-.clear:after,
-[class*="content"]:after,
-[class*="site"]:after {
-  clear: both; }
+  color: white;
+  text-decoration: none; }
 
 /* =Asides
 ----------------------------------------------- */
