@@ -26,6 +26,7 @@ body > .post {
 	width: 30%;
 	padding: 3em 4%;
 }
+<<<<<<< HEAD
 .layout-img-right {
 	background: rgba(0,0,0,.7);
 	position: absolute;
@@ -51,10 +52,16 @@ body > .post {
 	height: 10%;
 	padding: 3em 4%;
 }
+=======
+.layout-img-right {}
+.layout-img-top {}
+.layout-img-bottom {}
+>>>>>>> 25c8fa47a426e5723452910e25c8be68c5fcec6f
 
 // Text takes 2/3 of screen real estate
 // ------------------------------------
 .layout-txt {}
+<<<<<<< HEAD
 .layout-txt-left {
 	background: rgba(0,0,0,.7);
 	position: absolute;
@@ -89,6 +96,12 @@ body > .post {
 	height: 40%;
 	padding: 3em 4%;
 }
+=======
+.layout-txt-left {}
+.layout-txt-right {}
+.layout-txt-top {}
+.layout-txt.bottom {}
+>>>>>>> 25c8fa47a426e5723452910e25c8be68c5fcec6f
 
 
 /* =Content

@@ -6,7 +6,11 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('slide'); ?> style="background-image:url('<?php infoscreen_img_src('slide-img'); ?>');">
+<<<<<<< HEAD
 	<div class="slide-content <?php echo get_post_meta(get_the_ID(), '_infoscreen_layout', true); ?>">
+=======
+	<div class="slide-content layout-img-left">
+>>>>>>> 25c8fa47a426e5723452910e25c8be68c5fcec6f
 		<header class="entry-header">
 			<h1 class="entry-title"><?php the_title(); ?></h1>
 
