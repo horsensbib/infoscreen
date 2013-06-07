@@ -14,18 +14,13 @@ function infoscreen_create_layout_metabox() {
 		'layout_metabox', 
 		'post', 
 		'normal', 
-<<<<<<< HEAD
 		'high'
-=======
-		'high' 
->>>>>>> 25c8fa47a426e5723452910e25c8be68c5fcec6f
 		);
    }
 }
    
 /* Prints the inner fields for the custom post/page section */
 function layout_metabox() {	
-<<<<<<< HEAD
 	$currentvalue = get_post_meta(get_the_ID(), '_infoscreen_layout', true);
 	?>
 	<div>
@@ -49,33 +44,8 @@ function layout_metabox() {
 
 		<label><input type="radio" name="_infoscreen_layout" id="layout-txt-bottom" value="layout-txt-bottom" <?php echo ($currentvalue == 'layout-txt-bottom')? 'checked="checked"':''; ?> /><img src="http://localhost/wordpress\wp-content\themes\infoscreen\img\thumbnails\layout-txt-bottom.png"></label>
 
-=======
-	$currentvalue = get_post_meta($post->ID, '_infoscreen_layout', true);
-	?>
-	<div class="slide-layout">
-		<label><input type="radio" name="_infoscreen_layout" id="layout-img" value="layout-img" <?php echo ($currentvalue == 'layout-img')? 'checked="checked"':''; ?> /> <?php _e("layout-img", 'infoscreen_page_layout' ) ?></label>
-
-		<label><input type="radio" name="_infoscreen_layout" id="layout-img-left" value="layout-img-left" <?php echo ($currentvalue == 'layout-img-left')? 'checked="checked"':''; ?> /> <?php _e("layout-img-left", 'infoscreen_page_layout' ) ?></label>
-
-		<label><input type="radio" name="_infoscreen_layout" id="layout-img-right" value="layout-img-right" <?php echo ($currentvalue == 'layout-img-right')? 'checked="checked"':''; ?>/> <?php _e("layout-img-right", 'infoscreen_page_layout' ) ?></label>
-
-		<label><input type="radio" name="_infoscreen_layout" id="layout-img-top" value="layout-img-top" <?php echo ($currentvalue == 'layout-img-top')? 'checked="checked"':''; ?> /> <?php _e("layout-img-top", 'infoscreen_page_layout' ) ?></label>
-
-		<label><input type="radio" name="_infoscreen_layout" id="layout-img-bottom" value="layout-img-bottom" <?php echo ($currentvalue == 'layout-img-bottom')? 'checked="checked"':''; ?> /> <?php _e("layout-img-bottom", 'infoscreen_page_layout' ) ?></label>
-
-		<label><input type="radio" name="_infoscreen_layout" id="layout-txt" value="layout-txt" <?php echo ($currentvalue == 'layout-txt')? 'checked="checked"':''; ?> /> <?php _e("layout-txt", 'infoscreen_page_layout' ) ?></label>
-
-		<label><input type="radio" name="_infoscreen_layout" id="layout-txt-left" value="layout-txt-left" <?php echo ($currentvalue == 'layout-txt-left')? 'checked="checked"':''; ?> /> <?php _e("layout-txt-left", 'infoscreen_page_layout' ) ?></label>
-
-		<label><input type="radio" name="_infoscreen_layout" id="layout-txt-right" value="layout-txt-right" <?php echo ($currentvalue == 'layout-txt-right')? 'checked="checked"':''; ?> /> <?php _e("layout-txt-right", 'infoscreen_page_layout' ) ?></label>
-
-		<label><input type="radio" name="_infoscreen_layout" id="layout-txt-top" value="layout-txt-top" <?php echo ($currentvalue == 'layout-txt-top')? 'checked="checked"':''; ?> /> <?php _e("layout-txt-top", 'infoscreen_page_layout' ) ?></label>
-
-		<label><input type="radio" name="_infoscreen_layout" id="layout-txt-bottom" value="layout-txt-bottom" <?php echo ($currentvalue == 'layout-txt-bottom')? 'checked="checked"':''; ?> /> <?php _e("layout-txt-bottom", 'infoscreen_page_layout' ) ?></label>
-
 		<input type="hidden" name="infoscreen_layout_noncename" id="infoscreen_layout_noncename" value="<?php wp_create_nonce( plugin_basename(__FILE__) ) ?>" />
 		<p><?php echo $currentvalue; ?></p>
->>>>>>> 25c8fa47a426e5723452910e25c8be68c5fcec6f
 	</div>
 <?php
 }
@@ -85,23 +55,11 @@ function infoscreen_layout_save_postdata( $post_id ) {
 
   // verify this came from the our screen and with proper authorization,
   // because save_post can be triggered at other times
-
-<<<<<<< HEAD
-  
-=======
-  if ( !wp_verify_nonce( $_POST['infoscreen_layout_noncename'], plugin_basename(__FILE__) ))
-    return $post_id;
-
->>>>>>> 25c8fa47a426e5723452910e25c8be68c5fcec6f
   if ( !current_user_can( 'edit_post', $post_id ))
       return $post_id;
 
   // OK, we're authenticated: we need to find and save the data
 	$data = $_POST['_infoscreen_layout'];
-<<<<<<< HEAD
-=======
-
->>>>>>> 25c8fa47a426e5723452910e25c8be68c5fcec6f
 	if(get_post_meta($post_id, '_infoscreen_layout') == '')
 		add_post_meta($post_id, '_infoscreen_layout', $data, true);
 
@@ -109,11 +67,7 @@ function infoscreen_layout_save_postdata( $post_id ) {
 		update_post_meta($post_id, '_infoscreen_layout', $data);
 
 	elseif($data == '')
-<<<<<<< HEAD
 // 		delete_post_meta($post_id, '_infoscreen_layout', get_post_meta($post_id, '_infoscreen_layout', true));
-=======
-		delete_post_meta($post_id, '_infoscreen_layout', get_post_meta($post_id, '_infoscreen_layout', true));
->>>>>>> 25c8fa47a426e5723452910e25c8be68c5fcec6f
 
 	return $data;
 }
