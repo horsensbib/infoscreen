@@ -47,6 +47,11 @@ function infoscreen_setup() {
 	require( get_template_directory() . '/inc/customizer.php' );
 
 	/**
+	 * Add Layout Selector to Post Admin
+	 */
+	require( get_template_directory() . '/inc/metabox-layout.php' );
+
+	/**
 	 * Make theme available for translation
 	 * Translations can be filed in the /languages/ directory
 	 * If you're building a theme based on InfoScreen, use a find and replace

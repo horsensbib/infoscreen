@@ -14,6 +14,83 @@ body > .post {
   min-height: 100%;
 }
 
+// Image takes 2/3 of screen real estate
+// -------------------------------------
+.layout-img {}
+.layout-img-left {
+	background: rgba(0,0,0,.7);
+	position: absolute;
+	top:0;
+	bottom: 0;
+	right: 0;
+	width: 30%;
+	padding: 3em 4%;
+}
+.layout-img-right {
+	background: rgba(0,0,0,.7);
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	width: 30%;
+	padding: 3em 4%;
+}
+.layout-img-top {
+	background: rgba(0,0,0,.7);
+	position: absolute;
+	bottom:0;
+	width: 100%;
+	height: 10%;
+	padding: 3em 4%;
+}
+.layout-img-bottom {
+	background: rgba(0,0,0,.7);
+	position: absolute;
+	top:0;
+	width: 100%;
+	height: 10%;
+	padding: 3em 4%;
+}
+
+// Text takes 2/3 of screen real estate
+// ------------------------------------
+.layout-txt {}
+.layout-txt-left {
+	background: rgba(0,0,0,.7);
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	width: 70%;
+	padding: 3em 4%;
+}
+.layout-txt-right {
+	background: rgba(0,0,0,.7);
+	position: absolute;
+	top:0;
+	bottom: 0;
+	right: 0;
+	width: 70%;
+	padding: 3em 4%;
+}
+.layout-txt-top {
+	background: rgba(0,0,0,.7);
+	position: absolute;
+	top:0;
+	width: 100%;
+	height: 40%;
+	padding: 3em 4%;
+}
+.layout-txt-bottom {
+	background: rgba(0,0,0,.7);
+	position: absolute;
+	bottom:0;
+	width: 100%;
+	height: 40%;
+	padding: 3em 4%;
+}
+
+
 /* =Content
 ----------------------------------------------- */
 .site-header,
@@ -30,30 +107,41 @@ body > .post {
 }
 
 .slide-content {
-	background: rgba(0,0,0,.8);
-	height: 100%;
-	width:38%;
 }
 
 .entry-header,
-.entry-content {
-	margin: 0 0 0 38%;
+.entry-content {}
+
+/* Alignment */
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+.aligncenter {
+	clear: both;
+	display: block;
+	margin: 0 auto;
 }
 
+/* Clearing */
+.clear:before,
+.clear:after,
+[class*="content"]:before,
+[class*="content"]:after,
+[class*="site"]:before,
+[class*="site"]:after {
+	content: '';
+	display: table;
+}
 
-
-// Image takes 2/3 of screen real estate
-// -------------------------------------
-.layout-img {}
-.layout-img-left {}
-.layout-img-right {}
-.layout-img-top {}
-.layout-img-bottom {}
-
-// Text takes 2/3 of screen real estate
-// ------------------------------------
-.layout-txt {}
-.layout-txt-left {}
-.layout-txt-right {}
-.layout-txt-top {}
-.layout-txt.bottom {}
+.clear:after,
+[class*="content"]:after,
+[class*="site"]:after {
+	clear: both;
+}
