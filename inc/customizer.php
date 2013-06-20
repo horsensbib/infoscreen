@@ -36,12 +36,14 @@ add_action( 'customize_preview_init', 'infoscreen_customize_preview_js' );
  * InfoScreen settings page
 */
 function mw_enqueue_color_picker() {
-	wp_enqueue_style('jquery-ui-css' , '/wp-content/themes/infoscreen/inc/jquery-ui-tabs.css');
 	wp_enqueue_style('wp-color-picker');
 
 	wp_enqueue_script('jquery');
-	wp_enqueue_script('jquery-ui-tabs');
-
+	wp_enqueue_script('jquery-ui', 'http://code.jquery.com/ui/1.10.3/jquery-ui.js');
+	
+	if(strpos($_SERVER['REQUEST_URI'], "post.php")){
+		wp_enqueue_style('jquery-ui', '/wp-content/themes/infoscreen/inc/metabox-slider.css');
+	}
 	wp_enqueue_style('font-picker', '/wp-content/themes/infoscreen/inc/style-fontselector.css');
 
 	wp_enqueue_script('thickbox');
@@ -54,8 +56,11 @@ function mw_enqueue_color_picker() {
 	wp_register_script( 'script-upload', '/wp-content/themes/infoscreen/inc/script-upload.js', array('jquery','media-upload','thickbox') );
 	wp_enqueue_script( 'script-colorpicker_fontselector', '/wp-content/themes/infoscreen/inc/script-colorpicker_fontselector.js' , array( 'wp-color-picker' ), false, true );
 	
+	wp_register_script( 'script-slider', '/wp-content/themes/infoscreen/inc/script-slider.js');
+	
 	wp_enqueue_script('media-upload');
 	wp_enqueue_script('script-upload');
+	wp_enqueue_script('script-slider');
 	
 }
 add_action( 'admin_enqueue_scripts', 'mw_enqueue_color_picker' );
@@ -93,13 +98,13 @@ function add_infoscreen_meta_boxes(){
 			<?php
 }
 
-function wptuts_options_setup() {
+function infoscreen_options_setup() {
 	global $pagenow;
 	if ('media-upload.php' == $pagenow || 'async-upload.php' == $pagenow) {
 		add_filter( 'gettext', 'replace_thickbox_text' , 1, 2 );
 	}
 }
-add_action( 'admin_init', 'wptuts_options_setup' );
+add_action( 'admin_init', 'infoscreen_options_setup' );
 
 function replace_thickbox_text($translated_text, $text ) {
 	if ( 'Insert into Post' == $text ) {
@@ -246,6 +251,7 @@ function theme_infoscreen_settings_default_fonts() {
 		</ul>
 		<div style="clear: both"></div>
 <?php
+echo $_SERVER['REQUEST_URI'];
 }
 function infoscreen_theme_options_validate($input) {
 	$options = get_option('infoscreen_theme_options');
@@ -279,4 +285,3 @@ function infoscreen_theme_options_render_page() { ?>
 	</form>
 </div>
 <?php }
-

@@ -50,7 +50,27 @@ function infoscreen_setup() {
 	 * Add Layout Selector to Post Admin
 	 */
 	require( get_template_directory() . '/inc/metabox-layout.php' );
-
+	
+	/**
+	 * Add Color scheme Selector to Post Admin
+	 */
+	require( get_template_directory() . '/inc/metabox-colorscheme.php' );
+	
+	/**
+	 * Add Time Selector to Post Admin
+	 */
+	require( get_template_directory() . '/inc/metabox-time.php' );
+	
+	/**
+	 * Add Animation Selector to Post Admin
+	 */
+	require( get_template_directory() . '/inc/metabox-animation.php' );
+	
+	/**
+	 * Custom functions
+	 */
+	require( get_template_directory() . '/inc/custom_functions.php' );
+	
 	/**
 	 * Make theme available for translation
 	 * Translations can be filed in the /languages/ directory
@@ -154,7 +174,7 @@ add_action( 'widgets_init', 'infoscreen_widgets_init' );
 function infoscreen_scripts() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
+// 	wp_enqueue_script( 'navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
 	wp_enqueue_script( 'skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
