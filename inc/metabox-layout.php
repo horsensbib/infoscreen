@@ -22,6 +22,9 @@ function infoscreen_create_layout_metabox() {
 /* Prints the inner fields for the custom post/page section */
 function layout_metabox() {
 	$currentvalue = get_post_meta(get_the_ID(), '_infoscreen_layout', true);
+	if($currentvalue == null){
+		$currentvalue = "layout-img-right";
+	}
 	?>
 <div>
 	<label><input type="radio" name="_infoscreen_layout" id="layout-img"
