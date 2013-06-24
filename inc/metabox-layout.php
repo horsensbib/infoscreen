@@ -27,48 +27,48 @@ function layout_metabox() {
 	<label><input type="radio" name="_infoscreen_layout" id="layout-img"
 		value="layout-img"
 		<?php echo ($currentvalue == 'layout-img')? 'checked="checked"':''; ?> /><img
-		src="http://localhost/wordpress\wp-content\themes\infoscreen\img\thumbnails\layout-img.png">
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img.png">
 	</label> <label><input type="radio" name="_infoscreen_layout"
 		id="layout-img-left" value="layout-img-left"
 		<?php echo ($currentvalue == 'layout-img-left')? 'checked="checked"':''; ?> /><img
-		src="http://localhost/wordpress\wp-content\themes\infoscreen\img\thumbnails\layout-img-left.png">
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img-left.png">
 	</label> <label><input type="radio" name="_infoscreen_layout"
 		id="layout-img-right" value="layout-img-right"
 		<?php echo ($currentvalue == 'layout-img-right')? 'checked="checked"':''; ?> />
 		<img
-		src="http://localhost/wordpress\wp-content\themes\infoscreen\img\thumbnails\layout-img-right.png">
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/Layout-img-right.png">
 	</label> <label><input type="radio" name="_infoscreen_layout"
 		id="layout-img-top" value="layout-img-top"
 		<?php echo ($currentvalue == 'layout-img-top')? 'checked="checked"':''; ?> /><img
-		src="http://localhost/wordpress\wp-content\themes\infoscreen\img\thumbnails\layout-img-top.png">
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img-top.png">
 	</label> <label><input type="radio" name="_infoscreen_layout"
 		id="layout-img-bottom" value="layout-img-bottom"
 		<?php echo ($currentvalue == 'layout-img-bottom')? 'checked="checked"':''; ?> /><img
-		src="http://localhost/wordpress\wp-content\themes\infoscreen\img\thumbnails\layout-img-bottom.png">
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img-bottom.png">
 	</label> <label><input type="radio" name="_infoscreen_layout"
 		id="layout-txt" value="layout-txt"
 		<?php echo ($currentvalue == 'layout-txt')? 'checked="checked"':''; ?> />
 		<img
-		src="http://localhost/wordpress\wp-content\themes\infoscreen\img\thumbnails\layout-txt.png">
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt.png">
 	</label> <label><input type="radio" name="_infoscreen_layout"
 		id="layout-txt-left" value="layout-txt-left"
 		<?php echo ($currentvalue == 'layout-txt-left')? 'checked="checked"':''; ?> />
 		<img
-		src="http://localhost/wordpress\wp-content\themes\infoscreen\img\thumbnails\layout-txt-left.png">
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt-left.png">
 	</label> <label><input type="radio" name="_infoscreen_layout"
 		id="layout-txt-right" value="layout-txt-right"
 		<?php echo ($currentvalue == 'layout-txt-right')? 'checked="checked"':''; ?> />
 		<img
-		src="http://localhost/wordpress\wp-content\themes\infoscreen\img\thumbnails\layout-txt-right.png">
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt-right.png">
 	</label> <label><input type="radio" name="_infoscreen_layout"
 		id="layout-txt-top" value="layout-txt-top"
 		<?php echo ($currentvalue == 'layout-txt-top')? 'checked="checked"':''; ?> />
 		<img
-		src="http://localhost/wordpress\wp-content\themes\infoscreen\img\thumbnails\layout-txt-top.png">
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt-top.png">
 	</label> <label><input type="radio" name="_infoscreen_layout"
 		id="layout-txt-bottom" value="layout-txt-bottom"
 		<?php echo ($currentvalue == 'layout-txt-bottom')? 'checked="checked"':''; ?> /><img
-		src="http://localhost/wordpress\wp-content\themes\infoscreen\img\thumbnails\layout-txt-bottom.png">
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt-bottom.png">
 	</label> <input type="hidden" name="infoscreen_layout_noncename"
 		id="infoscreen_layout_noncename"
 		value="<?php wp_create_nonce( plugin_basename(__FILE__) ) ?>" />
