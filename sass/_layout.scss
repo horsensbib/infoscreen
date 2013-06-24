@@ -8,7 +8,10 @@ body,
   margin: 0;
   padding: 0;
 }
-
+body {
+  overflow: hidden;
+}
+::-webkit-scrollbar{display: none;}
 body > .post {
   height: auto;
   min-height: 100%;

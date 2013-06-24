@@ -8,24 +8,28 @@
  * @since InfoScreen 1.0
  */
 global $post;
-global $time;
+global $time_total;
+global $time_accu;
 $category_slug = explode("?", $_SERVER['REQUEST_URI']);
 $args = array( 'category' => $category_slug[1]);
 $myposts = get_posts( $args );
+foreach( $myposts as $post ) : setup_postdata($post); 
+$time_total += get_post_meta(get_the_ID(), '_infoscreen_time', true) * 1000;
+endforeach; 
 foreach( $myposts as $post ) : setup_postdata($post); ?>
-<?php $time += get_post_meta(get_the_ID(), '_infoscreen_time', true) * 1000; ?>
+<?php $time_accu += get_post_meta(get_the_ID(), '_infoscreen_time', true) * 1000; ?>
 <script>
-	$('#post-<?php echo get_the_ID(); ?>').delay(<?php echo $time; ?>).ready(
+	$('#post-<?php echo get_the_ID(); ?>').delay(<?php echo $time_accu ?>).ready(
 		function() {$('#post-<?php echo get_the_ID(); ?>').
 			animate({
 				opacity: 0,
-				left: 'toggle',
+				left: '100%',
 				height: 'toggle'}, 
 				3000, 
 				function(){ 
 					setTimeout(
 						function() { $('#post-<?php echo get_the_ID(); ?>').css('display',''); $('#post-<?php echo get_the_ID(); ?>').css('opacity',''); }, 
-						<?php echo $time_print = $time - (get_post_meta(get_the_ID(), '_infoscreen_time', true) * 1000);?>
+						<?php echo $time_total;?>
 				)})})
 </script>
 
