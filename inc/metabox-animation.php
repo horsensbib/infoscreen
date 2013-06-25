@@ -20,6 +20,9 @@ function infoscreen_create_animation_metabox() {
 }
 function animation_metabox() {
 	$currentvalue = get_post_meta(get_the_ID(), '_infoscreen_animation', true);
+	if($currentvalue == null){
+		$currentvalue = "left_slide_in";
+	}
 	echo "<fieldset>";
 	echo "<input type='radio' name='_infoscreen_animation' value='left_slide_in'";
 	echo ($currentvalue == 'left_slide_in')? 'checked="checked"':'';
