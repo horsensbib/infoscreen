@@ -23,5 +23,5 @@
 <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
 </head>
 	
-<body <?php body_class(); ?>>
+<body <?php body_class('flexslider'); ?>>
 	<?php do_action( 'before' ); ?>
