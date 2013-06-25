@@ -17,21 +17,6 @@ foreach( $myposts as $post ) : setup_postdata($post);
 $time_total += get_post_meta(get_the_ID(), '_infoscreen_time', true) * 1000;
 endforeach; 
 foreach( $myposts as $post ) : setup_postdata($post); ?>
-<?php $time_accu += get_post_meta(get_the_ID(), '_infoscreen_time', true) * 1000; ?>
-<script>
-	$('#post-<?php echo get_the_ID(); ?>').delay(<?php echo $time_accu ?>).ready(
-		function() {$('#post-<?php echo get_the_ID(); ?>').
-			animate({
-				opacity: 0,
-				left: '100%',
-				height: 'toggle'}, 
-				3000, 
-				function(){ 
-					setTimeout(
-						function() { $('#post-<?php echo get_the_ID(); ?>').css('display',''); $('#post-<?php echo get_the_ID(); ?>').css('opacity',''); }, 
-						<?php echo $time_total;?>
-				)})})
-</script>
 
 <?php endforeach; ?>
 
