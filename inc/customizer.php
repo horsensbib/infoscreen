@@ -65,6 +65,14 @@ function mw_enqueue_color_picker() {
 }
 add_action( 'admin_enqueue_scripts', 'mw_enqueue_color_picker' );
 
+/**
+ * Theme Options styles
+*/
+function theme_options_styles() {
+	wp_enqueue_style('theme-options-styles', get_template_directory_uri() . '/css/theme-options.css');
+}
+add_action( 'admin_enqueue_scripts', 'theme_options_styles' );
+
 function infoscreen_settings_api_init() {
 	if(false === get_option('infoscreen_theme_options', infoscreen_get_default_theme_options()))
 		add_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
