@@ -145,20 +145,25 @@ function theme_infoscreen_settings_colorfields() {
 $options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
 ?>
 <table id="colorfields">
+	<tr>
+		<th class="infoscreen-colorscheme-name-title"><?php _e( 'Color Scheme Name', 'infoscreen' ); ?></th>
+		<th class="infoscreen-color-picker-title"><?php _e( 'Font Color', 'infoscreen' ); ?></th>
+		<th class="infoscreen-color-picker-title"><?php _e( 'Background Color', 'infoscreen' ); ?></th>
+	</tr>
 	<?php 
 	for ($i = 0; $i < esc_attr($options['colorschemes']); $i++){
 		?>
 	<?php if($i&1) { 
 } else {?>
 	<tr>
-		<td><input type="text"
+		<td class="infoscreen-colorscheme-name"><input type="text"
 			name="infoscreen_theme_options[colorscheme_name<?php echo $i . ']'?>"
 			id='colorscheme_name<?php echo $i ?>'
 			value='<?php echo esc_attr($options['colorscheme_name' . $i]); ?>' />
 		</td>
 		<?php } ?>
 
-		<td><input type="text"
+		<td class="infoscreen-color-picker"><input type="text"
 			name="infoscreen_theme_options[colorscheme<?php echo $i . ']' ?>"
 			id='colorscheme<?php echo $i ?>'
 			value='<?php echo esc_attr($options['colorscheme' . $i]); ?>'
