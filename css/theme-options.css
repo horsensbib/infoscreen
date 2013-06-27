@@ -1,0 +1,30 @@
+#colorfields {
+  width: 100%;
+  border-collapse: collapse; }
+  #colorfields tr:nth-child(even) {
+    background: #eee; }
+    #colorfields tr:nth-child(even) .wp-picker-container,
+    #colorfields tr:nth-child(even) .wp-picker-input-wrap,
+    #colorfields tr:nth-child(even) .wp-picker-holder {
+      background: #eee; }
+  #colorfields th {
+    text-align: left;
+    border-bottom: 1px solid #ccc; }
+  #colorfields th,
+  #colorfields td {
+    padding: .5em 1em;
+    position: relative; }
+  #colorfields .infoscreen-colorscheme-name input {
+    width: 100%; }
+  #colorfields .infoscreen-color-picker {
+    width: 40%; }
+  #colorfields .wp-picker-input-wrap {
+    width: 150px; }
+  #colorfields .wp-picker-input-wrap,
+  #colorfields .wp-picker-holder {
+    position: absolute;
+    z-index: 500; }
+  #colorfields .wp-picker-container,
+  #colorfields .wp-picker-input-wrap,
+  #colorfields .wp-picker-holder {
+    background: #f7f7f7; }
