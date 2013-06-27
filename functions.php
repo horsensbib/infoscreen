@@ -197,14 +197,70 @@ add_action( 'wp_enqueue_scripts', 'infoscreen_scripts' );
 
 
 function slideshow() {
+	global $wp_query;
+	if(is_category() || is_single()){
+		$cat_ID = get_query_var('cat');
+	}
+	global $post;
+	$args = array( 'category' => $cat_ID);
+	$myposts = get_posts( $args );
+	$slide_durations = array();
+	foreach( $myposts as $post ) : setup_postdata($post);
+		if(get_post_meta(get_the_ID(), '_infoscreen_time', true) == null){
+			$slide_durations[] = 5000;
+		}
+		else {
+			$slide_durations[] = get_post_meta(get_the_ID(), '_infoscreen_time', true) * 1000;
+		}
+	endforeach;
 ?>
 <script type="text/javascript">
+jQuery(window).load(function() {
+	var delays = [ <?php echo implode(', ', $slide_durations); ?> ],
+        _curr_index = 0,
+        _delay = false, 
+        _aa_timeout = null,
+        _auto_advancing = false;
+    
 	jQuery(document).ready(function($){
 		$('.flexslider').flexslider({
-			animation: "slide",
-			controlNav: "false"
+			animation: "fade",
+			controlNav: false,
+			slideshow: false,
+			after: function( slider ){
+		    	// If we weren't advancing to the next slide from the auto_advance_slide() function(from user controls for instance), we need to fix some things
+		        if ( ! _auto_advancing ) {
+		        	clearTimeout( _aa_timeout ); // Clear the auto advance timeout
+		            _curr_index = slider.currentSlide; // Fix the current index
+		        };
+		        // Set-up the next timer for auto advancing
+		    auto_advance_slide();
+		   }
 		});
 	});
+    function auto_advance_slide() {
+        if ( typeof( delays[ _curr_index ] ) != 'undefined' ) {
+            _delay = delays[ _curr_index ];
+        } else {
+            _delay = delays[ 0 ];
+            _curr_index = 0;
+        };
+
+        // Set time out to switch to next slide
+        _aa_timeout = setTimeout( function(){
+            _auto_advancing = true;
+            // Switch to next slide.
+            jQuery('.flexslider').flexslider('next');
+
+            _auto_advancing = false;
+        }, _delay );
+
+        // Increase the current index. 
+        _curr_index ++;
+    }
+
+    auto_advance_slide();
+});
 </script>
 <?php
 }
