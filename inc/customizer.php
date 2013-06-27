@@ -218,7 +218,9 @@ function addRow() {
 </script>
 
 <input type="button"
-	value="Add Row" onclick="addRow()" />
+	class="button"
+	value="Add Row"
+	onclick="addRow()" />
 <?php }
 function theme_infoscreen_settings_logo() {
 	$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
