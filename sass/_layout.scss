@@ -46,11 +46,14 @@ body > .post {
 	.layout-img-top,
 	.layout-img-bottom {
 		width: 92%;
-		padding: 1.5em 4%;
+		padding: .5em 4%;
 		.branding {
 			width:22%;
 			float:right;
+			margin:.5em 0 .5em 4%;
 		}
+		h1 {clear: none;}
+		.entry-content {width:75%;}
 	}
 	.layout-img-top {bottom:0;}
 	.layout-img-bottom {top:0;}
