@@ -59,43 +59,27 @@ body > .post {
 	.layout-img-bottom {top:0;}
 
 
-// Text takes 2/3 of screen real estate
-// ------------------------------------
-.layout-txt {}
-.layout-txt-left {
-	background: rgba(0,0,0,.7);
-	position: absolute;
-	top:0;
-	bottom: 0;
-	left: 0;
-	width: 70%;
-	padding: 3em 4%;
-}
-.layout-txt-right {
-	background: rgba(0,0,0,.7);
-	position: absolute;
-	top:0;
-	bottom: 0;
-	right: 0;
-	width: 70%;
-	padding: 3em 4%;
-}
-.layout-txt-top {
-	background: rgba(0,0,0,.7);
-	position: absolute;
-	top:0;
-	width: 100%;
-	height: 40%;
-	padding: 3em 4%;
-}
-.layout-txt-bottom {
-	background: rgba(0,0,0,.7);
-	position: absolute;
-	bottom:0;
-	width: 100%;
-	height: 40%;
-	padding: 3em 4%;
-}
+	// Text takes 2/3 of screen real estate
+	// ------------------------------------
+	.layout-txt {}
+	.layout-txt-left {
+		background: rgba(0,0,0,.7);
+		position: absolute;
+		top:0;
+		bottom: 0;
+		left: 0;
+		width: 70%;
+		padding: 3em 4%;
+	}
+	.layout-txt-right {
+		background: rgba(0,0,0,.7);
+		position: absolute;
+		top:0;
+		bottom: 0;
+		right: 0;
+		width: 70%;
+		padding: 3em 4%;
+	}
 }
 
 /* =Content
