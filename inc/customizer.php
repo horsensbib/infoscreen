@@ -128,10 +128,8 @@ function replace_thickbox_text($translated_text, $text ) {
 
 function infoscreen_get_default_theme_options() {
 	$options = array(
-			'colorscheme_default' => '#b4d455',
 			'colorschemes' => '2',
 			'logo' => '',
-			'default_font' => 'Arial'
 	);
 	return $options;
 }
@@ -156,7 +154,7 @@ $options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_o
 		?>
 	<?php if($i&1) { 
 } else {?>
-	<tr>
+	<tr id="infoscreen_theme_options[colorscheme_name<?php echo $i . ']'?>">
 		<td class="infoscreen-colorscheme-name"><input type="text"
 			name="infoscreen_theme_options[colorscheme_name<?php echo $i . ']'?>"
 			id='colorscheme_name<?php echo $i ?>'
@@ -170,7 +168,11 @@ $options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_o
 			value='<?php echo esc_attr($options['colorscheme' . $i]); ?>'
 			class=" my-color-field" />
 		</td>
-		<?php if($i&1) { 
+		<?php if($i&1) {
+			?>	
+		<td>
+			<input type="button" class="button" value="remove" onclick='deleteRow("infoscreen_theme_options[colorscheme_name<?php echo $i-1 . ']'?>")'/>
+		</td><?php  		
 			echo '</tr>';
 		}
 } ?>
@@ -181,6 +183,16 @@ $options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_o
 	id="colorschemes"
 	value="<?php echo esc_attr($options['colorschemes']); ?>" />
 <script>
+function deleteRow(rowid)  
+{   
+    var row = document.getElementById(rowid);
+    var table = row.parentNode;
+    while ( table && table.tagName != 'TABLE' )
+        table = table.parentNode;
+    if ( !table )
+        return;
+    table.deleteRow(row.rowIndex);
+}
 function addRow() {
 	 
     var table = document.getElementById('colorfields');
@@ -311,7 +323,7 @@ function infoscreen_theme_options_validate($input) {
 	for($i = 0; $i < $input['colorschemes']; $i++) {
 			$output['colorscheme' . $i] = $input['colorscheme' . $i];
 	}
-	$output['default_font'] = empty($input['default_font']) ? $options['default_font'] : $input['default_font'];
+	//$output['default_font'] = empty($input['default_font']) ? $options['default_font'] : $input['default_font'];
 	
 	return $output;
 }
