@@ -213,6 +213,7 @@ function slideshow() {
 			$slide_durations[] = get_post_meta(get_the_ID(), '_infoscreen_time', true) * 1000;
 		}
 	endforeach;
+	$temp_cat_options = get_option('infoscreen_category_animations');
 ?>
 <script type="text/javascript">
 jQuery(window).load(function() {
@@ -224,7 +225,7 @@ jQuery(window).load(function() {
     
 	jQuery(document).ready(function($){
 		$('.flexslider').flexslider({
-			animation: "fade",
+			animation: "<?php echo $temp_cat_options[$cat_ID]; ?>",
 			controlNav: false,
 			slideshow: false,
 			after: function( slider ){

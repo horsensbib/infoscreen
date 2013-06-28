@@ -86,6 +86,7 @@ function add_infoscreen_meta_boxes(){
 	add_meta_box('meta_box_logo', 'Logo','theme_infoscreen_settings_logo', $page, 'normal', 'core');
 	add_meta_box('meta_box_colorfields', 'Colorschemes', 'theme_infoscreen_settings_colorfields', $page, 'normal', 'core');
 	add_meta_box('meta_box_font_default', 'Default Fonts', 'theme_infoscreen_settings_default_fonts', $page, 'normal', 'core');
+	add_meta_box('meta_box_animation', 'Animations', 'theme_infoscreen_settings_animations', $page, 'normal', 'core');
 	?>
 		<div id="poststuff" class="metabox-holder<?php echo 2 == $screen_layout_columns ? ' has-right-sidebar' : ''; ?>">
 							<?php do_meta_boxes($page, 'normal', $data); ?>
@@ -218,9 +219,9 @@ function addRow() {
 </script>
 
 <input type="button"
-	class="button"
-	value="Add Row"
-	onclick="addRow()" />
+	   class="button"
+	   value="Add Row" 
+	   onclick="addRow()" />
 <?php }
 function theme_infoscreen_settings_logo() {
 	$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
@@ -266,13 +267,42 @@ function theme_infoscreen_settings_default_fonts() {
 		</ul>
 		<div style="clear: both"></div>
 <?php
-echo $_SERVER['REQUEST_URI'];
 }
+function theme_infoscreen_settings_animations() {
+	$cat_array = get_categories();
+	$cat_options = get_option('infoscreen_category_animations');
+	?>
+	<table>
+	<tr>
+		<th class="infoscreen-animation-category"><?php _e( 'Category', 'infoscreen' ); ?></th>
+		<th class="infoscreen-animation-radio"><?php _e( 'Animation', 'infoscreen' ); ?></th>
+	</tr>
+	<?php for ($i = 0; $i < count($cat_array); $i++){ ?>
+	<tr>
+		<td><?php echo $cat_array[$i]->name; ?></td>
+		<td>
+			<input type="radio" name="infoscreen_theme_options[animation_<?php echo $cat_array[$i]->cat_ID; ?>]" value="fade" <?php echo ($cat_options[$cat_array[$i]->cat_ID] == 'fade') ? 'checked':''; ?>>Fade<br>
+			<input type="radio" name="infoscreen_theme_options[animation_<?php echo $cat_array[$i]->cat_ID; ?>]" value="slide" <?php echo ($cat_options[$cat_array[$i]->cat_ID] == 'slide') ? 'checked':''; ?>>Slide<br>
+		</td>
+	</tr>
+	<?php } ?>
+	</table>
+	<?php 
+	}
 function infoscreen_theme_options_validate($input) {
 	$options = get_option('infoscreen_theme_options');
 	$output = $defaults = infoscreen_get_default_theme_options();
 	$output['colorschemes'] = empty($input['colorschemes']) ? $defaults['colorschemes'] : $input['colorschemes'];
 	$output['logo'] = $input['logo'];
+	
+	$category_output = array();
+	$category_array = get_categories();
+	for ($i = 0; $i < count($category_array); $i++){
+		$cat_name = $category_array[$i]->cat_ID;
+		update_option('temptest', $input['animation_' . $cat_name]);
+		$category_output[$cat_name] = $input['animation_' . $cat_name];
+	}
+	update_option('infoscreen_category_animations', $category_output);
 	for($i = 0; $i < $input['colorschemes']; $i++) {
 			$output['colorscheme_name' . $i] = $input['colorscheme_name' . $i];
 			$i++;
