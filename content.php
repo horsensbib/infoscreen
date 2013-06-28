@@ -18,6 +18,15 @@
 		$transparency_value = get_post_meta(get_the_ID(), '_infoscreen_transparency', true)/100;
 		echo 'style="color: rgb('.$font.'); background: rgba('.$bg.','.$transparency_value.');">';
 		?>
+		<h2 class="branding"><?php 
+$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options()); 
+
+if ($options['logo'] != "") {
+?><img class="logo" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo esc_url( $options['logo'] ); ?>" /><?php 
+} else { 
+?><span class="logo"><?php bloginfo( 'name' ); ?></span><?php
+} 
+?></h2>
 		<header class="entry-header">
 		<h1 class="entry-title">
 			<?php the_title(); ?>

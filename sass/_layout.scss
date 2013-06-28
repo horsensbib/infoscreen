@@ -16,43 +16,44 @@ body > .post {
   min-height: 100%;
 }
 
-// Image takes 2/3 of screen real estate
-// -------------------------------------
-.layout-img {}
-.layout-img-left {
+.slide-content {
 	background: rgba(0,0,0,.7);
 	position: absolute;
-	top:0;
-	bottom: 0;
-	right: 0;
-	width: 30%;
-	height: 100%;
-	padding: 3em 4%;
 }
-.layout-img-right {
-	background: rgba(0,0,0,.7);
-	position: absolute;
-	top:0;
-	bottom: 0;
-	left: 0;
-	width: 30%;
-	height: 100%;
-	padding: 3em 4%;
-}
-.layout-img-top {
-	background: rgba(0,0,0,.7);
-	position: absolute;
-	bottom:0;
-	width: 92%;
-	padding: 1.5em 4%;
-}
-.layout-img-bottom {
-	background: rgba(0,0,0,.7);
-	position: absolute;
-	top:0;
-	width: 92%;
-	padding: 1.5em 4%;
-}
+.flexslider .slides {
+		.logo {
+			max-width:100%;
+			width:auto;
+		}
+
+	// Image takes 2/3 of screen real estate
+	// -------------------------------------
+	.layout-img {
+		.entry-header,
+		.entry-content {display:none;}
+	}
+	.layout-img-left,
+	.layout-img-right {
+		top:0;
+		bottom: 0;
+		width: 22%;
+		height: 100%;
+		padding: 1em 4%;
+		.branding {margin-bottom: 1em;}
+	}
+	.layout-img-left {right: 0;}
+	.layout-img-right {left: 0;}
+	.layout-img-top,
+	.layout-img-bottom {
+		width: 92%;
+		padding: 1.5em 4%;
+		.branding {
+			width:22%;
+			float:right;
+		}
+	}
+	.layout-img-top {bottom:0;}
+	.layout-img-bottom {top:0;}
 
 
 // Text takes 2/3 of screen real estate
@@ -92,7 +93,7 @@ body > .post {
 	height: 40%;
 	padding: 3em 4%;
 }
-
+}
 
 /* =Content
 ----------------------------------------------- */
@@ -109,9 +110,6 @@ li.post {
 	bottom: 0;
 	right: 0;
 	min-height: 100%;
-}
-
-.slide-content {
 }
 
 .entry-header,

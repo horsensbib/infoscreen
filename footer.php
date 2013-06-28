@@ -24,13 +24,19 @@ foreach( $myposts as $post ) : setup_postdata($post); ?>
 <header id="masthead" class="site-header" role="banner">
 	<hgroup>
 		<h1 class="site-title">
+<?php	
+	$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
+?>
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>"
 				title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"
-				rel="home"><?php bloginfo( 'name' ); ?> </a>
+				rel="home">
+<?php if ($options['logo'] != "") { ?>
+				<img style="max-width: 100%;" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo esc_url( $options['logo'] ); ?>" />
+<?php } else { ?>
+				<?php bloginfo( 'name' ); ?>
+<?php } ?>
+			</a>
 		</h1>
-		<h2 class="site-description">
-			<?php bloginfo( 'description' ); ?>
-		</h2>
 	</hgroup>
 </header>
 <!-- #masthead -->

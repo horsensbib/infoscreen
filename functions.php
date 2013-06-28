@@ -195,6 +195,14 @@ function infoscreen_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'infoscreen_scripts' );
 
+/**
+ * Remove link buttons from editor
+ */
+function change_mce_options( $init ) {
+ $init['theme_advanced_disable'] = 'link,unlink,wp_more';
+ return $init;
+}
+add_filter('tiny_mce_before_init', 'change_mce_options');
 
 function slideshow() {
 	global $wp_query;
