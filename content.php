@@ -16,7 +16,11 @@
 	}
 		echo get_post_meta(get_the_ID(), '_infoscreen_layout', true). '"';
 		$transparency_value = get_post_meta(get_the_ID(), '_infoscreen_transparency', true)/100;
-		echo 'style="color: rgb('.$font.'); background: rgba('.$bg.','.$transparency_value.');">';
+		if (get_post_meta(get_the_ID(), '_infoscreen_layout', true) != 'layout-img') {
+			echo 'style="color: rgb('.$font.'); background: rgba('.$bg.','.$transparency_value.');">';
+		} else {
+			echo '>';
+		}
 		?>
 		<h2 class="branding"><?php 
 $options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options()); 

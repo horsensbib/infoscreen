@@ -28,58 +28,69 @@ body > .post {
 
 	// Image takes 2/3 of screen real estate
 	// -------------------------------------
+	.layout-img,
+	.layout-txt {
+		top:0;
+		bottom: 0;
+		width:92%;
+		padding: 1em 4%;
+		.branding {
+			width:30%;
+			float:right;
+			margin:0 0 1.5em 4%;
+		}
+	}
+
 	.layout-img {
+		background: none;
 		.entry-header,
 		.entry-content {display:none;}
 	}
+
+	.layout-txt {
+		h1 {margin-bottom: 1em;}
+		.entry-content {width:65%;}
+	}
+
 	.layout-img-left,
-	.layout-img-right {
+	.layout-img-right,
+	.layout-txt-left,
+	.layout-txt-right {
 		top:0;
 		bottom: 0;
-		width: 22%;
 		height: 100%;
 		padding: 1em 4%;
 		.branding {margin-bottom: 1em;}
 	}
-	.layout-img-left {right: 0;}
-	.layout-img-right {left: 0;}
+
+	.layout-img-left,
+	.layout-img-right {width: 30%;}
+
+	.layout-txt-left,
+	.layout-txt-right {width: 54%;}
+
+	.layout-img-left,
+	.layout-txt-right {right: 0;}
+
+	.layout-img-right,
+	.layout-txt-left {left: 0;}
+
 	.layout-img-top,
 	.layout-img-bottom {
 		width: 92%;
-		padding: .5em 4%;
+		padding: .5em 4% 0;
 		.branding {
-			width:22%;
+			width:30%;
 			float:right;
 			margin:.5em 0 .5em 4%;
 		}
 		h1 {clear: none;}
-		.entry-content {width:75%;}
+		.entry-content {width:65%;}
 	}
+
 	.layout-img-top {bottom:0;}
 	.layout-img-bottom {top:0;}
 
-
-	// Text takes 2/3 of screen real estate
-	// ------------------------------------
-	.layout-txt {}
-	.layout-txt-left {
-		background: rgba(0,0,0,.7);
-		position: absolute;
-		top:0;
-		bottom: 0;
-		left: 0;
-		width: 70%;
-		padding: 3em 4%;
-	}
-	.layout-txt-right {
-		background: rgba(0,0,0,.7);
-		position: absolute;
-		top:0;
-		bottom: 0;
-		right: 0;
-		width: 70%;
-		padding: 3em 4%;
-	}
 }
 
 /* =Content

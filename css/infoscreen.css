@@ -94,30 +94,58 @@ body > .post {
 .flexslider .slides .logo {
   max-width: 100%;
   width: auto; }
-.flexslider .slides .layout-img .entry-header,
-.flexslider .slides .layout-img .entry-content {
-  display: none; }
-.flexslider .slides .layout-img-left,
-.flexslider .slides .layout-img-right {
+.flexslider .slides .layout-img,
+.flexslider .slides .layout-txt {
   top: 0;
   bottom: 0;
-  width: 22%;
+  width: 92%;
+  padding: 1em 4%; }
+  .flexslider .slides .layout-img .branding,
+  .flexslider .slides .layout-txt .branding {
+    width: 30%;
+    float: right;
+    margin: 0 0 1.5em 4%; }
+.flexslider .slides .layout-img {
+  background: none; }
+  .flexslider .slides .layout-img .entry-header,
+  .flexslider .slides .layout-img .entry-content {
+    display: none; }
+.flexslider .slides .layout-txt h1 {
+  margin-bottom: 1em; }
+.flexslider .slides .layout-txt .entry-content {
+  width: 65%; }
+.flexslider .slides .layout-img-left,
+.flexslider .slides .layout-img-right,
+.flexslider .slides .layout-txt-left,
+.flexslider .slides .layout-txt-right {
+  top: 0;
+  bottom: 0;
   height: 100%;
   padding: 1em 4%; }
   .flexslider .slides .layout-img-left .branding,
-  .flexslider .slides .layout-img-right .branding {
+  .flexslider .slides .layout-img-right .branding,
+  .flexslider .slides .layout-txt-left .branding,
+  .flexslider .slides .layout-txt-right .branding {
     margin-bottom: 1em; }
-.flexslider .slides .layout-img-left {
-  right: 0; }
+.flexslider .slides .layout-img-left,
 .flexslider .slides .layout-img-right {
+  width: 30%; }
+.flexslider .slides .layout-txt-left,
+.flexslider .slides .layout-txt-right {
+  width: 54%; }
+.flexslider .slides .layout-img-left,
+.flexslider .slides .layout-txt-right {
+  right: 0; }
+.flexslider .slides .layout-img-right,
+.flexslider .slides .layout-txt-left {
   left: 0; }
 .flexslider .slides .layout-img-top,
 .flexslider .slides .layout-img-bottom {
   width: 92%;
-  padding: .5em 4%; }
+  padding: .5em 4% 0; }
   .flexslider .slides .layout-img-top .branding,
   .flexslider .slides .layout-img-bottom .branding {
-    width: 22%;
+    width: 30%;
     float: right;
     margin: .5em 0 .5em 4%; }
   .flexslider .slides .layout-img-top h1,
@@ -125,27 +153,11 @@ body > .post {
     clear: none; }
   .flexslider .slides .layout-img-top .entry-content,
   .flexslider .slides .layout-img-bottom .entry-content {
-    width: 75%; }
+    width: 65%; }
 .flexslider .slides .layout-img-top {
   bottom: 0; }
 .flexslider .slides .layout-img-bottom {
   top: 0; }
-.flexslider .slides .layout-txt-left {
-  background: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 70%;
-  padding: 3em 4%; }
-.flexslider .slides .layout-txt-right {
-  background: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 70%;
-  padding: 3em 4%; }
 
 /* =Content
 ----------------------------------------------- */
