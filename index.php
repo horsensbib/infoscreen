@@ -29,8 +29,6 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
-			<?php infoscreen_content_nav( 'nav-below' ); ?>
-
 		<?php else : ?>
 
 			<?php get_template_part( 'no-results', 'index' ); ?>
