@@ -216,6 +216,49 @@ function remove_post_metaboxes() {
 }
 add_action( 'admin_menu' , 'remove_post_metaboxes' );
 
+/**
+ * Move post submit metabox
+ */
+function move_submit_metabox() {
+	remove_meta_box( 'submitdiv', 'post', 'side' );
+	add_meta_box('submitdiv', __('Publish'), 'post_submit_meta_box', 'post', 'side', 'high');
+}
+add_action('add_meta_boxes', 'move_submit_metabox' );
+
+/**
+ * Rename post thumbnail metabox
+ */
+function rename_thumb_metabox() {
+	remove_meta_box( 'postimagediv', 'post', 'side' );
+	add_meta_box('postimagediv', __('Background Image'), 'post_thumbnail_meta_box', 'post', 'side', 'high');
+}
+add_action('add_meta_boxes', 'rename_thumb_metabox' );
+
+/**
+ * Rename post category metabox
+ */
+function rename_category_metabox() {
+	remove_meta_box( 'categorydiv', 'post', 'side' );
+	add_meta_box('categorydiv', __('Screen Locations'), 'post_categories_meta_box', 'post', 'side', 'high');
+}
+add_action('add_meta_boxes', 'rename_category_metabox' );
+
+/**
+ * Rename Post Type in the Admin Menu
+ * http://wp.tutsplus.com/tutorials/creative-coding/customizing-your-wordpress-admin/
+ */
+function edit_admin_menus() {
+	global $menu;
+	global $submenu;
+	
+	$menu[5][0] = __('Slideshow'); // Change Posts to Recipes
+	
+	$submenu['edit.php'][5][0] = __('All slides');
+	$submenu['edit.php'][10][0] = __('Add a slide');
+	$submenu['edit.php'][15][0] = __('Screen Locations'); // Rename categories to meal types
+}
+add_action( 'admin_menu', 'edit_admin_menus' );
+
 function slideshow() {
 	global $wp_query;
 	if(is_category() || is_single()){
