@@ -204,6 +204,18 @@ function change_mce_options( $init ) {
 }
 add_filter('tiny_mce_before_init', 'change_mce_options');
 
+/**
+ * Remove specified unnecessary metaboxes.
+ */
+function remove_post_metaboxes() {
+ remove_meta_box( 'commentstatusdiv' , 'post' , 'normal' );
+ remove_meta_box( 'commentsdiv' , 'post' , 'normal' );
+ remove_meta_box( 'trackbacksdiv' , 'post' , 'normal' );
+ remove_meta_box( 'postexcerpt' , 'post' , 'normal' );
+ remove_meta_box( 'postcustom' , 'post' , 'normal' );
+}
+add_action( 'admin_menu' , 'remove_post_metaboxes' );
+
 function slideshow() {
 	global $wp_query;
 	if(is_category() || is_single()){
