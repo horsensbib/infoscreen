@@ -233,7 +233,12 @@ jQuery(window).load(function() {
     
 	jQuery(document).ready(function($){
 		$('.flexslider').flexslider({
-			animation: "<?php echo $temp_cat_options[$cat_ID]; ?>",
+			animation: "<?php if (is_category()) {
+					echo $temp_cat_options[$cat_ID];
+				} else {
+					echo 'fade';
+				} ?>",
+			animationSpeed: 2000,
 			controlNav: false,
 			slideshow: false,
 			after: function( slider ){
