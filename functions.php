@@ -185,10 +185,6 @@ function infoscreen_scripts() {
 	
 	wp_enqueue_script( 'plugins', get_template_directory_uri() . '/js/jquery.plugins.js', array( 'jquery' ), '20130625' );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-
 	if ( is_singular() && wp_attachment_is_image() ) {
 		wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
 	}
