@@ -40,6 +40,8 @@ function mw_enqueue_color_picker() {
 
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('jquery-ui', 'http://code.jquery.com/ui/1.10.3/jquery-ui.js');
+	wp_enqueue_script('qtip','http://qtip2.com/v/2.0.1/jquery.qtip.min.js');
+	wp_enqueue_style('qtipstyle','http://qtip2.com/v/2.0.1/jquery.qtip.min.css');
 	
 	if(strpos($_SERVER['REQUEST_URI'], "post.php")){
 		wp_enqueue_style('jquery-ui', '/wp-content/themes/infoscreen/inc/metabox-slider.css');
@@ -128,7 +130,7 @@ function replace_thickbox_text($translated_text, $text ) {
 
 function infoscreen_get_default_theme_options() {
 	$options = array(
-			'colorschemes' => '2',
+			'colorschemes' => '1',
 			'logo' => '',
 	);
 	return $options;
@@ -150,41 +152,95 @@ $options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_o
 		<th class="infoscreen-color-picker-title"><?php _e( 'Background Color', 'infoscreen' ); ?></th>
 	</tr>
 	<?php 
-	for ($i = 0; $i < esc_attr($options['colorschemes']); $i++){
-		?>
-	<?php if($i&1) { 
-} else {?>
-	<tr id="infoscreen_theme_options[colorscheme_name<?php echo $i . ']'?>">
-		<td class="infoscreen-colorscheme-name"><input type="text"
-			name="infoscreen_theme_options[colorscheme_name<?php echo $i . ']'?>"
-			id='colorscheme_name<?php echo $i ?>'
-			value='<?php echo esc_attr($options['colorscheme_name' . $i]); ?>' />
-		</td>
-		<?php } ?>
+	for ($row = 1; $row < esc_attr($options['colorschemes'])+1; $row++){
+		//Table row start.
+		echo "<tr id='infoscreen_theme_options[colorscheme_name" . $row . "]'>";
 
-		<td class="infoscreen-color-picker"><input type="text"
-			name="infoscreen_theme_options[colorscheme<?php echo $i . ']' ?>"
-			id='colorscheme<?php echo $i ?>'
-			value='<?php echo esc_attr($options['colorscheme' . $i]); ?>'
-			class=" my-color-field" />
-		</td>
-		<?php if($i&1) {
-			?>	
-		<td>
-			<input type="button" class="button" value="remove" onclick='deleteRow("infoscreen_theme_options[colorscheme_name<?php echo $i-1 . ']'?>")'/>
-		</td><?php  		
-			echo '</tr>';
+		for ($col = 0; $col < 4; $col++){
+			
+			if($col == 0){
+				//output name field
+				echo "<td class='infoscreen-colorscheme-name'> ";
+				echo "<input ";
+ 				echo "type='text' ";
+				echo "name='infoscreen_theme_options[colorscheme_name_field" . $row . "]' ";
+				echo "id='colorscheme_name" . $row . "' ";
+				echo "value= " . '"' . $options['colorscheme_name_field' . $row] . '"';
+				echo "/>";
+				echo "</td> ";
+			}
+			if($col == 1){
+				//output font color field
+				echo "<td class='infoscreen-color-picker'> ";
+				echo "<input ";
+				echo "type='text' ";
+				echo "name='infoscreen_theme_options[colorscheme_font_field" . $row . "]' ";
+				echo "id='colorscheme_font_field" . $row . "' "; 
+				echo "value= " . '"' . $options['colorscheme_font_field' . $row] . '"';
+				echo "class='my-color-field' />";
+			}
+			if($col == 2){
+				//output bg color field
+				echo "<td class='infoscreen-color-picker'> ";
+				echo "<input ";
+				echo "type='text' ";
+				echo "name='infoscreen_theme_options[colorscheme_bg_field" . $row . "]' ";
+				echo "id='colorscheme_bg_field" . $row . "' ";
+				echo "value= " . '"' . $options['colorscheme_bg_field' . $row] . '"';
+				echo "class='my-color-field' />";
+			}
+			if($col == 3){
+				//output remove button
+				echo "<td>";
+				echo "<input type='button' class='button' value='remove' onclick='deleteRow(\"infoscreen_theme_options[colorscheme_name". $row . "]\")' />";
+				echo "</td>";
+			}
 		}
-} ?>
-
+	}
+?>
 </table>
 <input
 	type="hidden" name="infoscreen_theme_options[colorschemes]"
 	id="colorschemes"
-	value="<?php echo esc_attr($options['colorschemes']); ?>" />
+	value="<?php echo esc_attr($options['colorschemes']); ?>" 
+	/>
 <script>
-function deleteRow(rowid)  
-{   
+function renameRows(){
+	var table = document.getElementById('colorfields');
+	var rows = table.getElementsByTagName('TR');
+	var color_inputs = table.getElementsByClassName('my-color-field');
+	var name_inputs = table.getElementsByTagName('input');
+	var remove_inputs = table.getElementsByClassName('button');
+	for (var i =0; i < rows.length; i++){
+		if(i != 0){
+			rows[i].id = "infoscreen_theme_options[colorscheme_name" + i + "]";
+		}
+	}
+	var counter = 1;
+	for (var j = 0; j < color_inputs.length; j++){
+			color_inputs[j].id = "colorscheme_font_field" + (counter);
+			color_inputs[j].name = "infoscreen_theme_options[colorscheme_font_field" + (counter) + "]";
+			j++;
+			color_inputs[j].id = "colorscheme_bg_field" + (counter);
+			color_inputs[j].name = "infoscreen_theme_options[colorscheme_bg_field" + (counter) + "]";
+			counter++;
+	}
+	var counter2 = 1;
+	for (var k = 0; k < name_inputs.length; k++){
+		var str = name_inputs[k].name;
+		if(str.indexOf("colorscheme_name") !== -1){
+			name_inputs[k].name = "colorscheme_name" + counter2;
+			name_inputs[k].id = "colorscheme_name" + counter2;
+			counter2++;
+		}
+	}
+	var counter3 = 1;
+	for (var z = 2; z < remove_inputs.length; z += 3){
+		remove_inputs[z].setAttribute("onclick", 'deleteRow("infoscreen_theme_options[colorscheme_name' + counter3 + ']")');
+		counter3++;
+	}
+}
+function deleteRow(rowid) {   
     var row = document.getElementById(rowid);
     var table = row.parentNode;
     while ( table && table.tagName != 'TABLE' )
@@ -192,48 +248,109 @@ function deleteRow(rowid)
     if ( !table )
         return;
     table.deleteRow(row.rowIndex);
+    renameRows();
+    tooltip();
 }
-function addRow() {
-	 
-    var table = document.getElementById('colorfields');
+function appendRow(){
+	var table = document.getElementById('colorfields');
+	var rowCount = table.rows.length;
+	var row=table.insertRow(rowCount);
+	var name_field=row.insertCell(0);
+	var font_field=row.insertCell(1);
+	var bg_field=row.insertCell(2);
+	var remove_btn=row.insertCell(3);
 
-    var rowCount = table.rows.length;
-    var row = table.insertRow(rowCount);
+	row.id = "infoscreen_theme_options[colorscheme_name" + rowCount + "]";
+	
+	name_field.innerHTML="<input type='text' name='infoscreen_theme_options[colorscheme_name_field" + rowCount + "]' id='colorscheme_name" + rowCount + "'value>";
+	name_field.className='infoscreen-colorscheme-name';
 
-    var colCount = table.rows[0].cells.length;
+	font_field.innerHTML="<input type='text' name='infoscreen_theme_options[colorscheme_font_field" + rowCount + "]' id='colorscheme_font_field" + rowCount + "' value='' class='my-color-field'>";
+	font_field.className="infoscreen-color-picker";
+	
+	bg_field.innerHTML="<input type='text' name='infoscreen_theme_options[colorscheme_bg_field" + rowCount + "]' id='colorscheme_bg_field" + rowCount + "' value='' class='my-color-field'>";
+	bg_field.className="infoscreen-color-picker";
+	
+	remove_btn.innerHTML="<input type='button' class='button' value='remove' onclick='deleteRow(\"infoscreen_theme_options[colorscheme_name" + rowCount + "]\")' />";
 
-    var firstCellOnly = 0;
-    for(var i=0; i<colCount; i++) {
+	jQuery(document).ready(function($){
+		$('.my-color-field').wpColorPicker();
+	});
+	tooltip();
+}
+var tooltip_obj = false;
+function tooltip(){
+jQuery(document).ready(function($){
+	var inputs = jQuery('input[type="text"]'), button = jQuery('#submit');
+	inputs.each(function() { jQuery(this).data('val', this.value); }).on('keyup', 
+					function() {
+    					var str = jQuery(this).attr('name');
+						if(str.indexOf("colorscheme_name") !== -1){
+							if (!isUnique()){
+							//Do something if name is not unique
+								var activeObj = document.activeElement;
+								var resObj = document.getElementById(activeObj.id);
+								if(!resObj.getAttribute('data-hasqtip')){
+									jQuery(resObj).qtip({
+										content: {
+											text: 'A unique name must be chosen'
+										},
+										show: {
+											solo: false,
+											event: ''
+										},
+										hide: {
+											fixed: true,
+											event: ''
+										}
+									});
+								}
+								if(!tooltip_obj){
+									jQuery(resObj).qtip("show");
+									tooltip_obj = resObj;
+									jQuery(resObj).css("background", "#f9d5d1");
+								}
+							}
+							if (isUnique()){
+								if(tooltip_obj){
+									jQuery(tooltip_obj).qtip("hide");
+									jQuery(tooltip_obj).removeAttr("style");
+									tooltip_obj = false;
+								}
+							}
+						}
+					});
+	});
+}
+tooltip();
+function isUnique() {
+    // Collect all values in an array
+    var values = [];
+    jQuery('input[type="text"]').each( function(idx,val){ 
+    	var str = jQuery(this).attr('name');
+		if(str.indexOf("colorscheme_name") !== -1){
+			if(jQuery(val).val()){
+        		values.push(jQuery(val).val());
+			} 
+        }});
+    // Sort it
+    values.sort();
 
-        var newcell = row.insertCell(i);
-		
-        newcell.innerHTML = table.rows[0].cells[i].innerHTML;
-			if(firstCellOnly == 0) {
-				newcell.childNodes[0].id = "colorscheme_name" + (rowCount * 2);
-				newcell.childNodes[0].name = "infoscreen_theme_options[colorscheme_name" + (rowCount * 2) + "]";
-				newcell.childNodes[0].value = "";
-				firstCellOnly = 1; 	
-			}
-			if(newcell.childNodes[0].childNodes[1]){
-               	newcell.childNodes[0].childNodes[1].childNodes[0].id = "colorscheme" + (rowCount * 2);
-               	newcell.childNodes[0].childNodes[1].childNodes[0].name = "infoscreen_theme_options[colorscheme" + (rowCount * 2)+ "]";
-               	newcell.childNodes[0].childNodes[1].childNodes[0].value = "";
-            	newcell.childNodes[0].childNodes[0].style.background = "";
-            	console.log(newcell.childNodes[0].childNodes[0].style.background);
-			}
+    // Check whether there are two equal values next to each other
+    for( var k = 1; k < values.length; ++k ) {
+        if( values[k] == values[k-1] ) {
+            return false;
         }
-    firstCellOnly = 0;
-    var x = Number(document.getElementById('colorschemes').value);
-    var y = 2;
-    document.getElementById('colorschemes').value = x+y;
-    document.getElementById('submit').click();
     }
+    return true;
+}
 </script>
 
 <input type="button"
 	   class="button"
-	   value="Add Row" 
-	   onclick="addRow()" />
+	   value="Append Row"
+	   id="appendBtn"
+	   onClick="appendRow()" />
 <?php }
 function theme_infoscreen_settings_logo() {
 	$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
@@ -257,7 +374,7 @@ function theme_infoscreen_settings_logo_preview() {
 <?php
 }
 function theme_infoscreen_settings_default_fonts() {
-	update_option('infoscreen_default_fonts', array('Arial', 'Times New Roman', 'Courier New'));
+// 	update_option('infoscreen_default_fonts', array('Arial', 'Times New Roman', 'Courier New'));
 	$font_options = get_option('infoscreen_default_fonts');
 	$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
 	?>
@@ -282,7 +399,7 @@ function theme_infoscreen_settings_default_fonts() {
 }
 function theme_infoscreen_settings_animations() {
 	$cat_array = get_categories();
-	$cat_options = get_option('infoscreen_category_animations');
+	$cat_options = get_option('infoscreen_theme_options');
 	?>
 	<table>
 	<tr>
@@ -293,39 +410,25 @@ function theme_infoscreen_settings_animations() {
 	<tr>
 		<td><?php echo $cat_array[$i]->name; ?></td>
 		<td>
-			<input type="radio" name="infoscreen_theme_options[animation_<?php echo $cat_array[$i]->cat_ID; ?>]" value="fade" <?php echo ($cat_options[$cat_array[$i]->cat_ID] == 'fade') ? 'checked':''; ?>>Fade<br>
-			<input type="radio" name="infoscreen_theme_options[animation_<?php echo $cat_array[$i]->cat_ID; ?>]" value="slide" <?php echo ($cat_options[$cat_array[$i]->cat_ID] == 'slide') ? 'checked':''; ?>>Slide<br>
+			<input type="radio" name="infoscreen_theme_options[animation_<?php echo $cat_array[$i]->cat_ID; ?>]" value="fade" <?php echo ($cat_options['animation_' . $cat_array[$i]->cat_ID] == 'fade') ? 'checked':($cat_options['animation_' . $cat_array[$i]->cat_ID] == '') ? 'checked' : ''; ?>>Fade<br>
+			<input type="radio" name="infoscreen_theme_options[animation_<?php echo $cat_array[$i]->cat_ID; ?>]" value="slide" <?php echo ($cat_options['animation_' . $cat_array[$i]->cat_ID] == 'slide') ? 'checked':''; ?>>Slide<br>
 		</td>
 	</tr>
 	<?php } ?>
 	</table>
 	<?php 
-	}
+}
 function infoscreen_theme_options_validate($input) {
-	$options = get_option('infoscreen_theme_options');
-	$output = $defaults = infoscreen_get_default_theme_options();
-	$output['colorschemes'] = empty($input['colorschemes']) ? $defaults['colorschemes'] : $input['colorschemes'];
-	$output['logo'] = $input['logo'];
-	
-	$category_output = array();
-	$category_array = get_categories();
-	for ($i = 0; $i < count($category_array); $i++){
-		$cat_name = $category_array[$i]->cat_ID;
-		update_option('temptest', $input['animation_' . $cat_name]);
-		$category_output[$cat_name] = $input['animation_' . $cat_name];
+ 	$colorschemes = 0;
+	for ($i = 0; $i < sizeOf($input); $i++){
+		$name_field = 'colorscheme_name_field' . $i;
+		if(array_key_exists($name_field, $input)){
+			$colorschemes++;
+		}
 	}
-	update_option('infoscreen_category_animations', $category_output);
-	for($i = 0; $i < $input['colorschemes']; $i++) {
-			$output['colorscheme_name' . $i] = $input['colorscheme_name' . $i];
-			$i++;
-	}
+	$input['colorschemes'] = $colorschemes;
 
-	for($i = 0; $i < $input['colorschemes']; $i++) {
-			$output['colorscheme' . $i] = $input['colorscheme' . $i];
-	}
-	//$output['default_font'] = empty($input['default_font']) ? $options['default_font'] : $input['default_font'];
-	
-	return $output;
+	return $input;
 }
 function infoscreen_theme_options_render_page() { ?>
 <div class="wrap">
