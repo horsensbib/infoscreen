@@ -7,11 +7,10 @@
 <li id="post-<?php the_ID(); ?>" <?php post_class('slide'); ?> style="background-image:url('<?php infoscreen_img_src('slide-img'); ?>');">
 	<div class="slide-content <?php 
 	$options = get_option('infoscreen_theme_options');
-	for ($i = 0; $i < $options['colorschemes']; $i += 2){
-		if($options['colorscheme_name'.$i] == get_post_meta(get_the_ID(), '_infoscreen_colorscheme', true)){
-			$backgroundID = $i + 1;
-			$font = hex2rgb($options['colorscheme'.$i]);
-			$bg = hex2rgb($options['colorscheme'.$backgroundID]);
+	for ($i = 1; $i <= $options['colorschemes']; $i++){
+		if($options['colorscheme_name_field'.$i] == get_post_meta(get_the_ID(), '_infoscreen_colorscheme', true)){
+			$font = hex2rgb($options['colorscheme_font_field'.$i]);
+			$bg = hex2rgb($options['colorscheme_bg_field'.$i]);
 		}
 	}
 		echo get_post_meta(get_the_ID(), '_infoscreen_layout', true). '"';

@@ -24,32 +24,25 @@ function infoscreen_create_colorscheme_metabox() {
 function colorscheme_metabox() {
 	$options = get_option('infoscreen_theme_options');
 	$currentvalue = get_post_meta(get_the_ID(), '_infoscreen_colorscheme', true);
-	echo $currentvalue;
-// 	print_r($options);
 	?>
 <div>
 	<select name="_infoscreen_colorscheme" onChange="this.style.background=this.options[this.selectedIndex].style.background; this.style.color=this.options[this.selectedIndex].style.color;">
 		<option style='background: #FFF; color: #000' selected disabled>Choose scheme...</option>
 		<?php
-		for ($i = 0; $i < $options['colorschemes']; $i += 2){
-			$backgroundID = $i+1;
-			if(strpos($options['colorscheme'.$i], '#') === false){
-// 				echo "<option style='background: #FFF; color: #000'>EMPTY</option>";
-			} else {
+		for ($i = 1; $i <= $options['colorschemes']; $i++){
 				echo "<option";
-				echo ($currentvalue == $options['colorscheme_name'.$i])? ' selected' : '';
-				echo " value='" . $options['colorscheme_name'.$i] . "' ";
+				echo ($currentvalue == $options['colorscheme_name_field'.$i])? ' selected' : '';
+				echo " value='" . $options['colorscheme_name_field'.$i] . "' ";
 				echo "style='color: ";
-				echo $options['colorscheme'.$i];
+				echo $options['colorscheme_font_field'.$i];
 				echo ";";
 				echo "background: ";
-				echo $options['colorscheme'.$backgroundID];
+				echo $options['colorscheme_bg_field'.$i];
 				echo "';";
 				echo ">";
-				echo $options['colorscheme_name'.$i];
+				echo $options['colorscheme_name_field'.$i];
 				echo "</option>";
 				echo "\n";
-			}
 		  }
 		  ?>
 	</select>
@@ -68,7 +61,12 @@ function colorscheme_metabox() {
 			    range: "min",
 			    min: 0,
 			    max: 100,
-			    value: <?php echo get_post_meta(get_the_ID(), '_infoscreen_transparency', true);?>,
+			    value: <?php 
+			    $currentvalue = get_post_meta(get_the_ID(), '_infoscreen_transparency', true);
+			    if($currentvalue == null){
+			    	$currentvalue = "80";
+				}
+				echo $currentvalue;?>,
 			    slide: function( event, ui ) {
 			      $( "#amount" ).val( ui.value );
 			    }
