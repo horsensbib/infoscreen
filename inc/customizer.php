@@ -309,12 +309,14 @@ jQuery(document).ready(function($){
 									jQuery(resObj).qtip("show");
 									tooltip_obj = resObj;
 									jQuery(resObj).css("background", "#f9d5d1");
+									jQuery('#submit').attr("disabled", 'disabled');
 								}
 							}
 							if (isUnique()){
 								if(tooltip_obj){
 									jQuery(tooltip_obj).qtip("hide");
 									jQuery(tooltip_obj).removeAttr("style");
+									jQuery('#submit').removeAttr("disabled");
 									tooltip_obj = false;
 								}
 							}
