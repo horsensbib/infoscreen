@@ -177,6 +177,7 @@ add_action( 'widgets_init', 'infoscreen_widgets_init' );
  * Enqueue scripts and styles
  */
 function infoscreen_scripts() {
+	
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 
 // 	wp_enqueue_script( 'navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
@@ -272,7 +273,7 @@ function slideshow() {
 			$slide_durations[] = get_post_meta(get_the_ID(), '_infoscreen_time', true) * 1000;
 		}
 	endforeach;
-	$temp_cat_options = get_option('infoscreen_category_animations');
+	$temp_cat_options = get_option('infoscreen_theme_options');
 ?>
 <script type="text/javascript">
 jQuery(window).load(function() {
@@ -285,7 +286,7 @@ jQuery(window).load(function() {
 	jQuery(document).ready(function($){
 		$('.flexslider').flexslider({
 			animation: "<?php if (is_category()) {
-					echo $temp_cat_options[$cat_ID];
+					echo $temp_cat_options['animation_'.$cat_ID];
 				} else {
 					echo 'fade';
 				} ?>",
