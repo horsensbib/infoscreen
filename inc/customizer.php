@@ -36,33 +36,33 @@ add_action( 'customize_preview_init', 'infoscreen_customize_preview_js' );
  * InfoScreen settings page
 */
 function mw_enqueue_color_picker() {
+// 	wp_enqueue_script('jquery');
+// 	wp_enqueue_script('jquery-ui-core');
+	
 	wp_enqueue_style('wp-color-picker');
 
-	wp_enqueue_script('jquery');
-	wp_enqueue_script('jquery-ui', 'http://code.jquery.com/ui/1.10.3/jquery-ui.js');
+	
 	wp_enqueue_script('qtip','http://qtip2.com/v/2.0.1/jquery.qtip.min.js');
 	wp_enqueue_style('qtipstyle','http://qtip2.com/v/2.0.1/jquery.qtip.min.css');
 	
+	//HACK - needs to be fixed
 	if(strpos($_SERVER['REQUEST_URI'], "post.php")){
 		wp_enqueue_style('jquery-ui', '/wp-content/themes/infoscreen/inc/metabox-slider.css');
 	}
 	wp_enqueue_style('font-picker', '/wp-content/themes/infoscreen/inc/style-fontselector.css');
 
-	wp_enqueue_script('thickbox');
-	wp_enqueue_style('thickbox');
+// 	wp_enqueue_script('thickbox');
+// 	wp_enqueue_style('thickbox');
 	
-	wp_enqueue_script('common');
-	wp_enqueue_script('wp-lists');
+// 	wp_enqueue_script('common');
+// 	wp_enqueue_script('wp-lists');
 	wp_enqueue_script('postbox');
 	
-	wp_register_script( 'script-upload', '/wp-content/themes/infoscreen/inc/script-upload.js', array('jquery','media-upload','thickbox') );
-	wp_enqueue_script( 'script-colorpicker_fontselector', '/wp-content/themes/infoscreen/inc/script-colorpicker_fontselector.js' , array( 'wp-color-picker' ), false, true );
+	wp_enqueue_media();
+	wp_enqueue_script('script-upload', '/wp-content/themes/infoscreen/inc/script-upload.js', array('jquery','media-upload','thickbox') );
+	wp_enqueue_script('script-colorpicker_fontselector', '/wp-content/themes/infoscreen/inc/script-colorpicker_fontselector.js' , array( 'wp-color-picker' ), false, true );
 	
-	wp_register_script( 'script-slider', '/wp-content/themes/infoscreen/inc/script-slider.js');
-	
-	wp_enqueue_script('media-upload');
-	wp_enqueue_script('script-upload');
-	wp_enqueue_script('script-slider');
+	wp_enqueue_script('script-slider', '/wp-content/themes/infoscreen/inc/script-slider.js');
 	
 }
 add_action( 'admin_enqueue_scripts', 'mw_enqueue_color_picker' );
@@ -109,29 +109,9 @@ function add_infoscreen_meta_boxes(){
 			<?php
 }
 
-function infoscreen_options_setup() {
-	global $pagenow;
-	if ('media-upload.php' == $pagenow || 'async-upload.php' == $pagenow) {
-		add_filter( 'gettext', 'replace_thickbox_text' , 1, 2 );
-	}
-}
-add_action( 'admin_init', 'infoscreen_options_setup' );
-
-function replace_thickbox_text($translated_text, $text ) {
-	if ( 'Insert into Post' == $text ) {
-		$referer = strpos( wp_get_referer(), 'infoscreen-settings' );
-		if ( $referer != '' ) {
-			return __('I want this to be my logo!', 'infoscreen' );
-		}
-	}
-
-	return $translated_text;
-}
-
 function infoscreen_get_default_theme_options() {
 	$options = array(
 			'colorschemes' => '1',
-			'logo' => '',
 	);
 	return $options;
 }
@@ -359,10 +339,12 @@ function theme_infoscreen_settings_logo() {
 	?>
 <input
 	type="hidden" id="logo_url" name="infoscreen_theme_options[logo]"
-	value="<?php echo esc_url( $options['logo'] ); ?>" />
+	value="<?php echo esc_url( $options['logo'] ); ?>" 
+	/>
 <input
 	id="upload_logo_button" type="button" class="button"
-	value="<?php _e( 'Upload Logo', 'infoscreen' ); ?>" />
+	value="<?php _e( 'Upload Logo', 'infoscreen' ); ?>" 
+	/>
 <?php
 theme_infoscreen_settings_logo_preview();
 }
@@ -370,7 +352,7 @@ function theme_infoscreen_settings_logo_preview() {
 	$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
 	?>
 <div id="upload_logo_preview" style="min-height: 100px;">
-	<img style="max-width: 100%;"
+	<img id="preview_placeholder" style="max-width: 100%;"
 		src="<?php echo esc_url( $options['logo'] ); ?>" />
 </div>
 <?php
