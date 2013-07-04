@@ -62,11 +62,6 @@ function infoscreen_setup() {
 	require( get_template_directory() . '/inc/metabox-time.php' );
 	
 	/**
-	 * Add Animation Selector to Post Admin
-	 */
-	require( get_template_directory() . '/inc/metabox-animation.php' );
-	
-	/**
 	 * Add Preview to Post admin
 	 */
 	require( get_template_directory() . '/inc/metabox-preview.php' );
