@@ -63,16 +63,8 @@ function layout_metabox() {
 		<?php echo ($currentvalue == 'layout-txt-right')? 'checked="checked"':''; ?> />
 		<img
 		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt-right.png">
-	</label> <label><input type="radio" name="_infoscreen_layout"
-		id="layout-txt-top" value="layout-txt-top"
-		<?php echo ($currentvalue == 'layout-txt-top')? 'checked="checked"':''; ?> />
-		<img
-		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt-top.png">
-	</label> <label><input type="radio" name="_infoscreen_layout"
-		id="layout-txt-bottom" value="layout-txt-bottom"
-		<?php echo ($currentvalue == 'layout-txt-bottom')? 'checked="checked"':''; ?> /><img
-		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt-bottom.png">
-	</label> <input type="hidden" name="infoscreen_layout_noncename"
+	</label> 
+	<input type="hidden" name="infoscreen_layout_noncename"
 		id="infoscreen_layout_noncename"
 		value="<?php wp_create_nonce( plugin_basename(__FILE__) ) ?>" />
 	<p>
