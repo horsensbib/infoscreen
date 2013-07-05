@@ -1,3 +1,7 @@
+/*
+ * Color Schemes
+ * =============
+ */
 #colorfields {
   width: 100%;
   border-collapse: collapse; }
@@ -28,3 +32,49 @@
   #colorfields .wp-picker-input-wrap,
   #colorfields .wp-picker-holder {
     background: #f7f7f7; }
+
+/*
+ * Color Schemes
+ * =============
+ */
+.layout-controls {
+  overflow: hidden; }
+  .layout-controls li {
+    float: left;
+    width: 100px;
+    padding-right: 10px; }
+    .layout-controls li input[type=radio] {
+      opacity: 0; }
+      .layout-controls li input[type=radio]:checked ~ label {
+        background-color: #21759b;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#2a95c5), to(#21759b));
+        background-image: -webkit-linear-gradient(top, #2a95c5, #21759b);
+        background-image: -moz-linear-gradient(top, #2a95c5, #21759b);
+        background-image: -ms-linear-gradient(top, #2a95c5, #21759b);
+        background-image: -o-linear-gradient(top, #2a95c5, #21759b);
+        background-image: linear-gradient(to bottom, #2a95c5, #21759b);
+        border: 1px solid #21759b;
+        border-bottom-color: #1e6a8d;
+        -webkit-box-shadow: inset 0 1px 0 rgba(120, 200, 230, 0.5);
+        box-shadow: inset 0 1px 0 rgba(120, 200, 230, 0.5);
+        color: #fff;
+        text-decoration: none;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1); }
+    .layout-controls li label {
+      background: #f3f3f3;
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#f4f4f4));
+      background-image: -webkit-linear-gradient(top, #fefefe, #f4f4f4);
+      background-image: -moz-linear-gradient(top, #fefefe, #f4f4f4);
+      background-image: -o-linear-gradient(top, #fefefe, #f4f4f4);
+      background-image: linear-gradient(to bottom, #fefefe, #f4f4f4);
+      border: 1px solid #bbb;
+      color: #333;
+      text-shadow: 0 1px 0 #fff;
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
+      cursor: pointer;
+      display: block;
+      line-height: 28px;
+      text-align: center;
+      margin-top: -10px;
+      padding: 5px 10px 0; }
