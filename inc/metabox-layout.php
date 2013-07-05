@@ -27,63 +27,44 @@ function layout_metabox() {
 	}
 	?>
 <div>
-	<label for="layout-img">
-		<input type="radio" name="_infoscreen_layout" id="layout-img"
-		value="layout-img" 
-		<?php echo ($currentvalue == 'layout-img')? 'checked="checked"':''; ?> />
-		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img.png">
-	</label>
-	<label for="layout-img-left">
-		<input type="radio" name="_infoscreen_layout"
+	<label><input type="radio" name="_infoscreen_layout" id="layout-img"
+		value="layout-img"
+		<?php echo ($currentvalue == 'layout-img')? 'checked="checked"':''; ?> /><img
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img.png">
+	</label> <label><input type="radio" name="_infoscreen_layout"
 		id="layout-img-left" value="layout-img-left"
-		<?php echo ($currentvalue == 'layout-img-left')? 'checked="checked"':''; ?> />
-		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img-left.png">
-	</label>
-	<label for="layout-img-right">
-		<input type="radio" name="_infoscreen_layout"
+		<?php echo ($currentvalue == 'layout-img-left')? 'checked="checked"':''; ?> /><img
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img-left.png">
+	</label> <label><input type="radio" name="_infoscreen_layout"
 		id="layout-img-right" value="layout-img-right"
 		<?php echo ($currentvalue == 'layout-img-right')? 'checked="checked"':''; ?> />
-		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/Layout-img-right.png">
-	</label>
-	<label for="layout-img-top">
-		<input type="radio" name="_infoscreen_layout"
+		<img
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/Layout-img-right.png">
+	</label> <label><input type="radio" name="_infoscreen_layout"
 		id="layout-img-top" value="layout-img-top"
-		<?php echo ($currentvalue == 'layout-img-top')? 'checked="checked"':''; ?> />
-		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img-top.png">
-	</label>
-	<label for="layout-img-bottom">
-		<input type="radio" name="_infoscreen_layout"
+		<?php echo ($currentvalue == 'layout-img-top')? 'checked="checked"':''; ?> /><img
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img-top.png">
+	</label> <label><input type="radio" name="_infoscreen_layout"
 		id="layout-img-bottom" value="layout-img-bottom"
-		<?php echo ($currentvalue == 'layout-img-bottom')? 'checked="checked"':''; ?> />
-		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img-bottom.png">
-	</label>
-	<label for="layout-txt">
-		<input type="radio" name="_infoscreen_layout"
+		<?php echo ($currentvalue == 'layout-img-bottom')? 'checked="checked"':''; ?> /><img
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img-bottom.png">
+	</label> <label><input type="radio" name="_infoscreen_layout"
 		id="layout-txt" value="layout-txt"
 		<?php echo ($currentvalue == 'layout-txt')? 'checked="checked"':''; ?> />
-		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt.png">
-	</label>
-	<label for="layout-txt-left">
-		<input type="radio" name="_infoscreen_layout"
+		<img
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt.png">
+	</label> <label><input type="radio" name="_infoscreen_layout"
 		id="layout-txt-left" value="layout-txt-left"
 		<?php echo ($currentvalue == 'layout-txt-left')? 'checked="checked"':''; ?> />
-		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt-left.png">
-	</label>
-	<label for="layout-txt-right">
-		<input type="radio" name="_infoscreen_layout"
+		<img
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt-left.png">
+	</label> <label><input type="radio" name="_infoscreen_layout"
 		id="layout-txt-right" value="layout-txt-right"
 		<?php echo ($currentvalue == 'layout-txt-right')? 'checked="checked"':''; ?> />
-		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt-right.png">
-	</label> <?php /* <label><input type="radio" name="_infoscreen_layout"
-		id="layout-txt-top" value="layout-txt-top"
-		<?php echo ($currentvalue == 'layout-txt-top')? 'checked="checked"':''; ?> />
 		<img
-		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt-top.png">
-	</label> <label><input type="radio" name="_infoscreen_layout"
-		id="layout-txt-bottom" value="layout-txt-bottom"
-		<?php echo ($currentvalue == 'layout-txt-bottom')? 'checked="checked"':''; ?> /><img
-		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt-bottom.png">
-	</label> */ ?> <input type="hidden" name="infoscreen_layout_noncename"
+		src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt-right.png">
+	</label> 
+	<input type="hidden" name="infoscreen_layout_noncename"
 		id="infoscreen_layout_noncename"
 		value="<?php wp_create_nonce( plugin_basename(__FILE__) ) ?>" />
 	<p>

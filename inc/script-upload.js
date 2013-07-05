@@ -1,13 +1,30 @@
 jQuery(document).ready(function($){
-	$('#upload_logo_button').click(function() {
-		tb_show('Upload a logo', 'media-upload.php?referer=infoscreen-settings&amp;type=image&amp;TB_iframe=true&amp;post_id=0', false);
-		return false;
-	});
-	window.send_to_editor = function(html) {
-		var image_url = $('img',html).attr('src');
-		$('#logo_url').val(image_url);
-		tb_remove();
-		$('#upload_logo_preview img').attr('src',image_url);
-		$('#submit_options_form').trigger('click');
-	}
+    var custom_uploader;
+ 
+    $('#upload_logo_button').click(function(e) {
+ 
+        e.preventDefault();
+ 
+        //If the uploader object has already been created, reopen the dialog
+        if (custom_uploader) {
+            custom_uploader.open();
+            return;
+        }
+        //Extend the wp.media object
+        custom_uploader = wp.media.frames.file_frame = wp.media({
+            title: 'Choose Image',
+            button: {
+                text: 'Choose Image'
+            },
+            multiple: false
+        });
+        //When a file is selected, grab the URL and set it as the text field's value
+        custom_uploader.on('select', function() {
+            attachment = custom_uploader.state().get('selection').first().toJSON();
+            $('#preview_placeholder').attr('src',attachment.url);
+            $('#logo_url').val(attachment.url);
+        });
+        //Open the uploader dialog
+        custom_uploader.open();
+    });
 });

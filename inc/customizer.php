@@ -33,56 +33,57 @@ function infoscreen_customize_preview_js() {
 add_action( 'customize_preview_init', 'infoscreen_customize_preview_js' );
 
 /**
- * InfoScreen settings page
+ * Theme Options scripts
 */
-function mw_enqueue_color_picker() {
-	wp_enqueue_style('wp-color-picker');
-
-	wp_enqueue_script('jquery');
-	wp_enqueue_script('jquery-ui', 'http://code.jquery.com/ui/1.10.3/jquery-ui.js');
+function theme_options_scripts() {
+	wp_enqueue_media();
+// 	wp_enqueue_script('media-upload');
+	
 	wp_enqueue_script('qtip','http://qtip2.com/v/2.0.1/jquery.qtip.min.js');
-	wp_enqueue_style('qtipstyle','http://qtip2.com/v/2.0.1/jquery.qtip.min.css');
 	
-	if(strpos($_SERVER['REQUEST_URI'], "post.php")){
-		wp_enqueue_style('jquery-ui', '/wp-content/themes/infoscreen/inc/metabox-slider.css');
-	}
-	wp_enqueue_style('font-picker', '/wp-content/themes/infoscreen/inc/style-fontselector.css');
-
-	wp_enqueue_script('thickbox');
-	wp_enqueue_style('thickbox');
-	
-	wp_enqueue_script('common');
-	wp_enqueue_script('wp-lists');
 	wp_enqueue_script('postbox');
-	
-	wp_register_script( 'script-upload', '/wp-content/themes/infoscreen/inc/script-upload.js', array('jquery','media-upload','thickbox') );
-	wp_enqueue_script( 'script-colorpicker_fontselector', '/wp-content/themes/infoscreen/inc/script-colorpicker_fontselector.js' , array( 'wp-color-picker' ), false, true );
-	
-	wp_register_script( 'script-slider', '/wp-content/themes/infoscreen/inc/script-slider.js');
-	
-	wp_enqueue_script('media-upload');
-	wp_enqueue_script('script-upload');
-	wp_enqueue_script('script-slider');
+
+	wp_enqueue_script('script-upload', '/wp-content/themes/infoscreen/inc/script-upload.js');
+	wp_enqueue_script('script-colorpicker', '/wp-content/themes/infoscreen/inc/script-colorpicker.js' , array( 'wp-color-picker' ), false, true );
 	
 }
-add_action( 'admin_enqueue_scripts', 'mw_enqueue_color_picker' );
+add_action( 'admin_enqueue_scripts', 'theme_options_scripts' );
 
 /**
  * Theme Options styles
 */
 function theme_options_styles() {
+	//HACK - needs to be fixed
+	if(strpos($_SERVER['REQUEST_URI'], "post.php")){
+		wp_enqueue_style('jquery-ui-slider', '/wp-content/themes/infoscreen/inc/metabox-slider.css');
+	}
+	if(strpos($_SERVER['REQUEST_URI'], "post-new.php")){
+		wp_enqueue_style('jquery-ui-slider', '/wp-content/themes/infoscreen/inc/metabox-slider.css');
+	}
+	
+	wp_enqueue_style('qtipstyle','http://qtip2.com/v/2.0.1/jquery.qtip.min.css');
+	
+	wp_enqueue_style('wp-color-picker');
+	wp_enqueue_style('font-picker', '/wp-content/themes/infoscreen/inc/style-fontselector.css');
 	wp_enqueue_style('theme-options-styles', get_template_directory_uri() . '/css/theme-options.css');
 }
 add_action( 'admin_enqueue_scripts', 'theme_options_styles' );
 
-function infoscreen_settings_api_init() {
+/**
+ * Page initialization
+ */
+function infoscreen_init() {
 	if(false === get_option('infoscreen_theme_options', infoscreen_get_default_theme_options()))
 		add_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
 
 	register_setting('infoscreen_options', 'infoscreen_theme_options', 'infoscreen_theme_options_validate');
 	add_settings_section('meta_boxes', '', 'add_infoscreen_meta_boxes', 'theme_options');
-	
 }
+add_action('admin_init', 'infoscreen_init');
+
+/**
+ * Add metaboxes to page
+ */
 function add_infoscreen_meta_boxes(){
 	global $screen_layout_columns;
 	add_meta_box('meta_box_logo', 'Logo','theme_infoscreen_settings_logo', $page, 'normal', 'core');
@@ -105,43 +106,30 @@ function add_infoscreen_meta_boxes(){
 			});
 			//]]>
 		</script>
-			
 			<?php
 }
 
-function infoscreen_options_setup() {
-	global $pagenow;
-	if ('media-upload.php' == $pagenow || 'async-upload.php' == $pagenow) {
-		add_filter( 'gettext', 'replace_thickbox_text' , 1, 2 );
-	}
-}
-add_action( 'admin_init', 'infoscreen_options_setup' );
-
-function replace_thickbox_text($translated_text, $text ) {
-	if ( 'Insert into Post' == $text ) {
-		$referer = strpos( wp_get_referer(), 'infoscreen-settings' );
-		if ( $referer != '' ) {
-			return __('I want this to be my logo!', 'infoscreen' );
-		}
-	}
-
-	return $translated_text;
-}
-
+/**
+ * Default values
+ */
 function infoscreen_get_default_theme_options() {
 	$options = array(
 			'colorschemes' => '1',
-			'logo' => '',
 	);
 	return $options;
 }
 
-add_action('admin_init', 'infoscreen_settings_api_init');
-
-function example_menu_options() {
+/**
+ * Add to appearance menu
+ */
+function add_infoscreen_appearance_menu() {
 	$page = add_theme_page('InfoScreen Settings', 'InfoScreen', 'edit_theme_options', 'infoscreen-settings', 'infoscreen_theme_options_render_page');
 }
-add_action('admin_menu', 'example_menu_options');
+add_action('admin_menu', 'add_infoscreen_appearance_menu');
+
+/**
+ * Colorschemes metabox
+ */
 function theme_infoscreen_settings_colorfields() {
 $options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
 ?>
@@ -354,27 +342,41 @@ function isUnique() {
 	   id="appendBtn"
 	   onClick="appendRow()" />
 <?php }
+
+/**
+ * Logo metabox
+ */
 function theme_infoscreen_settings_logo() {
 	$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
 	?>
 <input
 	type="hidden" id="logo_url" name="infoscreen_theme_options[logo]"
-	value="<?php echo esc_url( $options['logo'] ); ?>" />
+	value="<?php echo esc_url( $options['logo'] ); ?>" 
+	/>
 <input
 	id="upload_logo_button" type="button" class="button"
-	value="<?php _e( 'Upload Logo', 'infoscreen' ); ?>" />
+	value="<?php _e( 'Upload Logo', 'infoscreen' ); ?>" 
+	/>
 <?php
 theme_infoscreen_settings_logo_preview();
 }
+
+/**
+ * Logo preview
+ */
 function theme_infoscreen_settings_logo_preview() {
 	$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
 	?>
 <div id="upload_logo_preview" style="min-height: 100px;">
-	<img style="max-width: 100%;"
+	<img id="preview_placeholder" style="max-width: 100%;"
 		src="<?php echo esc_url( $options['logo'] ); ?>" />
 </div>
 <?php
 }
+
+/**
+ * Fonts metabox
+ */
 function theme_infoscreen_settings_default_fonts() {
 // 	update_option('infoscreen_default_fonts', array('Arial', 'Times New Roman', 'Courier New'));
 	$font_options = get_option('infoscreen_default_fonts');
@@ -399,6 +401,10 @@ function theme_infoscreen_settings_default_fonts() {
 		<div style="clear: both"></div>
 <?php
 }
+
+/**
+ * Animations metabox
+ */
 function theme_infoscreen_settings_animations() {
 	$cat_array = get_categories();
 	$cat_options = get_option('infoscreen_theme_options');
@@ -420,6 +426,11 @@ function theme_infoscreen_settings_animations() {
 	</table>
 	<?php 
 }
+
+/**
+ * Option validation
+ * @param All page input, $input saves to db.
+ */
 function infoscreen_theme_options_validate($input) {
  	$colorschemes = 0;
 	for ($i = 0; $i < sizeOf($input); $i++){
@@ -432,6 +443,10 @@ function infoscreen_theme_options_validate($input) {
 
 	return $input;
 }
+
+/**
+ * Render page
+ */
 function infoscreen_theme_options_render_page() { ?>
 <div class="wrap">
 	<?php screen_icon(); ?>
