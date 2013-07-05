@@ -271,9 +271,15 @@ function slideshow() {
 	$temp_cat_options = get_option('infoscreen_theme_options');
 ?>
 <script type="text/javascript">
+var timesUp = false;
+function timedOut(){
+	timesUp = true;
+}
+setTimeout("timedOut()", 3600000);
 jQuery(window).load(function() {
 	var delays = [ <?php echo implode(', ', $slide_durations); ?> ],
         _curr_index = 0,
+        _last_index = -1,
         _delay = false, 
         _aa_timeout = null,
         _auto_advancing = false;
@@ -293,10 +299,19 @@ jQuery(window).load(function() {
 		        if ( ! _auto_advancing ) {
 		        	clearTimeout( _aa_timeout ); // Clear the auto advance timeout
 		            _curr_index = slider.currentSlide; // Fix the current index
+		            _last_index = slider.count -1;
+		            if(_last_index == _curr_index){
+		            	if(timesUp){
+		                	setTimeout(function() { location.reload(true) }, 2000);
+		            	}
+		            }
 		        };
 		        // Set-up the next timer for auto advancing
 		    auto_advance_slide();
-		   }
+		   },
+			end: function( slider ){
+				
+			 }
 		});
 	});
     function auto_advance_slide() {
@@ -316,6 +331,7 @@ jQuery(window).load(function() {
             _auto_advancing = false;
         }, _delay );
 
+		
         // Increase the current index. 
         _curr_index ++;
     }
