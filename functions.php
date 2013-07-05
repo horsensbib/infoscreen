@@ -8,9 +8,7 @@
 
 /**
  * Set the content width based on the theme's design and stylesheet.
- *
- * @since InfoScreen 1.0
- */
+ * ================================================================= */
 if ( ! isset( $content_width ) )
 	$content_width = 640; /* pixels */
 
@@ -33,42 +31,42 @@ function infoscreen_setup() {
 
 	/**
 	 * Custom template tags for this theme.
-	 */
+	 * ==================================== */
 	require( get_template_directory() . '/inc/template-tags.php' );
 
 	/**
 	 * Custom functions that act independently of the theme templates
-	 */
+	 * ============================================================== */
 	require( get_template_directory() . '/inc/extras.php' );
 
 	/**
 	 * Customizer additions
-	 */
+	 * ==================== */
 	require( get_template_directory() . '/inc/customizer.php' );
 
 	/**
 	 * Add Layout Selector to Post Admin
-	 */
+	 * ================================= */
 	require( get_template_directory() . '/inc/metabox-layout.php' );
 	
 	/**
 	 * Add Color scheme Selector to Post Admin
-	 */
+	 * ======================================= */
 	require( get_template_directory() . '/inc/metabox-colorscheme.php' );
 	
 	/**
 	 * Add Time Selector to Post Admin
-	 */
+	 * =============================== */
 	require( get_template_directory() . '/inc/metabox-time.php' );
 	
 	/**
 	 * Add Preview to Post admin
-	 */
+	 * ========================= */
 	require( get_template_directory() . '/inc/metabox-preview.php' );
 	
 	/**
 	 * Custom functions
-	 */
+	 * ================ */
 	require( get_template_directory() . '/inc/custom_functions.php' );
 	
 	/**
@@ -76,22 +74,22 @@ function infoscreen_setup() {
 	 * Translations can be filed in the /languages/ directory
 	 * If you're building a theme based on InfoScreen, use a find and replace
 	 * to change 'infoscreen' to the name of your theme in all the template files
-	 */
+	 * ========================================================================== */
 	load_theme_textdomain( 'infoscreen', get_template_directory() . '/languages' );
 
 	/**
 	 * Add default posts and comments RSS feed links to head
-	 */
+	 * ===================================================== */
 	add_theme_support( 'automatic-feed-links' );
 
 	/**
 	 * Enable support for Post Thumbnails
-	 */
+	 * ================================== */
 	add_theme_support( 'post-thumbnails' );
 
 	/**
 	 * Enable support for Post Formats
-	 */
+	 * =============================== */
 	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
 }
 endif; // infoscreen_setup
@@ -170,7 +168,7 @@ add_action( 'widgets_init', 'infoscreen_widgets_init' );
 
 /**
  * Enqueue scripts and styles
- */
+ * ========================== */
 function infoscreen_scripts() {
 	
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
@@ -189,7 +187,7 @@ add_action( 'wp_enqueue_scripts', 'infoscreen_scripts' );
 
 /**
  * Remove link buttons from editor
- */
+ * =============================== */
 function change_mce_options( $init ) {
  $init['theme_advanced_disable'] = 'link,unlink,wp_more';
  return $init;
@@ -198,7 +196,7 @@ add_filter('tiny_mce_before_init', 'change_mce_options');
 
 /**
  * Remove specified unnecessary metaboxes.
- */
+ * ======================================= */
 function remove_post_metaboxes() {
  remove_meta_box( 'commentstatusdiv' , 'post' , 'normal' );
  remove_meta_box( 'commentsdiv' , 'post' , 'normal' );
@@ -210,7 +208,7 @@ add_action( 'admin_menu' , 'remove_post_metaboxes' );
 
 /**
  * Move post submit metabox
- */
+ * ======================== */
 function move_submit_metabox() {
 	remove_meta_box( 'submitdiv', 'post', 'side' );
 	add_meta_box('submitdiv', __('Publish'), 'post_submit_meta_box', 'post', 'side', 'high');
@@ -219,7 +217,7 @@ add_action('add_meta_boxes', 'move_submit_metabox' );
 
 /**
  * Rename post thumbnail metabox
- */
+ * ============================= */
 function rename_thumb_metabox() {
 	remove_meta_box( 'postimagediv', 'post', 'side' );
 	add_meta_box('postimagediv', __('Background Image'), 'post_thumbnail_meta_box', 'post', 'side', 'high');
@@ -228,7 +226,7 @@ add_action('add_meta_boxes', 'rename_thumb_metabox' );
 
 /**
  * Rename post category metabox
- */
+ * ============================ */
 function rename_category_metabox() {
 	remove_meta_box( 'categorydiv', 'post', 'side' );
 	add_meta_box('categorydiv', __('Screen Locations'), 'post_categories_meta_box', 'post', 'side', 'high');
@@ -238,7 +236,7 @@ add_action('add_meta_boxes', 'rename_category_metabox' );
 /**
  * Rename Post Type in the Admin Menu
  * http://wp.tutsplus.com/tutorials/creative-coding/customizing-your-wordpress-admin/
- */
+ * ======================================================== */
 function edit_admin_menus() {
 	global $menu;
 	global $submenu;
@@ -251,6 +249,29 @@ function edit_admin_menus() {
 }
 add_action( 'admin_menu', 'edit_admin_menus' );
 
+/**
+ * Rename Admin Object Labels
+ * http://stackoverflow.com/questions/12949722/change-label-posts-to-articles-in-wordpress
+ * ======================================================== */
+function change_post_object_label() {
+	global $wp_post_types;
+	$labels = &$wp_post_types['post']->labels;
+	$labels->name = __('All Slides');
+	$labels->singular_name = __('Slide');
+	$labels->add_new = __('Add Slide');
+	$labels->add_new_item = __('Add Slide');
+	$labels->edit_item = __('Edit Slide');
+	$labels->new_item = __('Slide');
+	$labels->view_item = __('View Slide');
+	$labels->search_items = __('Search Slides');
+	$labels->not_found = __('No Slides found');
+	$labels->not_found_in_trash = __('No Slides found in Trash');
+}
+add_action( 'init', 'change_post_object_label' );
+
+/**
+ * Slide Show
+ * ========== */
 function slideshow() {
 	global $wp_query;
 	if(is_category() || is_single()){
