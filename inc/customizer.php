@@ -142,13 +142,18 @@ $options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_o
 	<?php 
 	for ($row = 1; $row < esc_attr($options['colorschemes'])+1; $row++){
 		//Table row start.
+		$uniqueID = $options["csid" . $row];
+		if($uniqueID == null){
+			$uniqueID = uniqid();
+			$options["csid" . $row] = $uniqueID;
+		}
 		echo "<tr id='infoscreen_theme_options[colorscheme_name" . $row . "]'>";
-
+		
 		for ($col = 0; $col < 4; $col++){
-			
 			if($col == 0){
 				//output name field
 				echo "<td class='infoscreen-colorscheme-name'> ";
+				echo "<input type='hidden' name='infoscreen_theme_options[csid" . $row . "]'  id='csid" . $row . "' value='". $uniqueID . "'/>";
 				echo "<input ";
  				echo "type='text' ";
 				echo "name='infoscreen_theme_options[colorscheme_name_field" . $row . "]' ";
@@ -204,28 +209,32 @@ function renameRows(){
 			rows[i].id = "infoscreen_theme_options[colorscheme_name" + i + "]";
 		}
 	}
-	var counter = 1;
+	var counter_font_field = 1;
 	for (var j = 0; j < color_inputs.length; j++){
-			color_inputs[j].id = "colorscheme_font_field" + (counter);
-			color_inputs[j].name = "infoscreen_theme_options[colorscheme_font_field" + (counter) + "]";
+			color_inputs[j].id = "colorscheme_font_field" + counter_font_field;
+			color_inputs[j].name = "infoscreen_theme_options[colorscheme_font_field" + counter_font_field + "]";
 			j++;
-			color_inputs[j].id = "colorscheme_bg_field" + (counter);
-			color_inputs[j].name = "infoscreen_theme_options[colorscheme_bg_field" + (counter) + "]";
-			counter++;
+			color_inputs[j].id = "colorscheme_bg_field" + counter_font_field;
+			color_inputs[j].name = "infoscreen_theme_options[colorscheme_bg_field" + counter_font_field + "]";
+			counter_font_field++;
 	}
-	var counter2 = 1;
+	var counter_name = 1;
 	for (var k = 0; k < name_inputs.length; k++){
 		var str = name_inputs[k].name;
 		if(str.indexOf("colorscheme_name") !== -1){
-			name_inputs[k].name = "colorscheme_name" + counter2;
-			name_inputs[k].id = "colorscheme_name" + counter2;
-			counter2++;
+			name_inputs[k].id = "colorscheme_name" + counter_name;
+			name_inputs[k].name = "infoscreen_theme_options[colorscheme_name_field" + counter_name + "]";
+			counter_name++;
+		}
+		if(str.indexOf("csid") !== -1){
+			name_inputs[k].id = "csid" + counter_name;
+			name_inputs[k].name = "infoscreen_theme_options[csid" + counter_name + "]";
 		}
 	}
-	var counter3 = 1;
+	var counter_remove_btn = 1;
 	for (var z = 2; z < remove_inputs.length; z += 3){
-		remove_inputs[z].setAttribute("onclick", 'deleteRow("infoscreen_theme_options[colorscheme_name' + counter3 + ']")');
-		counter3++;
+		remove_inputs[z].setAttribute("onclick", 'deleteRow("infoscreen_theme_options[colorscheme_name' + counter_remove_btn + ']")');
+		counter_remove_btn++;
 	}
 }
 function deleteRow(rowid) {   
@@ -249,8 +258,8 @@ function appendRow(){
 	var remove_btn=row.insertCell(3);
 
 	row.id = "infoscreen_theme_options[colorscheme_name" + rowCount + "]";
-	
-	name_field.innerHTML="<input type='text' name='infoscreen_theme_options[colorscheme_name_field" + rowCount + "]' id='colorscheme_name" + rowCount + "'value>";
+
+	name_field.innerHTML="<input type='hidden' name='infoscreen_theme_options[csid" + rowCount + "]' id='csid" + rowCount + "'value=" + unique_ajax(rowCount) + "> <input type='text' name='infoscreen_theme_options[colorscheme_name_field" + rowCount + "]' id='colorscheme_name" + rowCount + "'value>";
 	name_field.className='infoscreen-colorscheme-name';
 
 	font_field.innerHTML="<input type='text' name='infoscreen_theme_options[colorscheme_font_field" + rowCount + "]' id='colorscheme_font_field" + rowCount + "' value='' class='my-color-field'>";
@@ -266,6 +275,17 @@ function appendRow(){
 	});
 	tooltip();
 }
+function unique_ajax(id){
+	jQuery.ajax({                                      
+	     url: '../wp-content/themes/infoscreen/inc/uniqueID.php',         
+	     data: "",
+	     dataType: 'json',     
+	     success: function(data){
+		     jQuery('#csid' + id).val(data);
+		 } 
+	}); 
+}
+
 var tooltip_obj = false;
 function tooltip(){
 jQuery(document).ready(function($){
@@ -432,7 +452,10 @@ function theme_infoscreen_settings_animations() {
  * @param All page input, $input saves to db.
  */
 function infoscreen_theme_options_validate($input) {
+	$options = get_option('infoscreen_theme_options');
  	$colorschemes = 0;
+ 	//update_option('infoscreen_theme_csid1', $input['csid1']);
+ 	//update_option('infoscreen_theme_csid2', $input['csid2']);
 	for ($i = 0; $i < sizeOf($input); $i++){
 		$name_field = 'colorscheme_name_field' . $i;
 		if(array_key_exists($name_field, $input)){

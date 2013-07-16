@@ -27,12 +27,11 @@ function colorscheme_metabox() {
 	?>
 <div>
 	<select name="_infoscreen_colorscheme" onChange="this.style.background=this.options[this.selectedIndex].style.background; this.style.color=this.options[this.selectedIndex].style.color;">
-		<option style='background: #FFF; color: #000' selected disabled>Choose scheme...</option>
 		<?php
 		for ($i = 1; $i <= $options['colorschemes']; $i++){
 				echo "<option";
-				echo ($currentvalue == $options['colorscheme_name_field'.$i])? ' selected' : '';
-				echo " value='" . $options['colorscheme_name_field'.$i] . "' ";
+				echo ($currentvalue == $options['csid'.$i])? ' selected' : '';
+				echo " value='" . $options['csid'.$i] . "' ";
 				echo "style='color: ";
 				echo $options['colorscheme_font_field'.$i];
 				echo ";";
