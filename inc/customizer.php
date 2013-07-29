@@ -37,12 +37,9 @@ add_action( 'customize_preview_init', 'infoscreen_customize_preview_js' );
 */
 function theme_options_scripts() {
 	wp_enqueue_media();
-// 	wp_enqueue_script('media-upload');
-	
-	wp_enqueue_script('qtip','http://qtip2.com/v/2.0.1/jquery.qtip.min.js');
-	
 	wp_enqueue_script('postbox');
-
+	wp_enqueue_script('script-qtip','/wp-content/themes/infoscreen/inc/jquery.qtip.min.js');
+	wp_enqueue_script('script-fontSelector', '/wp-content/themes/infoscreen/inc/jquery.ui.fontSelector.js');
 	wp_enqueue_script('script-upload', '/wp-content/themes/infoscreen/inc/script-upload.js');
 	wp_enqueue_script('script-colorpicker', '/wp-content/themes/infoscreen/inc/script-colorpicker.js' , array( 'wp-color-picker' ), false, true );
 	
@@ -53,25 +50,18 @@ add_action( 'admin_enqueue_scripts', 'theme_options_scripts' );
  * Theme Options styles
 */
 function theme_options_styles() {
-	//HACK - needs to be fixed
-	if(strpos($_SERVER['REQUEST_URI'], "post.php")){
-		wp_enqueue_style('jquery-ui-slider', '/wp-content/themes/infoscreen/inc/metabox-slider.css');
-	}
-	if(strpos($_SERVER['REQUEST_URI'], "post-new.php")){
-		wp_enqueue_style('jquery-ui-slider', '/wp-content/themes/infoscreen/inc/metabox-slider.css');
-	}
-	
-	wp_enqueue_style('qtipstyle','http://qtip2.com/v/2.0.1/jquery.qtip.min.css');
+	wp_enqueue_style('jquery-ui-slider', '/wp-content/themes/infoscreen/inc/metabox-slider.css');
+	wp_enqueue_style('qtipstyle','/wp-content/themes/infoscreen/inc/jquery.qtip.min.css');
 	
 	wp_enqueue_style('wp-color-picker');
-	wp_enqueue_style('font-picker', '/wp-content/themes/infoscreen/inc/style-fontselector.css');
+	wp_enqueue_style('fontSelector', '/wp-content/themes/infoscreen/inc/jquery.ui.fontSelector.css');
 	wp_enqueue_style('theme-options-styles', get_template_directory_uri() . '/css/theme-options.css');
 }
 add_action( 'admin_enqueue_scripts', 'theme_options_styles' );
 
 /**
  * Page initialization
- */
+*/
 function infoscreen_init() {
 	if(false === get_option('infoscreen_theme_options', infoscreen_get_default_theme_options()))
 		add_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
@@ -83,13 +73,13 @@ add_action('admin_init', 'infoscreen_init');
 
 /**
  * Add metaboxes to page
- */
+*/
 function add_infoscreen_meta_boxes(){
 	global $screen_layout_columns;
 	add_meta_box('meta_box_logo', 'Logo','theme_infoscreen_settings_logo', $page, 'normal', 'core');
 	add_meta_box('meta_box_colorfields', 'Colorschemes', 'theme_infoscreen_settings_colorfields', $page, 'normal', 'core');
-	add_meta_box('meta_box_font_default', 'Default Fonts', 'theme_infoscreen_settings_default_fonts', $page, 'normal', 'core');
 	add_meta_box('meta_box_animation', 'Animations', 'theme_infoscreen_settings_animations', $page, 'normal', 'core');
+	add_meta_box('meta_box_fonts', 'Fonts', 'theme_infoscreen_settings_fonts', $page, 'normal', 'core');
 	?>
 		<div id="poststuff" class="metabox-holder<?php echo 2 == $screen_layout_columns ? ' has-right-sidebar' : ''; ?>">
 							<?php do_meta_boxes($page, 'normal', $data); ?>
@@ -111,7 +101,7 @@ function add_infoscreen_meta_boxes(){
 
 /**
  * Default values
- */
+*/
 function infoscreen_get_default_theme_options() {
 	$options = array(
 			'colorschemes' => '1',
@@ -121,7 +111,7 @@ function infoscreen_get_default_theme_options() {
 
 /**
  * Add to appearance menu
- */
+*/
 function add_infoscreen_appearance_menu() {
 	$page = add_theme_page('InfoScreen Settings', 'InfoScreen', 'edit_theme_options', 'infoscreen-settings', 'infoscreen_theme_options_render_page');
 }
@@ -129,7 +119,7 @@ add_action('admin_menu', 'add_infoscreen_appearance_menu');
 
 /**
  * Colorschemes metabox
- */
+*/
 function theme_infoscreen_settings_colorfields() {
 $options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
 ?>
@@ -365,7 +355,7 @@ function isUnique() {
 
 /**
  * Logo metabox
- */
+*/
 function theme_infoscreen_settings_logo() {
 	$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
 	?>
@@ -383,7 +373,7 @@ theme_infoscreen_settings_logo_preview();
 
 /**
  * Logo preview
- */
+*/
 function theme_infoscreen_settings_logo_preview() {
 	$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
 	?>
@@ -396,52 +386,116 @@ function theme_infoscreen_settings_logo_preview() {
 
 /**
  * Fonts metabox
- */
-function theme_infoscreen_settings_default_fonts() {
-// 	update_option('infoscreen_default_fonts', array('Arial', 'Times New Roman', 'Courier New'));
+*/
+function theme_infoscreen_settings_fonts() {
 	$font_options = get_option('infoscreen_default_fonts');
 	$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
 	?>
-		
-		<ul class="fonts_id">
-			<li><a onmouseover="mopen('m2')" onmouseout="mclosetime()"
-				id="current_font" style="font-family: <?php echo esc_attr($options['default_font']); ?>"> <?php echo esc_attr($options['default_font']); ?>
-			</a>
-				<div id="m2" onmouseover="mcancelclosetime()"
-					onmouseout="mclosetime()">
-					<input type="hidden" id="default_font" name="infoscreen_theme_options[default_font]"/>
-					<?php 
-					for ($j = 0; $j < 3; $j++){
-				echo "<a style=\"font-family: " . $font_options[$j] . "\" " . "onclick=\"getCurrentFont('" . $font_options[$j] . "')" . '">' . $font_options[$j] . "</a>";
-			}
-			?>
-				</div>
-			</li>
-		</ul>
-		<div style="clear: both"></div>
+	<table>
+		<tr>
+			<th><?php _e( 'Title', 'infoscreen' ); ?></th>
+			<th><?php _e( 'Body', 'infoscreen' ); ?></th>
+		</tr>
+		<tr>
+			<td>
+				<select id="fonts_title">
+			    	<option value="Chelsea Market">Chelsea Market</option>
+			    	<option value="Droid Serif" selected="selected">Droid Serif</option>
+			    	<option value="Ruluko">Ruluko</option>
+			    	<option value="Ruda">Ruda</option>
+			    	<option value="Magra">Magra</option>
+			    	<option value="Esteban">Esteban</option>
+			    	<option value="Lora">Lora</option>
+			    	<option value="Jura">Jura</option>
+			  	</select>
+			  	  <p id="style_title">
+				      <a id="bold_title" href="#" title="bold">Bold</a> |
+				      <a id="italic_title" href="#" title="italic">Italic</a>
+   				 </p>
+  			</td>
+  			<td>
+			  	<select id="fonts_body">
+			    	<option value="Chelsea Market">Chelsea Market</option>
+			    	<option value="Droid Serif" selected="selected">Droid Serif</option>
+			    	<option value="Ruluko">Ruluko</option>
+				    <option value="Ruda">Ruda</option>
+				    <option value="Magra">Magra</option>
+				    <option value="Esteban">Esteban</option>
+				    <option value="Lora">Lora</option>
+				    <option value="Jura">Jura</option>
+			  	</select>
+			  	  <p id="style_body">
+				      <a id="bold_body" href="#" title="bold">Bold</a> |
+				      <a id="italic_body" href="#" title="italic">Italic</a>
+   				 </p>
+  			</td>
+  		</tr>
+  </table>
+ <script>
+ jQuery(document).ready( function($) {
+	  $('select#fonts_title').fontSelector({
+		    options: {
+		      inSpeed: 250,
+		      outSpeed: "slow",
+		    },
+		    fontChange: function(e, ui) {
+		      //alert("The font is set to "+ui.font+" (was "+ui.oldFont+" before)");
+		    	$('ul.fonts').hide();
+		    },
+		    styleChange: function(e, ui) {
+		    }
+	});
+	  $('select#fonts_body').fontSelector({
+		    options: {
+		      inSpeed: 250,
+		      outSpeed: "slow",
+		    },
+		    fontChange: function(e, ui) {
+		      //alert("The font is set to "+ui.font+" (was "+ui.oldFont+" before)");
+		    	$('ul.fonts').hide();
+		    },
+		    styleChange: function(e, ui) {
+		    }
+	});
+	  $('#style_title a').click(function(){
+	      var style = $(this).attr('title'); // This will be bold or italic
+	      var current = $('select#fonts_title').fontSelector('option', style);
+	      var setTo = true;
+	      if(current == true) setTo = false;
+	      $('select#fonts_title').fontSelector('option', style, setTo);
+	});
+	  $('#style_body a').click(function(){
+	      var style = $(this).attr('title'); // This will be bold or italic
+	      var current = $('select#fonts_body').fontSelector('option', style);
+	      var setTo = true;
+	      if(current == true) setTo = false;
+	      $('select#fonts_body').fontSelector('option', style, setTo);
+	});
+});
+</script>
 <?php
 }
 
 /**
  * Animations metabox
- */
+*/
 function theme_infoscreen_settings_animations() {
 	$cat_array = get_categories();
 	$cat_options = get_option('infoscreen_theme_options');
 	?>
 	<table>
-	<tr>
-		<th class="infoscreen-animation-category"><?php _e( 'Category', 'infoscreen' ); ?></th>
-		<th class="infoscreen-animation-radio"><?php _e( 'Animation', 'infoscreen' ); ?></th>
-	</tr>
+		<tr>
+			<th class="infoscreen-animation-category"><?php _e( 'Category', 'infoscreen' ); ?></th>
+			<th class="infoscreen-animation-radio"><?php _e( 'Animation', 'infoscreen' ); ?></th>
+		</tr>
 	<?php for ($i = 0; $i < count($cat_array); $i++){ ?>
-	<tr>
-		<td><?php echo $cat_array[$i]->name; ?></td>
-		<td>
-			<input type="radio" name="infoscreen_theme_options[animation_<?php echo $cat_array[$i]->cat_ID; ?>]" value="fade" <?php echo ($cat_options['animation_' . $cat_array[$i]->cat_ID] == 'fade') ? 'checked':($cat_options['animation_' . $cat_array[$i]->cat_ID] == '') ? 'checked' : ''; ?>>Fade<br>
-			<input type="radio" name="infoscreen_theme_options[animation_<?php echo $cat_array[$i]->cat_ID; ?>]" value="slide" <?php echo ($cat_options['animation_' . $cat_array[$i]->cat_ID] == 'slide') ? 'checked':''; ?>>Slide<br>
-		</td>
-	</tr>
+		<tr>
+			<td><?php echo $cat_array[$i]->name; ?></td>
+			<td>
+				<input type="radio" name="infoscreen_theme_options[animation_<?php echo $cat_array[$i]->cat_ID; ?>]" value="fade" <?php echo ($cat_options['animation_' . $cat_array[$i]->cat_ID] == 'fade') ? 'checked':($cat_options['animation_' . $cat_array[$i]->cat_ID] == '') ? 'checked' : ''; ?>>Fade<br>
+				<input type="radio" name="infoscreen_theme_options[animation_<?php echo $cat_array[$i]->cat_ID; ?>]" value="slide" <?php echo ($cat_options['animation_' . $cat_array[$i]->cat_ID] == 'slide') ? 'checked':''; ?>>Slide<br>
+			</td>
+		</tr>
 	<?php } ?>
 	</table>
 	<?php 
@@ -450,12 +504,10 @@ function theme_infoscreen_settings_animations() {
 /**
  * Option validation
  * @param All page input, $input saves to db.
- */
+*/
 function infoscreen_theme_options_validate($input) {
 	$options = get_option('infoscreen_theme_options');
  	$colorschemes = 0;
- 	//update_option('infoscreen_theme_csid1', $input['csid1']);
- 	//update_option('infoscreen_theme_csid2', $input['csid2']);
 	for ($i = 0; $i < sizeOf($input); $i++){
 		$name_field = 'colorscheme_name_field' . $i;
 		if(array_key_exists($name_field, $input)){
@@ -469,7 +521,7 @@ function infoscreen_theme_options_validate($input) {
 
 /**
  * Render page
- */
+*/
 function infoscreen_theme_options_render_page() { ?>
 <div class="wrap">
 	<?php screen_icon(); ?>

@@ -72,6 +72,9 @@ function colorscheme_metabox() {
 			  });
 			  $( "#amount" ).val( $( "#slider" ).slider( "value" ) );
 			});
+	jQuery(document).ready(function($){
+		$('#slider').removeClass('ui-widget-content').addClass('ui-widget-content-slider-custom');
+		});
 		  </script>
 <?php
 }
