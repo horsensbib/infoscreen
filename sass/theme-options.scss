@@ -91,10 +91,13 @@
 			        border-radius: 3px;
 			cursor: pointer;
 			display: block;
-			line-height: 28px;
 			text-align: center;
 			margin-top: -10px;
 			padding: 5px 10px 0;
+			position: relative;
+			img {
+				margin: 10px auto;
+			}
 		}
 	}
 }

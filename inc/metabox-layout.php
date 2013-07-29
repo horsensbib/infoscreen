@@ -31,7 +31,7 @@ function layout_metabox() {
 	<li class="layout-selector">
 	<input type="radio" name="_infoscreen_layout" id="layout-img" value="layout-img" <?php echo ($currentvalue == 'layout-img')? 'checked="checked"':''; ?> />
 	<label for="layout-img">
-		<?php _e('Image only','infoscreen') ?>
+		<?php _e('Background only','infoscreen') ?>
 		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img.png">
 	</label>
 	</li>
@@ -39,7 +39,7 @@ function layout_metabox() {
 	<li class="layout-selector">
 	<input type="radio" name="_infoscreen_layout" id="layout-img-left" value="layout-img-left" <?php echo ($currentvalue == 'layout-img-left')? 'checked="checked"':''; ?> />
 	<label for="layout-img-left">
-		<?php _e('Image left','infoscreen') ?>
+		<?php _e('Background to the Left','infoscreen') ?>
 		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img-left.png">
 	</label>
 	</li>
@@ -47,7 +47,7 @@ function layout_metabox() {
 	<li class="layout-selector">
 	<input type="radio" name="_infoscreen_layout" id="layout-img-right" value="layout-img-right" <?php echo ($currentvalue == 'layout-img-right')? 'checked="checked"':''; ?> />
 	<label for="layout-img-right">
-		<?php _e('Image right','infoscreen') ?>
+		<?php _e('Background to the Right','infoscreen') ?>
 		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/Layout-img-right.png">
 	</label>
 	</li>
@@ -55,7 +55,7 @@ function layout_metabox() {
 	<li class="layout-selector">
 	<input type="radio" name="_infoscreen_layout" id="layout-txt" value="layout-txt" <?php echo ($currentvalue == 'layout-txt')? 'checked="checked"':''; ?> />
 	<label for="layout-txt">
-		<?php _e('Text only','infoscreen') ?>
+		<?php _e('Content only','infoscreen') ?><br />&nbsp;<br />
 		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt.png">
 	</label>
 	</li>
@@ -63,7 +63,7 @@ function layout_metabox() {
 	<li class="layout-selector">
 	<input type="radio" name="_infoscreen_layout" id="layout-img-top" value="layout-img-top" <?php echo ($currentvalue == 'layout-img-top')? 'checked="checked"':''; ?> />
 	<label for="layout-img-top">
-		<?php _e('Text bottom','infoscreen') ?>
+		<?php _e('Content at the Bottom','infoscreen') ?>
 		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img-top.png">
 	</label>
 	</li>
@@ -71,7 +71,7 @@ function layout_metabox() {
 	<li class="layout-selector">
 	<input type="radio" name="_infoscreen_layout" id="layout-img-bottom" value="layout-img-bottom" <?php echo ($currentvalue == 'layout-img-bottom')? 'checked="checked"':''; ?> />
 	<label for="layout-img-bottom">
-		<?php _e('Text top','infoscreen') ?>
+		<?php _e('Content at the Top','infoscreen') ?>
 		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img-bottom.png">
 	</label>
 	</li>
@@ -79,7 +79,7 @@ function layout_metabox() {
 	<li class="layout-selector">
 	<input type="radio" name="_infoscreen_layout" id="layout-txt-left" value="layout-txt-left" <?php echo ($currentvalue == 'layout-txt-left')? 'checked="checked"':''; ?> />
 	<label for="layout-txt-left">
-		<?php _e('Text left','infoscreen') ?>
+		<?php _e('Content to the Left','infoscreen') ?>
 		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt-left.png">
 	</label>
 	</li>
@@ -87,7 +87,7 @@ function layout_metabox() {
 	<li class="layout-selector">
 	<input type="radio" name="_infoscreen_layout" id="layout-txt-right" value="layout-txt-right" <?php echo ($currentvalue == 'layout-txt-right')? 'checked="checked"':''; ?> />
 	<label for="layout-txt-right">
-		<?php _e('Text right','infoscreen') ?>
+		<?php _e('Content to the Right','infoscreen') ?>
 		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-txt-right.png">
 	</label>
 	</li>
