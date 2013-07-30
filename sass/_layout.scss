@@ -32,6 +32,7 @@ body > .post {
 		.logo {
 			max-width:100%;
 			width:auto;
+			max-height: 60px;
 		}
 
 	// Image takes 2/3 of screen real estate
@@ -41,7 +42,7 @@ body > .post {
 		top:0;
 		bottom: 0;
 		width:92%;
-		padding: 1em 4%;
+		padding: 1em 4% 100px;
 		.branding {
 			width:92%;
 			left: 4%;
@@ -67,9 +68,9 @@ body > .post {
 	.layout-txt-right {
 		top:0;
 		bottom: 0;
-		height: 94%;
+		height: 96%;
 		padding: 2% 4%;
-		.branding {margin-bottom: 1em;}
+		.branding {bottom:20px;}
 	}
 
 	.layout-img-left,
@@ -80,7 +81,6 @@ body > .post {
 			width:79%;
 			left: 10.5%;
 			right: 10.5%;
-			bottom: 0;
 		}
 	}
 
@@ -92,7 +92,6 @@ body > .post {
 			width:87%;
 			left: 6.5%;
 			right: 6.5%;
-			bottom: 0;
 		}
 	}
 
@@ -105,27 +104,19 @@ body > .post {
 	.layout-img-top,
 	.layout-img-bottom {
 		width: 92%;
+		padding: .5em 4% 100px;
 		.branding {
 			width:92%;
 			left: 4%;
 			right: 4%;
+			bottom: 0px;
 		}
 		h1 {clear: none;}
 		.entry-content {}
 	}
 
-	.layout-img-top {
-		padding: .5em 4% 80px;
-		bottom:0;
-
-		.branding {bottom: 30px;}
-	}
-	.layout-img-bottom {
-		padding: .5em 4% 60px;
-		top:0;
-
-		.branding {bottom: 10px;}
-	}
+	.layout-img-top {bottom:0;}
+	.layout-img-bottom {top:0;}
 
 }
 

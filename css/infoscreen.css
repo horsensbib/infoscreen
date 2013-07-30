@@ -102,13 +102,14 @@ body > .post {
   overflow: hidden; }
   .flexslider .slides .logo {
     max-width: 100%;
-    width: auto; }
+    width: auto;
+    max-height: 60px; }
   .flexslider .slides .layout-img,
   .flexslider .slides .layout-txt {
     top: 0;
     bottom: 0;
     width: 92%;
-    padding: 1em 4%; }
+    padding: 1em 4% 100px; }
     .flexslider .slides .layout-img .branding,
     .flexslider .slides .layout-txt .branding {
       width: 92%;
@@ -128,13 +129,13 @@ body > .post {
   .flexslider .slides .layout-txt-right {
     top: 0;
     bottom: 0;
-    height: 94%;
+    height: 96%;
     padding: 2% 4%; }
     .flexslider .slides .layout-img-left .branding,
     .flexslider .slides .layout-img-right .branding,
     .flexslider .slides .layout-txt-left .branding,
     .flexslider .slides .layout-txt-right .branding {
-      margin-bottom: 1em; }
+      bottom: 20px; }
   .flexslider .slides .layout-img-left,
   .flexslider .slides .layout-img-right {
     width: 30%; }
@@ -142,8 +143,7 @@ body > .post {
     .flexslider .slides .layout-img-right .branding {
       width: 79%;
       left: 10.5%;
-      right: 10.5%;
-      bottom: 0; }
+      right: 10.5%; }
   .flexslider .slides .layout-txt-left,
   .flexslider .slides .layout-txt-right {
     width: 54%; }
@@ -151,8 +151,7 @@ body > .post {
     .flexslider .slides .layout-txt-right .branding {
       width: 87%;
       left: 6.5%;
-      right: 6.5%;
-      bottom: 0; }
+      right: 6.5%; }
   .flexslider .slides .layout-img-left,
   .flexslider .slides .layout-txt-right {
     right: 0; }
@@ -161,25 +160,21 @@ body > .post {
     left: 0; }
   .flexslider .slides .layout-img-top,
   .flexslider .slides .layout-img-bottom {
-    width: 92%; }
+    width: 92%;
+    padding: .5em 4% 100px; }
     .flexslider .slides .layout-img-top .branding,
     .flexslider .slides .layout-img-bottom .branding {
       width: 92%;
       left: 4%;
-      right: 4%; }
+      right: 4%;
+      bottom: 0px; }
     .flexslider .slides .layout-img-top h1,
     .flexslider .slides .layout-img-bottom h1 {
       clear: none; }
   .flexslider .slides .layout-img-top {
-    padding: .5em 4% 80px;
     bottom: 0; }
-    .flexslider .slides .layout-img-top .branding {
-      bottom: 30px; }
   .flexslider .slides .layout-img-bottom {
-    padding: .5em 4% 60px;
     top: 0; }
-    .flexslider .slides .layout-img-bottom .branding {
-      bottom: 10px; }
 
 /* =Content
 ----------------------------------------------- */
