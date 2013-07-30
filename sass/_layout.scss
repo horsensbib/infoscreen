@@ -20,7 +20,15 @@ body > .post {
 	background: rgba(0,0,0,.7);
 	position: absolute;
 }
+.branding {
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #fff;
+	padding: 20px 0;
+	position: absolute;
+}
 .flexslider .slides {
+	overflow: hidden;
 		.logo {
 			max-width:100%;
 			width:auto;
@@ -35,9 +43,10 @@ body > .post {
 		width:92%;
 		padding: 1em 4%;
 		.branding {
-			width:30%;
-			float:right;
-			margin:0 0 1.5em 4%;
+			width:92%;
+			left: 4%;
+			right: 4%;
+			bottom: 20px;
 		}
 	}
 
@@ -58,16 +67,34 @@ body > .post {
 	.layout-txt-right {
 		top:0;
 		bottom: 0;
-		height: 100%;
-		padding: 1em 4%;
+		height: 94%;
+		padding: 2% 4%;
 		.branding {margin-bottom: 1em;}
 	}
 
 	.layout-img-left,
-	.layout-img-right {width: 30%;}
+	.layout-img-right {
+		width: 30%;
+
+		.branding {
+			width:79%;
+			left: 10.5%;
+			right: 10.5%;
+			bottom: 0;
+		}
+	}
 
 	.layout-txt-left,
-	.layout-txt-right {width: 54%;}
+	.layout-txt-right {
+		width: 54%;
+
+		.branding {
+			width:87%;
+			left: 6.5%;
+			right: 6.5%;
+			bottom: 0;
+		}
+	}
 
 	.layout-img-left,
 	.layout-txt-right {right: 0;}
@@ -78,18 +105,27 @@ body > .post {
 	.layout-img-top,
 	.layout-img-bottom {
 		width: 92%;
-		padding: .5em 4% 0;
 		.branding {
-			width:30%;
-			float:right;
-			margin:.5em 0 .5em 4%;
+			width:92%;
+			left: 4%;
+			right: 4%;
 		}
 		h1 {clear: none;}
 		.entry-content {}
 	}
 
-	.layout-img-top {bottom:0;}
-	.layout-img-bottom {top:0;}
+	.layout-img-top {
+		padding: .5em 4% 80px;
+		bottom:0;
+
+		.branding {bottom: 30px;}
+	}
+	.layout-img-bottom {
+		padding: .5em 4% 60px;
+		top:0;
+
+		.branding {bottom: 10px;}
+	}
 
 }
 

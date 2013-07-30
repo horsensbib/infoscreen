@@ -21,15 +21,6 @@
 			echo '>';
 		}
 		?>
-		<h2 class="branding"><?php 
-$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options()); 
-
-if ($options['logo'] != "") {
-?><img class="logo" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo esc_url( $options['logo'] ); ?>" /><?php 
-} else { 
-?><span class="logo"><?php bloginfo( 'name' ); ?></span><?php
-} 
-?></h2>
 		<header class="entry-header">
 		<h1 class="entry-title" >
 			<?php the_title(); ?>
@@ -43,6 +34,19 @@ if ($options['logo'] != "") {
 			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'infoscreen' ), 'after' => '</div>' ) ); ?>
 		</div>
 		<!-- .entry-content -->
+		<h2 class="branding" <?php
+		if (get_post_meta(get_the_ID(), '_infoscreen_layout', true) != 'layout-img') {
+			echo 'style="border-color: rgba('.$font.',.5);"';
+		} ?>
+		><?php 
+$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options()); 
+
+if ($options['logo'] != "") {
+?><img class="logo" alt="<?php bloginfo( 'name' ); ?>" src="<?php echo esc_url( $options['logo'] ); ?>" /><?php 
+} else { 
+?><span class="logo"><?php bloginfo( 'name' ); ?></span><?php
+} 
+?></h2>
 	</div>
 	<script> jQuery(document).ready( function($) { 
 		$('.entry-title').css("font-family", "<?php echo $options['fonts_title']; ?>");
