@@ -386,7 +386,6 @@ function theme_infoscreen_settings_logo_preview() {
  * Fonts metabox
 */
 function theme_infoscreen_settings_fonts() {
-	$font_options = get_option('infoscreen_default_fonts');
 	$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
 	?>
 	<table>
@@ -396,33 +395,37 @@ function theme_infoscreen_settings_fonts() {
 		</tr>
 		<tr>
 			<td>
-				<select id="fonts_title">
-			    	<option value="Chelsea Market">Chelsea Market</option>
-			    	<option value="Droid Serif" selected="selected">Droid Serif</option>
-			    	<option value="Ruluko">Ruluko</option>
-			    	<option value="Ruda">Ruda</option>
-			    	<option value="Magra">Magra</option>
-			    	<option value="Esteban">Esteban</option>
-			    	<option value="Lora">Lora</option>
-			    	<option value="Jura">Jura</option>
+				<select id="fonts_title" name="infoscreen_theme_options[fonts_title]">
+			    	<option value="Chelsea Market"<?php if($options['fonts_title'] == "Chelsea Market"){ echo 'selected="selected"'; }?>>Chelsea Market</option>
+			    	<option value="Droid Serif"<?php if($options['fonts_title'] == "Droid Serif"){ echo 'selected="selected"'; }?>>Droid Serif</option>
+			    	<option value="Ruluko"<?php if($options['fonts_title'] == "Ruluko"){ echo 'selected="selected"'; }?>>Ruluko</option>
+			    	<option value="Ruda"<?php if($options['fonts_title'] == "Ruda"){ echo 'selected="selected"'; }?>>Ruda</option>
+			    	<option value="Magra"<?php if($options['fonts_title'] == "Magra"){ echo 'selected="selected"'; }?>>Magra</option>
+			    	<option value="Esteban"<?php if($options['fonts_title'] == "Esteban"){ echo 'selected="selected"'; }?>>Esteban</option>
+			    	<option value="Lora"<?php if($options['fonts_title'] == "Lora"){ echo 'selected="selected"'; }?>>Lora</option>
+			    	<option value="Jura"<?php if($options['fonts_title'] == "Jura"){ echo 'selected="selected"'; }?>>Jura</option>
 			  	</select>
 			  	  <p id="style_title">
+			  	  	  <input id="font-style_title" type="hidden" name="infoscreen_theme_options[font-style_title]" value="<?php echo $options['font-style_title'] ?>"/>
+			  	  	  <input id="font-weight_title" type="hidden" name="infoscreen_theme_options[font-weight_title]" value="<?php echo $options['font-weight_title'] ?>"/>
 				      <a id="bold_title" href="#" title="bold">Bold</a> |
 				      <a id="italic_title" href="#" title="italic">Italic</a>
    				 </p>
   			</td>
   			<td>
-			  	<select id="fonts_body">
-			    	<option value="Chelsea Market">Chelsea Market</option>
-			    	<option value="Droid Serif" selected="selected">Droid Serif</option>
-			    	<option value="Ruluko">Ruluko</option>
-				    <option value="Ruda">Ruda</option>
-				    <option value="Magra">Magra</option>
-				    <option value="Esteban">Esteban</option>
-				    <option value="Lora">Lora</option>
-				    <option value="Jura">Jura</option>
+			  	<select id="fonts_body" name="infoscreen_theme_options[fonts_body]">
+			    	<option value="Chelsea Market"<?php if($options['fonts_body'] == "Chelsea Market"){ echo 'selected="selected"'; }?>>Chelsea Market</option>
+			    	<option value="Droid Serif"<?php if($options['fonts_body'] == "Droid Serif"){ echo 'selected="selected"'; }?>>Droid Serif</option>
+			    	<option value="Ruluko"<?php if($options['fonts_body'] == "Ruluko"){ echo 'selected="selected"'; }?>>Ruluko</option>
+			    	<option value="Ruda"<?php if($options['fonts_body'] == "Ruda"){ echo 'selected="selected"'; }?>>Ruda</option>
+			    	<option value="Magra"<?php if($options['fonts_body'] == "Magra"){ echo 'selected="selected"'; }?>>Magra</option>
+			    	<option value="Esteban"<?php if($options['fonts_body'] == "Esteban"){ echo 'selected="selected"'; }?>>Esteban</option>
+			    	<option value="Lora"<?php if($options['fonts_body'] == "Lora"){ echo 'selected="selected"'; }?>>Lora</option>
+			    	<option value="Jura"<?php if($options['fonts_body'] == "Jura"){ echo 'selected="selected"'; }?>>Jura</option>
 			  	</select>
 			  	  <p id="style_body">
+			  	  	  <input id="font-style_body" type="hidden" name="infoscreen_theme_options[font-style_body]" value="<?php echo $options['font-style_body'] ?>"/>
+			  	  	  <input id="font-weight_body" type="hidden" name="infoscreen_theme_options[font-weight_body]" value="<?php echo $options['font-weight_body'] ?>"/>
 				      <a id="bold_body" href="#" title="bold">Bold</a> |
 				      <a id="italic_body" href="#" title="italic">Italic</a>
    				 </p>
@@ -461,14 +464,42 @@ function theme_infoscreen_settings_fonts() {
 	      var setTo = true;
 	      if(current == true) setTo = false;
 	      $('select#fonts_title').fontSelector('option', style, setTo);
+	      if(current == false && style == "italic"){
+	    	$('#font-style_title').val(style);
+		  }
+	      else if(current == true && style == "italic"){
+			$('#font-style_title').val("");
+		  }
+	      if(current == false && style == "bold"){
+		    	$('#font-weight_title').val(style);
+			}
+		    else if(current == true && style == "bold"){
+				$('#font-weight_title').val("");
+		  }
 	});
 	  $('#style_body a').click(function(){
 	      var style = $(this).attr('title'); // This will be bold or italic
 	      var current = $('select#fonts_body').fontSelector('option', style);
 	      var setTo = true;
-	      if(current == true) setTo = false;
+	      if(current == true) setTo = false; 
 	      $('select#fonts_body').fontSelector('option', style, setTo);
+	      if(current == false && style == "italic"){
+		    	$('#font-style_body').val(style);
+			  }
+		      else if(current == true && style == "italic"){
+				$('#font-style_body').val("");
+			  }
+		      if(current == false && style == "bold"){
+			    	$('#font-weight_body').val(style);
+				}
+			    else if(current == true && style == "bold"){
+					$('#font-weight_body').val("");
+			  }
 	});
+	  $('select#fonts_title').fontSelector('option', '<?php echo $options['font-style_title'] ?>', true);
+	  $('select#fonts_title').fontSelector('option', '<?php echo $options['font-weight_title'] ?>', true);
+	  $('select#fonts_body').fontSelector('option', '<?php echo $options['font-style_body'] ?>', true);
+	  $('select#fonts_body').fontSelector('option', '<?php echo $options['font-weight_body'] ?>', true);
 });
 </script>
 <?php
@@ -506,6 +537,7 @@ function theme_infoscreen_settings_animations() {
 function infoscreen_theme_options_validate($input) {
 	$options = get_option('infoscreen_theme_options');
  	$colorschemes = 0;
+ 	update_option('test_2', $input);
 	for ($i = 0; $i < sizeOf($input); $i++){
 		$name_field = 'colorscheme_name_field' . $i;
 		if(array_key_exists($name_field, $input)){

@@ -16,7 +16,7 @@
 		echo get_post_meta(get_the_ID(), '_infoscreen_layout', true). '"';
 		$transparency_value = get_post_meta(get_the_ID(), '_infoscreen_transparency', true)/100;
 		if (get_post_meta(get_the_ID(), '_infoscreen_layout', true) != 'layout-img') {
-			echo 'style="color: rgb('.$font.'); background: rgba('.$bg.','.$transparency_value.');">';
+			echo 'color: rgb('.$font.'); background: rgba('.$bg.','.$transparency_value.');">';
 		} else {
 			echo '>';
 		}
@@ -31,7 +31,7 @@ if ($options['logo'] != "") {
 } 
 ?></h2>
 		<header class="entry-header">
-		<h1 class="entry-title">
+		<h1 class="entry-title" >
 			<?php the_title(); ?>
 		</h1>
 		<?php if ( 'post' == get_post_type() ) : ?>
@@ -44,6 +44,15 @@ if ($options['logo'] != "") {
 		</div>
 		<!-- .entry-content -->
 	</div>
+	<script> jQuery(document).ready( function($) { 
+		$('.entry-title').css("font-family", "<?php echo $options['fonts_title']; ?>");
+		$('.entry-title').css("font-weight", "<?php echo $options['font-weight_title']; ?>");
+		$('.entry-title').css("font-style", "<?php echo $options['font-style_title']; ?>");
+		$('.entry-content').css("font-family", "<?php echo $options['fonts_body']; ?>");
+		$('.entry-content').css("font-weight", "<?php echo $options['font-weight_body']; ?>");
+		$('.entry-content').css("font-style", "<?php echo $options['font-style_body']; ?>");
+	});
+	</script>
 	<!-- .slide-content -->
 	<?php //edit_post_link( __( 'Edit', 'infoscreen' ), '<span class="edit-link">', '</span>' ); ?>
 </li>
