@@ -134,7 +134,26 @@ add_action( 'after_setup_theme', 'infoscreen_register_custom_background' );
 function infoscreen_img_src($size) {
 	if ( !has_post_thumbnail($post->ID) ) {
 		// default image, if no post thumbnail
-		$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/skyline.jpg';
+		global $post;
+		if (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-img') {
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/moss.jpg';
+		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-txt') {
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/cloud.jpg';
+		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-img-left') {
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/sunset-hair.jpg';
+		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-img-right') {
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/cactus.jpg';
+		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-img-top') {
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/girl-flowers.jpg';
+		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-img-bottom') {
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/tracks.jpg';
+		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-txt-left') {
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/walking.jpg';
+		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-txt-right') {
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/fishing.jpg';
+		} else {
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/grass.jpg';
+		}
 	} else {
 		// get post thumbnail
 		$image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), $size); // size for image; defined via add_image_size

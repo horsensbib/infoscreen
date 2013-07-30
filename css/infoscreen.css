@@ -135,7 +135,7 @@ body > .post {
     .flexslider .slides .layout-img-right .branding,
     .flexslider .slides .layout-txt-left .branding,
     .flexslider .slides .layout-txt-right .branding {
-      bottom: 20px; }
+      bottom: 30px; }
   .flexslider .slides .layout-img-left,
   .flexslider .slides .layout-img-right {
     width: 30%; }
@@ -167,7 +167,7 @@ body > .post {
       width: 92%;
       left: 4%;
       right: 4%;
-      bottom: 0px; }
+      bottom: 10px; }
     .flexslider .slides .layout-img-top h1,
     .flexslider .slides .layout-img-bottom h1 {
       clear: none; }
@@ -565,7 +565,8 @@ html[xmlns] .slides {
   .widget img.alignright,
   .widget img.alignleft {
     width: 30%;
-    height: auto; }
+    height: auto;
+    margin-bottom: 30px; }
   .site-header img.aligncenter,
   .entry-content img.aligncenter,
   .comment-content img.aligncenter,
