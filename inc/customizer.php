@@ -42,6 +42,7 @@ function theme_options_scripts() {
 	wp_enqueue_script('script-fontSelector', get_template_directory_uri() . '/js/jquery.ui.fontSelector.js', array('jquery', 'jquery-ui-core', 'jquery-ui-widget'), '20130729');
 	wp_enqueue_script('script-upload', get_template_directory_uri() . '/js/script-upload.js', array('jquery'), '20130729');
 	wp_enqueue_script('script-colorpicker', get_template_directory_uri() . '/js/script-colorpicker.js' , array( 'jquery', 'wp-color-picker' ), '20130729');
+	wp_enqueue_script('theme_option_functions', get_template_directory_uri() . '/js/theme_option_functions.js' , array( 'jquery'), '20130730');
 }
 add_action( 'admin_enqueue_scripts', 'theme_options_scripts' );
 
@@ -126,6 +127,8 @@ $options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_o
 		<th class="infoscreen-colorscheme-name-title"><?php _e( 'Color Scheme Name', 'infoscreen' ); ?></th>
 		<th class="infoscreen-color-picker-title"><?php _e( 'Font Color', 'infoscreen' ); ?></th>
 		<th class="infoscreen-color-picker-title"><?php _e( 'Background Color', 'infoscreen' ); ?></th>
+		<th class="infoscreen-colorscheme-name-title"><?php _e( 'Transparency', 'infoscreen' ); ?></th>
+		<th class="infoscreen-colorscheme-name-title"><?php _e( '', 'infoscreen' ); ?></th>
 	</tr>
 	<?php 
 	for ($row = 1; $row < esc_attr($options['colorschemes'])+1; $row++){
@@ -137,7 +140,7 @@ $options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_o
 		}
 		echo "<tr id='infoscreen_theme_options[colorscheme_name" . $row . "]'>";
 		
-		for ($col = 0; $col < 4; $col++){
+		for ($col = 0; $col <= 4; $col++){
 			if($col == 0){
 				//output name field
 				echo "<td class='infoscreen-colorscheme-name'> ";
@@ -171,6 +174,20 @@ $options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_o
 				echo "class='my-color-field' />";
 			}
 			if($col == 3){
+				echo "<td class='infoscreen-color-picker'> ";
+				echo "";
+				?>
+				<div id="slide<?php echo $row; ?>" style="width: 200px"></div>
+				<label>%</label>
+				<input id="colorscheme_transparency_field<?php echo $row ?>" name="infoscreen_theme_options[colorscheme_transparency_field<?php echo $row?>]" type="text" style="border: 0; color: #f6931f; font-weight: bold; width: 30px" />
+				
+				<script> jQuery(document).ready(function($){ 
+				 	slide_init_value("slide<?php echo $row; ?>", "colorscheme_transparency_field<?php echo $row; ?>", <?php echo $options['colorscheme_transparency_field'.$row]?>);
+				}); </script>
+		<?php 
+				echo "</td>";
+			}
+			if($col == 4){
 				//output remove button
 				echo "<td>";
 				echo "<input type='button' class='button' value='remove' onclick='deleteRow(\"infoscreen_theme_options[colorscheme_name". $row . "]\")' />";
@@ -243,7 +260,8 @@ function appendRow(){
 	var name_field=row.insertCell(0);
 	var font_field=row.insertCell(1);
 	var bg_field=row.insertCell(2);
-	var remove_btn=row.insertCell(3);
+	var transparency_field=row.insertCell(3);
+	var remove_btn=row.insertCell(4);
 
 	row.id = "infoscreen_theme_options[colorscheme_name" + rowCount + "]";
 
@@ -256,11 +274,14 @@ function appendRow(){
 	bg_field.innerHTML="<input type='text' name='infoscreen_theme_options[colorscheme_bg_field" + rowCount + "]' id='colorscheme_bg_field" + rowCount + "' value='' class='my-color-field'>";
 	bg_field.className="infoscreen-color-picker";
 	
+	transparency_field.innerHTML="<div id='slide" + rowCount + "' style='width: 200px'><label>%</label><input id='colorscheme_transparency_field" + rowCount + "' name='infoscreen_theme_options[colorscheme_transparency_field" + rowCount + "]' type='text' style='border: 0; color: #f6931f; font-weight: bold; width: 30px'/>";
+	transparency_field.className="infoscreen-color-picker";
+	
+	
 	remove_btn.innerHTML="<input type='button' class='button' value='remove' onclick='deleteRow(\"infoscreen_theme_options[colorscheme_name" + rowCount + "]\")' />";
 
-	jQuery(document).ready(function($){
-		$('.my-color-field').wpColorPicker();
-	});
+	slide_init_value("slide"+rowCount, "colorscheme_transparency_field"+rowCount);
+	jQuery('.my-color-field').wpColorPicker();
 	tooltip();
 }
 function unique_ajax(id){

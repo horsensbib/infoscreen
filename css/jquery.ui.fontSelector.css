@@ -21,7 +21,7 @@ div.fontSelector ul.fonts {
     border: 1px solid #fff;
     border-radius: 0 0 3px 3px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    max-height: 250px;
+    max-height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
     position: absolute;
