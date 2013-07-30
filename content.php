@@ -16,7 +16,7 @@
 		echo get_post_meta(get_the_ID(), '_infoscreen_layout', true). '"';
 		$transparency_value = get_post_meta(get_the_ID(), '_infoscreen_transparency', true)/100;
 		if (get_post_meta(get_the_ID(), '_infoscreen_layout', true) != 'layout-img') {
-			echo 'color: rgb('.$font.'); background: rgba('.$bg.','.$transparency_value.');">';
+			echo 'style="color: rgb('.$font.'); background: rgba('.$bg.','.$transparency_value.');">';
 		} else {
 			echo '>';
 		}
