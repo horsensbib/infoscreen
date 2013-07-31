@@ -26,22 +26,27 @@ function colorscheme_metabox() {
 	$currentvalue = get_post_meta(get_the_ID(), '_infoscreen_colorscheme', true);
 	?>
 <div>
-	<select name="_infoscreen_colorscheme" onChange="this.style.background=this.options[this.selectedIndex].style.background; this.style.color=this.options[this.selectedIndex].style.color;">
+	<select id="colorscheme_select_id" name="_infoscreen_colorscheme" onChange="scheme_change(); this.style.background=this.options[this.selectedIndex].style.background; this.style.color=this.options[this.selectedIndex].style.color;">
 		<?php
+		$selected_id;
 		for ($i = 1; $i <= $options['colorschemes']; $i++){
 				echo "<option";
-				echo ($currentvalue == $options['csid'.$i])? ' selected' : '';
+				echo ($currentvalue == $options['csid'.$i])? ' selected': '';
 				echo " value='" . $options['csid'.$i] . "' ";
 				echo "style='color: ";
 				echo $options['colorscheme_font_field'.$i];
 				echo ";";
 				echo "background: ";
 				echo $options['colorscheme_bg_field'.$i];
-				echo "';";
+				echo "'";
+				echo " data-transparency='";
+				echo $options['colorscheme_transparency_field'.$i];
+				echo "'";
 				echo ">";
 				echo $options['colorscheme_name_field'.$i];
 				echo "</option>";
 				echo "\n";
+				($currentvalue == $options['csid'.$i])? $selected_id = $i : '';
 		  }
 		  ?>
 	</select>
@@ -63,7 +68,7 @@ function colorscheme_metabox() {
 			    value: <?php 
 			    $currentvalue = get_post_meta(get_the_ID(), '_infoscreen_transparency', true);
 			    if($currentvalue == null){
-			    	$currentvalue = "80";
+			    	$currentvalue = $options['colorscheme_transparency_field'.$selected_id];
 				}
 				echo $currentvalue;?>,
 			    slide: function( event, ui ) {
@@ -75,6 +80,10 @@ function colorscheme_metabox() {
 	jQuery(document).ready(function($){
 		$('#slider').removeClass('ui-widget-content').addClass('ui-widget-content-slider-custom');
 		});
+	function scheme_change(){
+		jQuery("#slider").slider('value', jQuery("#colorscheme_select_id").find(':selected').data('transparency'));
+		jQuery("#amount").val(jQuery("#colorscheme_select_id").find(':selected').data('transparency'));
+	}
 		  </script>
 <?php
 }
