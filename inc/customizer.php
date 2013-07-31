@@ -386,6 +386,16 @@ function theme_infoscreen_settings_logo() {
 	id="upload_logo_button" type="button" class="button"
 	value="<?php _e( 'Upload Logo', 'infoscreen' ); ?>" 
 	/>
+	<input id="remove_logo_button" type="button" class="button"
+	value="<?php _e( 'Remove Logo', 'infoscreen' ); ?>"
+	onClick="remove_logo()"
+	/>
+	<script>
+	function remove_logo(){
+		jQuery("#preview_placeholder").remove();
+		jQuery("#upload_logo_preview").append("<img id='preview_placeholder' style='max-width: 100%;' src=''/>");
+		jQuery("#logo_url").val('');
+	}</script>
 <?php
 theme_infoscreen_settings_logo_preview();
 }
