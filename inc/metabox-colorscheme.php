@@ -24,35 +24,21 @@ function infoscreen_create_colorscheme_metabox() {
 function colorscheme_metabox() {
 	$options = get_option('infoscreen_theme_options');
 	$currentvalue = get_post_meta(get_the_ID(), '_infoscreen_colorscheme', true);
+	$selected_id = 1;
 	?>
 <div>
-	<select id="colorscheme_select_id" name="_infoscreen_colorscheme" onChange="scheme_change(); this.style.background=this.options[this.selectedIndex].style.background; this.style.color=this.options[this.selectedIndex].style.color;">
-		<?php
-		$selected_id;
-		for ($i = 1; $i <= $options['colorschemes']; $i++){
-				echo "<option";
-				echo ($currentvalue == $options['csid'.$i])? ' selected': '';
-				echo " value='" . $options['csid'.$i] . "' ";
-				echo "style='color: ";
-				echo $options['colorscheme_font_field'.$i];
-				echo ";";
-				echo "background: ";
-				echo $options['colorscheme_bg_field'.$i];
-				echo "'";
-				echo " data-transparency='";
-				echo $options['colorscheme_transparency_field'.$i];
-				echo "'";
-				echo ">";
-				echo $options['colorscheme_name_field'.$i];
-				echo "</option>";
-				echo "\n";
-				($currentvalue == $options['csid'.$i])? $selected_id = $i : '';
-		  }
-		  ?>
-	</select>
+<ul class="layout-controls">
+	<?php for ($i = 1; $i <= $options['colorschemes']; $i++){ ($currentvalue == $options['csid'.$i])? $selected_id = $i : '';  ?>
+	<li class="layout-selector">
+		<input type="radio" name="_infoscreen_colorscheme" id="csid<?php echo $i?>" onclick="scheme_change(<?php echo $options['colorscheme_transparency_field'.$i]; ?>);" value="<?php echo $options['csid'.$i]; ?>" <?php echo ($currentvalue == $options['csid'.$i])? 'checked="checked"':''; ?> />
+		<label for="csid<?php echo $i?>" style='color: <?php echo $options['colorscheme_font_field'.$i]; ?>; background: <?php echo $options['colorscheme_bg_field'.$i]; ?>' data-transparency='<?php echo $options['colorscheme_transparency_field'.$i]; ?>'><?php _e($options['colorscheme_name_field'.$i],'infoscreen') ?></label>
+	</li>
+	<?php } ?>
+</ul>
+
 	<input type="hidden" name="infoscreen_colorscheme_noncename"
 		id="infoscreen_colorscheme_noncename"
-		value="<?php wp_create_nonce( plugin_basename(__FILE__) ); ?>"/>
+		value="<?php wp_create_nonce( plugin_basename(__FILE__) ) ?>" />
 	</div>
 	<label>Transparency</label>
 	<div id="slider" style="width: 200px"></div>
@@ -80,9 +66,9 @@ function colorscheme_metabox() {
 	jQuery(document).ready(function($){
 		$('#slider').removeClass('ui-widget-content').addClass('ui-widget-content-slider-custom');
 		});
-	function scheme_change(){
-		jQuery("#slider").slider('value', jQuery("#colorscheme_select_id").find(':selected').data('transparency'));
-		jQuery("#amount").val(jQuery("#colorscheme_select_id").find(':selected').data('transparency'));
+	function scheme_change(transparency){
+		jQuery("#slider").slider('value', transparency);
+		jQuery("#amount").val(transparency);
 	}
 		  </script>
 <?php
