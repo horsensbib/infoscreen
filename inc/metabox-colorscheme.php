@@ -27,7 +27,7 @@ function colorscheme_metabox() {
 	$selected_id = 1;
 	?>
 <div>
-<ul class="layout-controls">
+<ul class="layout-controls color-controls">
 	<?php for ($i = 1; $i <= $options['colorschemes']; $i++){ ($currentvalue == $options['csid'.$i])? $selected_id = $i : '';  ?>
 	<li class="layout-selector">
 		<input type="radio" name="_infoscreen_colorscheme" id="csid<?php echo $i?>" onclick="scheme_change(<?php echo $options['colorscheme_transparency_field'.$i]; ?>);" value="<?php echo $options['csid'.$i]; ?>" <?php echo ($currentvalue == $options['csid'.$i])? 'checked="checked"':''; ?> />

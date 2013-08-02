@@ -1,6 +1,6 @@
 /*
- * Color Schemes
- * =============
+ * Default Color Schemes
+ * =====================
  */
 #colorfields {
   width: 100%;
@@ -21,7 +21,7 @@
   #colorfields .infoscreen-colorscheme-name input {
     width: 100%; }
   #colorfields .infoscreen-color-picker {
-    width: 25%; }
+    width: 40%; }
   #colorfields .wp-picker-input-wrap {
     width: 150px; }
   #colorfields .wp-picker-input-wrap,
@@ -34,8 +34,8 @@
     background: #f7f7f7; }
 
 /*
- * Color Schemes
- * =============
+ * Layout Controls
+ * ===============
  */
 .layout-controls {
   overflow: hidden; }
