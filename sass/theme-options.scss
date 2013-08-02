@@ -54,7 +54,7 @@
 	li {
 		float:left;
 		width:100px;
-		padding-right: 10px;
+		margin-right: 10px;
 
 		input[type=radio] {
 			opacity: 0;
@@ -98,6 +98,26 @@
 			img {
 				margin: 10px auto;
 			}
+		}
+	}
+}
+.color-controls {
+	li {
+		background-size: cover;
+		-webkit-border-radius: 3px;
+		   -moz-border-radius: 3px;
+		        border-radius: 3px;
+		min-height: 80px;
+
+		input[type=radio] {
+			opacity: 1;
+			margin: 10px auto;
+		}
+
+		label {
+			min-height: 80px;
+			margin-top: 0;
+			text-shadow: none;
 		}
 	}
 }

@@ -28,10 +28,15 @@ function colorscheme_metabox() {
 	?>
 <div>
 <ul class="layout-controls color-controls">
-	<?php for ($i = 1; $i <= $options['colorschemes']; $i++){ ($currentvalue == $options['csid'.$i])? $selected_id = $i : '';  ?>
-	<li class="layout-selector">
-		<input type="radio" name="_infoscreen_colorscheme" id="csid<?php echo $i?>" onclick="scheme_change(<?php echo $options['colorscheme_transparency_field'.$i]; ?>);" value="<?php echo $options['csid'.$i]; ?>" <?php echo ($currentvalue == $options['csid'.$i])? 'checked="checked"':''; ?> />
-		<label for="csid<?php echo $i?>" style='color: <?php echo $options['colorscheme_font_field'.$i]; ?>; background: <?php echo $options['colorscheme_bg_field'.$i]; ?>' data-transparency='<?php echo $options['colorscheme_transparency_field'.$i]; ?>'><?php _e($options['colorscheme_name_field'.$i],'infoscreen') ?></label>
+	<?php for ($i = 1; $i <= $options['colorschemes']; $i++){ ($currentvalue == $options['csid'.$i])? $selected_id = $i : '';  
+		$bg = hex2rgb($options['colorscheme_bg_field'.$i]);
+		$transparency_value = $options['colorscheme_transparency_field'.$i]/100;
+	?>
+	<li class="layout-selector" style="background-image:url('<?php infoscreen_img_src('slide-img'); ?>');">
+		<label for="csid<?php echo $i?>" class="color-selector" style="color: <?php echo $options['colorscheme_font_field'.$i]; ?>; background: rgba(<?php echo $bg; ?>,<?php echo $transparency_value; ?>);" data-transparency="<?php echo $options['colorscheme_transparency_field'.$i]; ?>">
+				<input type="radio" name="_infoscreen_colorscheme" id="csid<?php echo $i?>" onclick="scheme_change(<?php echo $options['colorscheme_transparency_field'.$i]; echo ',' . 'csid'.$i; echo ',' . $bg; ?>);" value="<?php echo $options['csid'.$i]; ?>" <?php echo ($currentvalue == $options['csid'.$i])? 'checked="checked"':''; ?> /><br />
+				<?php _e($options['colorscheme_name_field'.$i],'infoscreen') ?>
+		</label>
 	</li>
 	<?php } ?>
 </ul>
@@ -66,9 +71,11 @@ function colorscheme_metabox() {
 	jQuery(document).ready(function($){
 		$('#slider').removeClass('ui-widget-content').addClass('ui-widget-content-slider-custom');
 		});
-	function scheme_change(transparency){
+	function scheme_change(transparency,csid,color){
 		jQuery("#slider").slider('value', transparency);
 		jQuery("#amount").val(transparency);
+		jQuery(csid).parent().css('background',color);
+		console.log(color);
 	}
 		  </script>
 <?php
