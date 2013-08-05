@@ -21,11 +21,11 @@ function infoscreen_create_time_metabox() {
 function time_metabox() {
 	$currentvalue = get_post_meta(get_the_ID(), '_infoscreen_time', true);
 	if($currentvalue == null){
-		$currentvalue = 5;
+		$currentvalue = 8;
 	}
 	echo "<label>Slide is shown for</label>";
 	echo "<input name='_infoscreen_time' style='width: 4em' type='number' value='";
-	echo ($currentvalue == '5')? '5': $currentvalue;
+	echo ($currentvalue == '8')? '8': $currentvalue;
 	echo"'/>";
 	echo "<label>seconds</label>";
 	?>

@@ -11,6 +11,12 @@ textarea {
 	font-family: sans-serif;
 	font-size: $default-font-size;
 	line-height: 1.5;
+	@media all and (max-width:600px) {
+		font-size: $default-font-size / 2;
+	}
+	@media all and (min-width:601px) and (max-width:1024px) {
+		font-size: $default-font-size / 1.5;
+	}
 }
 
 /* Headings */
@@ -20,19 +26,49 @@ h1,h2,h3,h4,h5,h6 {
 h1 {
 	font-size: $h1-font-size;
 	line-height: 1.25em;
-	margin: 0 0 .25em; 
+	margin: 0 0 .25em;
+	@media all and (max-width:600px) {
+		font-size: $h1-font-size / 2;
+	}
+	@media all and (min-width:601px) and (max-width:1024px) {
+		font-size: $h1-font-size / 1.5;
+	}
 }
 h2 {
 	font-size: $h2-font-size;
+	@media all and (max-width:600px) {
+		font-size: $h2-font-size / 2;
+	}
+	@media all and (min-width:601px) and (max-width:1024px) {
+		font-size: $h2-font-size / 1.5;
+	}
 }
 h3 {
 	font-size: $h3-font-size;
+	@media all and (max-width:600px) {
+		font-size: $h3-font-size / 2;
+	}
+	@media all and (min-width:601px) and (max-width:1024px) {
+		font-size: $h3-font-size / 1.5;
+	}
 }
 h4 {
 	font-size: $h4-font-size;
+	@media all and (max-width:600px) {
+		font-size: $h4-font-size / 2;
+	}
+	@media all and (min-width:601px) and (max-width:1024px) {
+		font-size: $h4-font-size / 1.5;
+	}
 }
 h5 {
 	font-size: $h5-font-size;
+	@media all and (max-width:600px) {
+		font-size: $h5-font-size / 2;
+	}
+	@media all and (min-width:601px) and (max-width:1024px) {
+		font-size: $h5-font-size / 1.5;
+	}
 }
 
 hr {
