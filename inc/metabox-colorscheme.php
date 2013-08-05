@@ -34,7 +34,9 @@ function colorscheme_metabox() {
 	?>
 	<li class="layout-selector" style="background-image:url('<?php infoscreen_img_src('slide-img'); ?>');">
 		<label for="csid<?php echo $i?>" class="color-selector" style="color: <?php echo $options['colorscheme_font_field'.$i]; ?>; background: rgba(<?php echo $bg; ?>,<?php echo $transparency_value; ?>);" data-transparency="<?php echo $options['colorscheme_transparency_field'.$i]; ?>">
-				<input type="radio" name="_infoscreen_colorscheme" id="csid<?php echo $i?>" onclick="scheme_change(<?php echo $options['colorscheme_transparency_field'.$i]; echo ',' . 'csid'.$i; echo ',' . $bg; ?>);" value="<?php echo $options['csid'.$i]; ?>" <?php echo ($currentvalue == $options['csid'.$i])? 'checked="checked"':''; ?> /><br />
+				<input type="radio" name="_infoscreen_colorscheme" id="csid<?php echo $i?>" onclick="scheme_change(<?php 
+					echo $options['colorscheme_transparency_field'.$i];
+					?>);" value="<?php echo $options['csid'.$i]; ?>" <?php echo ($currentvalue == $options['csid'.$i])? 'checked="checked"':''; ?> /><br />
 				<?php _e($options['colorscheme_name_field'.$i],'infoscreen') ?>
 		</label>
 	</li>
@@ -64,6 +66,7 @@ function colorscheme_metabox() {
 				echo $currentvalue;?>,
 			    slide: function( event, ui ) {
 			      $( "#amount" ).val( ui.value );
+						slide_change(ui.value);
 			    }
 			  });
 			  $( "#amount" ).val( $( "#slider" ).slider( "value" ) );
@@ -71,11 +74,27 @@ function colorscheme_metabox() {
 	jQuery(document).ready(function($){
 		$('#slider').removeClass('ui-widget-content').addClass('ui-widget-content-slider-custom');
 		});
-	function scheme_change(transparency,csid,color){
+	function scheme_change(transparency){
 		jQuery("#slider").slider('value', transparency);
 		jQuery("#amount").val(transparency);
-		jQuery(csid).parent().css('background',color);
-		console.log(color);
+		var color = jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color');
+		var lastcomma = color.lastIndexOf(',');
+		if (transparency != 100) {
+			var newColor = color.slice(0,lastcomma) + "," + transparency / 100 + ")";
+		} else {
+			var newColor = color;
+		}
+		jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color',newColor)
+	}
+	function slide_change(transparency) {
+					var color = jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color');
+					var lastcomma = color.lastIndexOf(',');
+					if (transparency != 100) {
+						var newColor = color.slice(0,lastcomma) + "," + transparency / 100 + ")";
+					} else {
+						var newColor = color;
+					}
+					jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color',newColor);
 	}
 		  </script>
 <?php
