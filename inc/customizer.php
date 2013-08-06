@@ -51,6 +51,8 @@ add_action( 'admin_enqueue_scripts', 'theme_options_scripts' );
 */
 function theme_options_styles() {
 	wp_enqueue_style('wp-color-picker');
+	
+	wp_enqueue_style('custom-settings', get_template_directory_uri() . '/css/custom-settings-css.php');
 	wp_enqueue_style('jquery-ui-slider', get_template_directory_uri() . '/css/metabox-slider.css');
 	wp_enqueue_style('qtipstyle', get_template_directory_uri() . '/css/jquery.qtip.min.css');
 	wp_enqueue_style('fontSelector', get_template_directory_uri() . '/css/jquery.ui.fontSelector.css');

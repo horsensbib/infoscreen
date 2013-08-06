@@ -69,6 +69,8 @@ function infoscreen_setup() {
 	 * ================ */
 	require( get_template_directory() . '/inc/custom_functions.php' );
 	
+	require( get_template_directory() . '/inc/custom-settings-css.php ');
+	
 	/**
 	 * Make theme available for translation
 	 * Translations can be filed in the /languages/ directory

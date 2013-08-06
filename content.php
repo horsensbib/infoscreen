@@ -48,13 +48,6 @@ if ($options['logo'] != "") {
 } 
 ?></h2>
 	</div>
-	<script> jQuery(document).ready( function($) {
-		var title_font = "<?php echo  $options['title_font-family']; ?>";
-		var body_font = "<?php echo $options['body_font-family']; ?>";
-		$('.entry-title').css("font-family", title_font.replace("google ", ""));
-		$('.entry-content').css("font-family", body_font.replace("google ", ""));
-	});
-	</script>
 	<!-- .slide-content -->
 	<?php //edit_post_link( __( 'Edit', 'infoscreen' ), '<span class="edit-link">', '</span>' ); ?>
 </li>
