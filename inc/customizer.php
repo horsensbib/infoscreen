@@ -55,6 +55,7 @@ function theme_options_styles() {
 	wp_enqueue_style('qtipstyle', get_template_directory_uri() . '/css/jquery.qtip.min.css');
 	wp_enqueue_style('fontSelector', get_template_directory_uri() . '/css/jquery.ui.fontSelector.css');
 	wp_enqueue_style('theme-options-styles', get_template_directory_uri() . '/css/theme-options.css');
+	wp_enqueue_style('google_web_fonts', get_template_directory_uri() . '/css/google_fonts.css');
 }
 add_action( 'admin_enqueue_scripts', 'theme_options_styles' );
 
@@ -103,8 +104,8 @@ function add_infoscreen_meta_boxes(){
 */
 function infoscreen_get_default_theme_options() {
 	$options = array(
-			'colorschemes' => '1',
-	);
+			'colorschemes' => '1'
+				);
 	return $options;
 }
 
@@ -417,122 +418,140 @@ function theme_infoscreen_settings_logo_preview() {
  * Fonts metabox
 */
 function theme_infoscreen_settings_fonts() {
-	$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
+	$options = get_option('infoscreen_theme_options');
 	?>
-	<table>
-		<tr>
-			<th><?php _e( 'Title', 'infoscreen' ); ?></th>
-			<th><?php _e( 'Body', 'infoscreen' ); ?></th>
-		</tr>
-		<tr>
-			<td>
-				<select id="fonts_title" name="infoscreen_theme_options[fonts_title]">
-			    	<option value="Chelsea Market"<?php if($options['fonts_title'] == "Chelsea Market"){ echo 'selected="selected"'; }?>>Chelsea Market</option>
-			    	<option value="Droid Serif"<?php if($options['fonts_title'] == "Droid Serif"){ echo 'selected="selected"'; }?>>Droid Serif</option>
-			    	<option value="Ruluko"<?php if($options['fonts_title'] == "Ruluko"){ echo 'selected="selected"'; }?>>Ruluko</option>
-			    	<option value="Ruda"<?php if($options['fonts_title'] == "Ruda"){ echo 'selected="selected"'; }?>>Ruda</option>
-			    	<option value="Magra"<?php if($options['fonts_title'] == "Magra"){ echo 'selected="selected"'; }?>>Magra</option>
-			    	<option value="Esteban"<?php if($options['fonts_title'] == "Esteban"){ echo 'selected="selected"'; }?>>Esteban</option>
-			    	<option value="Lora"<?php if($options['fonts_title'] == "Lora"){ echo 'selected="selected"'; }?>>Lora</option>
-			    	<option value="Jura"<?php if($options['fonts_title'] == "Jura"){ echo 'selected="selected"'; }?>>Jura</option>
-			  	</select>
-			  	  <p id="style_title">
-			  	  	  <input id="font-style_title" type="hidden" name="infoscreen_theme_options[font-style_title]" value="<?php echo $options['font-style_title'] ?>"/>
-			  	  	  <input id="font-weight_title" type="hidden" name="infoscreen_theme_options[font-weight_title]" value="<?php echo $options['font-weight_title'] ?>"/>
-				      <a id="bold_title" href="#" title="bold">Bold</a> |
-				      <a id="italic_title" href="#" title="italic">Italic</a>
-   				 </p>
-  			</td>
-  			<td>
-			  	<select id="fonts_body" name="infoscreen_theme_options[fonts_body]">
-			    	<option value="Chelsea Market"<?php if($options['fonts_body'] == "Chelsea Market"){ echo 'selected="selected"'; }?>>Chelsea Market</option>
-			    	<option value="Droid Serif"<?php if($options['fonts_body'] == "Droid Serif"){ echo 'selected="selected"'; }?>>Droid Serif</option>
-			    	<option value="Ruluko"<?php if($options['fonts_body'] == "Ruluko"){ echo 'selected="selected"'; }?>>Ruluko</option>
-			    	<option value="Ruda"<?php if($options['fonts_body'] == "Ruda"){ echo 'selected="selected"'; }?>>Ruda</option>
-			    	<option value="Magra"<?php if($options['fonts_body'] == "Magra"){ echo 'selected="selected"'; }?>>Magra</option>
-			    	<option value="Esteban"<?php if($options['fonts_body'] == "Esteban"){ echo 'selected="selected"'; }?>>Esteban</option>
-			    	<option value="Lora"<?php if($options['fonts_body'] == "Lora"){ echo 'selected="selected"'; }?>>Lora</option>
-			    	<option value="Jura"<?php if($options['fonts_body'] == "Jura"){ echo 'selected="selected"'; }?>>Jura</option>
-			  	</select>
-			  	  <p id="style_body">
-			  	  	  <input id="font-style_body" type="hidden" name="infoscreen_theme_options[font-style_body]" value="<?php echo $options['font-style_body'] ?>"/>
-			  	  	  <input id="font-weight_body" type="hidden" name="infoscreen_theme_options[font-weight_body]" value="<?php echo $options['font-weight_body'] ?>"/>
-				      <a id="bold_body" href="#" title="bold">Bold</a> |
-				      <a id="italic_body" href="#" title="italic">Italic</a>
-   				 </p>
-  			</td>
-  		</tr>
-  </table>
- <script>
- jQuery(document).ready( function($) {
-	  $('select#fonts_title').fontSelector({
-		    options: {
-		      inSpeed: 250,
-		      outSpeed: "slow",
-		    },
-		    fontChange: function(e, ui) {
-		      //alert("The font is set to "+ui.font+" (was "+ui.oldFont+" before)");
-		    	$('ul.fonts').hide();
-		    },
-		    styleChange: function(e, ui) {
-		    }
-	});
-	  $('select#fonts_body').fontSelector({
-		    options: {
-		      inSpeed: 250,
-		      outSpeed: "slow",
-		    },
-		    fontChange: function(e, ui) {
-		      //alert("The font is set to "+ui.font+" (was "+ui.oldFont+" before)");
-		    	$('ul.fonts').hide();
-		    },
-		    styleChange: function(e, ui) {
-		    }
-	});
-	  $('#style_title a').click(function(){
-	      var style = $(this).attr('title'); // This will be bold or italic
-	      var current = $('select#fonts_title').fontSelector('option', style);
-	      var setTo = true;
-	      if(current == true) setTo = false;
-	      $('select#fonts_title').fontSelector('option', style, setTo);
-	      if(current == false && style == "italic"){
-	    	$('#font-style_title').val(style);
-		  }
-	      else if(current == true && style == "italic"){
-			$('#font-style_title').val("");
-		  }
-	      if(current == false && style == "bold"){
-		    	$('#font-weight_title').val(style);
+	<script>
+		var default_fonts = new Array('Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Georgia', 'Impact', 'Times New Roman', 'Trebunchet MS', 'Verdana');
+		var google_fonts = new Array();
+		push_font_to_array('Abril Fatface', false, false, false);
+		push_font_to_array('Arvo', '700', true, '700');
+		push_font_to_array('Cardo', '700', true, false);
+		push_font_to_array('Droid Sans', '700', false, false);
+		push_font_to_array('Gentium Book Basic', '700', false, false);
+		push_font_to_array('Gravitas One', false, false, false);
+		push_font_to_array('Josefin Slab', '700', true, '700');
+		push_font_to_array('Lato', '900', true, '900');
+		push_font_to_array('Lobster', false, false, false);
+		push_font_to_array('Magra', '700', false, false);
+		push_font_to_array('Merriweather', '900', true, '900');
+		push_font_to_array('Old Standard TT', '700', true, false);
+		push_font_to_array('Open Sans', '800', true, '800');
+		push_font_to_array('Playfair Display', '900', true, '900');
+		push_font_to_array('PT Sans', '700', true, '700');
+		push_font_to_array('PT Sans Narrow', '700', false, false);
+		push_font_to_array('PT Serif', '700', true, '700');
+		push_font_to_array('Source Sans Pro', '900', true, '900');
+		push_font_to_array('Ubuntu', '700', true, '700');
+		push_font_to_array('Vollkorn', '700', true, '700');
+
+		function push_font_to_array(font, weight, italic, bolditalic){
+			google_fonts[font] = {};
+			google_fonts[font].weight = weight;
+			google_fonts[font].italic = italic;
+			google_fonts[font].bolditalic = bolditalic;	
+		}
+		function get_weight_by_name(font){
+			return google_fonts[font].weight;
+		}
+		function get_italic_by_name(font){
+			return google_fonts[font].italic;
+		}
+		function get_bolditalic_by_name(font){
+			return google_fotns[font].bolditalic;
+		}
+	</script>
+	<?php 
+	$current_title_weight = $options['title_font-weight'];
+	$current_title_style = $options['title_font-style'];
+	?>	
+		<label>Title</label>
+		<ul class="layout-controls fonts title"></ul>
+		<script>
+			for (var i = 0; i < default_fonts.length; i++){
+				var $hook_element = jQuery(".layout-controls.fonts.title");
+				var $font = default_fonts[i];
+				var $font_no_spaces = $font.replace(/ /g, '');
+				$hook_element.append("<li class='layout-selector fonts title'><input type='radio' name='infoscreen_theme_options[title_font-family]' data-bold='bold' data-italic='true' data-bolditalic='bold' id='title_fonts_"+ $font_no_spaces + "' value='" + $font + "'/><label style='font-family: "+ $font + "' for='title_fonts_" + $font_no_spaces + "'>" + $font + "</label></li>");
 			}
-		    else if(current == true && style == "bold"){
-				$('#font-weight_title').val("");
-		  }
-	});
-	  $('#style_body a').click(function(){
-	      var style = $(this).attr('title'); // This will be bold or italic
-	      var current = $('select#fonts_body').fontSelector('option', style);
-	      var setTo = true;
-	      if(current == true) setTo = false; 
-	      $('select#fonts_body').fontSelector('option', style, setTo);
-	      if(current == false && style == "italic"){
-		    	$('#font-style_body').val(style);
-			  }
-		      else if(current == true && style == "italic"){
-				$('#font-style_body').val("");
-			  }
-		      if(current == false && style == "bold"){
-			    	$('#font-weight_body').val(style);
+			for (var key in google_fonts){
+				var $hook_element = jQuery(".layout-controls.fonts.title");
+				var $font = key;
+				var $font_no_spaces = key.replace(/ /g, '');
+				$hook_element.append("<li class='layout-selector fonts title'><input type='radio' name='infoscreen_theme_options[title_font-family]' data-bold='"+ google_fonts[$font].weight +"' data-italic='"+ google_fonts[$font].italic +"' data-bolditalic='"+ google_fonts[$font].bolditalic +"' id='title_fonts_"+ $font_no_spaces +"' value='google "+ $font +"'/><label style='font-family: "+ $font +"' for='title_fonts_" + $font_no_spaces + "'>"+ $font +"</label></li>");
+			}
+			</script>
+			<label>Body</label>
+			<ul class="layout-controls fonts body"></ul>
+			<script>
+			for (var i = 0; i < default_fonts.length; i++){
+				var $hook_element = jQuery(".layout-controls.fonts.body");
+				var $font = default_fonts[i];
+				var $font_no_spaces = $font.replace(/ /g, '');
+				$hook_element.append("<li class='layout-selector fonts body'><input type='radio' name='infoscreen_theme_options[body_font-family]' data-bold='bold' data-italic='true' data-bolditalic='bold' id='body_fonts_"+ $font_no_spaces + "' value='" + $font + "'/><label style='font-family: "+ $font + "' for='body_fonts_" + $font_no_spaces + "'>" + $font + "</label></li>");
+			}
+			for (var key in google_fonts){
+				var $hook_element = jQuery(".layout-controls.fonts.body");
+				var $font = key;
+				var $font_no_spaces = key.replace(/ /g, '');
+				$hook_element.append("<li class='layout-selector fonts body'><input type='radio' name='infoscreen_theme_options[body_font-family]' data-bold='"+ google_fonts[$font].weight +"' data-italic='"+ google_fonts[$font].italic +"' data-bolditalic='"+ google_fonts[$font].bolditalic +"' id='body_fonts_"+ $font_no_spaces +"' value='google "+ $font +"'/><label style='font-family: "+ $font +"' for='body_fonts_" + $font_no_spaces + "'>"+ $font +"</label></li>");
+			}
+		</script>
+		<script>
+		function font_weight_change(){
+			if(!jQuery('#title_font-weight').attr('checked')){
+				jQuery('.fonts').each(function(){
+					jQuery(this).children().eq(1).css('font-weight', '');
+					if(jQuery('#title_font-style').attr('checked')){
+						font_style_change();
+					}
+				});
+			} else {
+				jQuery('.fonts').each(function(){
+					var dataBoldWeight = jQuery(this).children().first().attr('data-bold');
+					var dataBoldItalic = jQuery(this).children().first().attr('data-bolditalic');
+					if(dataBoldWeight != "false"){
+						jQuery(this).children().eq(1).css('font-weight', dataBoldWeight);
+					}
+					if(dataBoldItalic == "false"){
+						jQuery(this).children().eq(1).css('font-style', '');
+					}
+				});
+			}		
+		}
+		function font_style_change(i){
+			if(!jQuery('#title_font-style').attr('checked')){
+				jQuery('.fonts').each(function(){
+					jQuery(this).children().eq(1).css('font-style', ''); 
+					if(jQuery('#title_font-weight').attr('checked')){
+						font_weight_change();
+					}
+				});
+			} else {
+				jQuery('.fonts').each(function(){
+					var dataItalic = jQuery(this).children().first().attr('data-italic');
+					var dataBoldItalic = jQuery(this).children().first().attr('data-bolditalic');
+					if(dataItalic == "true"){
+						jQuery(this).children().eq(1).css('font-style', 'italic');
+					}
+					if(dataBoldItalic == "false"){
+						jQuery(this).children().eq(1).css('font-weight','');
+					}
+				});
+			}
+		}
+		jQuery(document).ready(function($){ 
+			jQuery('.fonts.title').each(function(){
+			 	if(jQuery(this).find('input').val() == "<?php echo $options['title_font-family']; ?>"){
+			 		jQuery(this).find('input').attr('checked', true);
 				}
-			    else if(current == true && style == "bold"){
-					$('#font-weight_body').val("");
-			  }
-	});
-	  $('select#fonts_title').fontSelector('option', '<?php echo $options['font-style_title'] ?>', true);
-	  $('select#fonts_title').fontSelector('option', '<?php echo $options['font-weight_title'] ?>', true);
-	  $('select#fonts_body').fontSelector('option', '<?php echo $options['font-style_body'] ?>', true);
-	  $('select#fonts_body').fontSelector('option', '<?php echo $options['font-weight_body'] ?>', true);
-});
-</script>
+			});
+			jQuery('.fonts.body').each(function(){
+			 	if(jQuery(this).find('input').val() == "<?php echo $options['body_font-family']; ?>"){
+			 		jQuery(this).find('input').attr('checked', true);
+				}
+			});
+		});
+		</script>
 <?php
 }
 

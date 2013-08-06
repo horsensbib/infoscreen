@@ -48,13 +48,11 @@ if ($options['logo'] != "") {
 } 
 ?></h2>
 	</div>
-	<script> jQuery(document).ready( function($) { 
-		$('.entry-title').css("font-family", "<?php echo $options['fonts_title']; ?>");
-		$('.entry-title').css("font-weight", "<?php echo $options['font-weight_title']; ?>");
-		$('.entry-title').css("font-style", "<?php echo $options['font-style_title']; ?>");
-		$('.entry-content').css("font-family", "<?php echo $options['fonts_body']; ?>");
-		$('.entry-content').css("font-weight", "<?php echo $options['font-weight_body']; ?>");
-		$('.entry-content').css("font-style", "<?php echo $options['font-style_body']; ?>");
+	<script> jQuery(document).ready( function($) {
+		var title_font = "<?php echo  $options['title_font-family']; ?>";
+		var body_font = "<?php echo $options['body_font-family']; ?>";
+		$('.entry-title').css("font-family", title_font.replace("google ", ""));
+		$('.entry-content').css("font-family", body_font.replace("google ", ""));
 	});
 	</script>
 	<!-- .slide-content -->
