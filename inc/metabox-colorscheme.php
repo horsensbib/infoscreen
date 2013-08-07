@@ -25,6 +25,18 @@ function colorscheme_metabox() {
 	$options = get_option('infoscreen_theme_options');
 	$currentvalue = get_post_meta(get_the_ID(), '_infoscreen_colorscheme', true);
 	$selected_id = 1;
+	$colorscheme_exsists = false;
+	for ($i = 1; $i <= $options['colorschemes']; $i++){
+		if($currentvalue == $options['csid'.$i]){
+			$colorscheme_exsists = true;
+		}
+		else if($currentvalue == null){
+			$currentvalue = $options['csid1'];
+		} 
+	}
+	if(!$colorscheme_exsists){
+		$currentvalue = $options['csid1'];
+	}
 	?>
 <div>
 <ul class="layout-controls color-controls">
@@ -60,6 +72,9 @@ function colorscheme_metabox() {
 	    max: 100,
 	    value: <?php 
 	    $currentvalue = get_post_meta(get_the_ID(), '_infoscreen_transparency', true);
+	    if(!$colorscheme_exsists){
+			$currentvalue = $options['colorscheme_transparency_field1'];
+		}
 	    if($currentvalue == null){
 	    	$currentvalue = $options['colorscheme_transparency_field'.$selected_id];
 		}
