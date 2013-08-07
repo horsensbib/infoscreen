@@ -53,50 +53,65 @@ function colorscheme_metabox() {
 	<label for="amount">%</label>
   <input name="_infoscreen_transparency" type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold; width: 30px" />
 	</div>
-	<script>jQuery(document).ready(function($){
-		  $( "#slider" ).slider({
-			    range: "min",
-			    min: 0,
-			    max: 100,
-			    value: <?php 
-			    $currentvalue = get_post_meta(get_the_ID(), '_infoscreen_transparency', true);
-			    if($currentvalue == null){
-			    	$currentvalue = $options['colorscheme_transparency_field'.$selected_id];
-				}
-				echo $currentvalue;?>,
-			    slide: function( event, ui ) {
-			      $( "#amount" ).val( ui.value );
-						slide_change(ui.value);
-			    }
-			  });
-			  $( "#amount" ).val( $( "#slider" ).slider( "value" ) );
-			});
-	jQuery(document).ready(function($){
-		$('#slider').removeClass('ui-widget-content').addClass('ui-widget-content-slider-custom');
-		});
-	function scheme_change(transparency){
-		jQuery("#slider").slider('value', transparency);
-		jQuery("#amount").val(transparency);
-		var color = jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color');
-		var lastcomma = color.lastIndexOf(',');
-		if (transparency != 100) {
-			var newColor = color.slice(0,lastcomma) + "," + transparency / 100 + ")";
-		} else {
-			var newColor = color;
+<script>jQuery(document).ready(function($){
+  $( "#slider" ).slider({
+	    range: "min",
+	    min: 0,
+	    max: 100,
+	    value: <?php 
+	    $currentvalue = get_post_meta(get_the_ID(), '_infoscreen_transparency', true);
+	    if($currentvalue == null){
+	    	$currentvalue = $options['colorscheme_transparency_field'.$selected_id];
 		}
-		jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color',newColor)
+		echo $currentvalue;?>,
+		    slide: function( event, ui ) {
+		      $( "#amount" ).val( ui.value );
+					slide_change(ui.value);
+		    }
+		  });
+		  $( "#amount" ).val( $( "#slider" ).slider( "value" ) );
+		});
+jQuery(document).ready(function($){
+	$('#slider').removeClass('ui-widget-content').addClass('ui-widget-content-slider-custom');
+	});
+function scheme_change(transparency){
+	jQuery("#slider").slider('value', transparency);
+	jQuery("#amount").val(transparency);
+	var color = jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color');
+	var lastcomma = color.lastIndexOf(',');
+	if (transparency != 100) {
+		var newColor = color.slice(0,lastcomma) + "," + transparency / 100 + ")";
+	} else {
+		var newColor = color;
 	}
-	function slide_change(transparency) {
-					var color = jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color');
-					var lastcomma = color.lastIndexOf(',');
-					if (transparency != 100) {
-						var newColor = color.slice(0,lastcomma) + "," + transparency / 100 + ")";
-					} else {
-						var newColor = color;
-					}
-					jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color',newColor);
-	}
-		  </script>
+	jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color',newColor)
+}
+function slide_change(transparency) {
+				var color = jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color');
+				var lastcomma = color.lastIndexOf(',');
+				if (transparency != 100) {
+					var newColor = color.slice(0,lastcomma) + "," + transparency / 100 + ")";
+				} else {
+					var newColor = color;
+				}
+				jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color',newColor);
+}
+jQuery("#postimagediv").bind("DOMNodeInserted",function(){
+    jQuery(".layout-selector").each(function() {
+        var img_src = jQuery("#set-post-thumbnail").children().first().attr('src');
+        if(img_src){
+            if(jQuery(this).children().attr('for')){
+				jQuery(".color-selector").parent().css("background-image", "url("+ img_src +")");	
+            }	
+        } 
+        else {
+        	jQuery(".color-selector").parent().css("background-image", "url('<?php infoscreen_img_src('slide-img'); ?>')");	
+    	}
+	});
+});
+
+</script>
+
 <?php
 }
 
