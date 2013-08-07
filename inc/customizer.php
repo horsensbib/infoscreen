@@ -52,7 +52,6 @@ add_action( 'admin_enqueue_scripts', 'theme_options_scripts' );
 function theme_options_styles() {
 	wp_enqueue_style('wp-color-picker');
 	
-	wp_enqueue_style('custom-settings', get_template_directory_uri() . '/css/custom-settings-css.php');
 	wp_enqueue_style('jquery-ui-slider', get_template_directory_uri() . '/css/metabox-slider.css');
 	wp_enqueue_style('qtipstyle', get_template_directory_uri() . '/css/jquery.qtip.min.css');
 	wp_enqueue_style('fontSelector', get_template_directory_uri() . '/css/jquery.ui.fontSelector.css');
@@ -568,6 +567,7 @@ function theme_infoscreen_settings_animations() {
 		<tr>
 			<th class="infoscreen-animation-category"><?php _e( 'Category', 'infoscreen' ); ?></th>
 			<th class="infoscreen-animation-radio"><?php _e( 'Animation', 'infoscreen' ); ?></th>
+			<th class="infoscreen-animation-number"><?php _e( 'Time', 'infoscreen' ); ?></th>
 		</tr>
 	<?php for ($i = 0; $i < count($cat_array); $i++){ ?>
 		<tr>
@@ -575,6 +575,9 @@ function theme_infoscreen_settings_animations() {
 			<td>
 				<input type="radio" name="infoscreen_theme_options[animation_<?php echo $cat_array[$i]->cat_ID; ?>]" value="fade" <?php echo ($cat_options['animation_' . $cat_array[$i]->cat_ID] == 'fade') ? 'checked':($cat_options['animation_' . $cat_array[$i]->cat_ID] == '') ? 'checked' : ''; ?>>Fade<br>
 				<input type="radio" name="infoscreen_theme_options[animation_<?php echo $cat_array[$i]->cat_ID; ?>]" value="slide" <?php echo ($cat_options['animation_' . $cat_array[$i]->cat_ID] == 'slide') ? 'checked':''; ?>>Slide<br>
+			</td>
+			<td>
+				<input type="number" style='width: 4em' name="infoscreen_theme_options[time_<?php echo $cat_array[$i]->cat_ID; ?>]" value="<?php echo ($cat_options['time_' . $cat_array[$i]->cat_ID] == "") ? '10' : $cat_options['time_'.$cat_array[$i]->cat_ID]; ?>" />
 			</td>
 		</tr>
 	<?php } ?>

@@ -20,13 +20,15 @@ function infoscreen_create_time_metabox() {
 }
 function time_metabox() {
 	$currentvalue = get_post_meta(get_the_ID(), '_infoscreen_time', true);
+	$options = get_option('infoscreen_theme_options');
+	$cat = get_the_category(get_the_ID());
 	if($currentvalue == null){
-		$currentvalue = 8;
+		$currentvalue = $options['time_' . $cat[0]->cat_ID];
 	}
 	echo "<label>Slide is shown for</label>";
 	echo "<input name='_infoscreen_time' style='width: 4em' type='number' value='";
-	echo ($currentvalue == '8')? '8': $currentvalue;
-	echo"'/>";
+	echo $currentvalue;
+	echo "'/>";
 	echo "<label>seconds</label>";
 	?>
 <input
@@ -44,7 +46,12 @@ function infoscreen_time_save_postdata( $post_id ) {
 	// because save_post can be triggered at other times
 	if ( !current_user_can( 'edit_post', $post_id ))
 		return $post_id;
-
+	if($data['_infoscreen_time'] == $options['time_' . $cat[0]->cat_ID]){
+		$data['_infoscreen_time'] = "";
+	}
+	else if($data['_infoscreen_time'] == $options['time_1']){
+		$data['_infoscreen_time'] = "";
+	}	
 	// OK, we're authenticated: we need to find and save the data
 	$data = $_POST['_infoscreen_time'];
 	if(get_post_meta($post_id, '_infoscreen_time') == '')
