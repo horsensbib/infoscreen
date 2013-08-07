@@ -12,6 +12,10 @@
 			$font = hex2rgb($options['colorscheme_font_field'.$i]);
 			$bg = hex2rgb($options['colorscheme_bg_field'.$i]);
 		}
+		else {
+			$font = hex2rgb($options['colorscheme_font_field1']);
+			$bg = hex2rgb($options['colorscheme_bg_field1']);
+		}
 	}
 		echo get_post_meta(get_the_ID(), '_infoscreen_layout', true). '"';
 		$transparency_value = get_post_meta(get_the_ID(), '_infoscreen_transparency', true)/100;
