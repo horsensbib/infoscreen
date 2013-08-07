@@ -24,10 +24,11 @@
 		position: relative;
 	}
 	.infoscreen-colorscheme-name {
+		width:25%;
 		input {width:100%;}
 	}
 	.infoscreen-color-picker {
-		width:40%;
+		width:25%;
 	}
 	.wp-picker-input-wrap {
 		width: 150px;
@@ -42,6 +43,10 @@
 	.wp-picker-holder {
 		background: #f7f7f7;
 	}
+}
+.add-scheme {
+	padding-right: 1em;
+	text-align: right;
 }
 
 /*

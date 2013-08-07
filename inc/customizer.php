@@ -192,7 +192,7 @@ $options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_o
 			if($col == 4){
 				//output remove button
 				echo "<td>";
-				echo "<input type='button' class='button' value='remove' onclick='deleteRow(\"infoscreen_theme_options[colorscheme_name". $row . "]\")' />";
+				echo "<input type='button' class='button' value='Delete' onclick='deleteRow(\"infoscreen_theme_options[colorscheme_name". $row . "]\")' />";
 				echo "</td>";
 			}
 		}
@@ -367,11 +367,13 @@ function isUnique() {
 }
 </script>
 
-<input type="button"
+<p class="add-scheme">
+	<input type="button"
 	   class="button"
-	   value="Append Row"
+	   value="Add New Color Scheme"
 	   id="appendBtn"
 	   onClick="appendRow()" />
+</p>
 <?php }
 
 /**

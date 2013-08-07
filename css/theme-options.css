@@ -18,10 +18,12 @@
   #colorfields td {
     padding: .5em 1em;
     position: relative; }
-  #colorfields .infoscreen-colorscheme-name input {
-    width: 100%; }
+  #colorfields .infoscreen-colorscheme-name {
+    width: 25%; }
+    #colorfields .infoscreen-colorscheme-name input {
+      width: 100%; }
   #colorfields .infoscreen-color-picker {
-    width: 40%; }
+    width: 25%; }
   #colorfields .wp-picker-input-wrap {
     width: 150px; }
   #colorfields .wp-picker-input-wrap,
@@ -32,6 +34,10 @@
   #colorfields .wp-picker-input-wrap,
   #colorfields .wp-picker-holder {
     background: #f7f7f7; }
+
+.add-scheme {
+  padding-right: 1em;
+  text-align: right; }
 
 /*
  * Layout Controls
