@@ -10,7 +10,7 @@ function infoscreen_create_preview_metabox() {
 	if( function_exists( 'add_meta_box' )) {
 		add_meta_box(
 		'infoscreen-page-preview',
-		__( 'preview', 'infoscreen_page_preview' ),
+		__( 'Preview', 'infoscreen_page_preview' ),
 		'preview_metabox',
 		'post',
 		'normal',
@@ -18,9 +18,19 @@ function infoscreen_create_preview_metabox() {
 				);
 	}
 }
+function wp_exist_post($id) {
+	global $wpdb;
+	return $wpdb->get_row("SELECT * FROM wp_posts WHERE id = '" . $id . "'", 'ARRAY_A');
+}
 function preview_metabox() {
-		echo "Preview box";
+	
+	$frame_src = get_permalink();
+	if(get_post_meta(get_the_ID(), '_infoscreen_colorscheme')){
 	?>
+		<iframe style="width: 100%; height: 980px"src="<?php echo $frame_src; ?>"></iframe>
+	<?php } else { ?>
+		<label>Save the post to see a preview</label>
+	<?php }	?>
 <input
 	type="hidden" name="infoscreen_preview_noncename"
 	id="infoscreen_preview_noncename"
