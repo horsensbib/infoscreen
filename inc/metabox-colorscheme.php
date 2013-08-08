@@ -25,16 +25,16 @@ function colorscheme_metabox() {
 	$options = get_option('infoscreen_theme_options');
 	$currentvalue = get_post_meta(get_the_ID(), '_infoscreen_colorscheme', true);
 	$selected_id = 1;
-	$colorscheme_exsists = false;
+	$colorscheme_exsists = 0;
 	for ($i = 1; $i <= $options['colorschemes']; $i++){
 		if($currentvalue == $options['csid'.$i]){
-			$colorscheme_exsists = true;
+			$colorscheme_exsists = 1;
 		}
 		else if($currentvalue == null){
 			$currentvalue = $options['csid1'];
 		} 
 	}
-	if(!$colorscheme_exsists){
+	if($colorscheme_exsists == 0){
 		$currentvalue = $options['csid1'];
 	}
 	?>
@@ -72,7 +72,7 @@ function colorscheme_metabox() {
 	    max: 100,
 	    value: <?php 
 	    $currentvalue = get_post_meta(get_the_ID(), '_infoscreen_transparency', true);
-	    if(!$colorscheme_exsists){
+	    if($colorscheme_exsists == 0){
 			$currentvalue = $options['colorscheme_transparency_field1'];
 		}
 	    if($currentvalue == null){
@@ -86,30 +86,32 @@ function colorscheme_metabox() {
 		  });
 		  $( "#amount" ).val( $( "#slider" ).slider( "value" ) );
 		});
+		
 jQuery(document).ready(function($){
+	slide_change($("#amount").val());
 	$('#slider').removeClass('ui-widget-content').addClass('ui-widget-content-slider-custom');
 	});
 function scheme_change(transparency){
 	jQuery("#slider").slider('value', transparency);
 	jQuery("#amount").val(transparency);
 	var color = jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color');
-	var lastcomma = color.lastIndexOf(',');
-	if (transparency != 100) {
-		var newColor = color.slice(0,lastcomma) + "," + transparency / 100 + ")";
-	} else {
-		var newColor = color;
+	if(color.indexOf('rgba') == -1){
+		color = color.replace('rgb','rgba');
+		color = color.replace(')',',1)');
 	}
+	var lastcomma = color.lastIndexOf(',');
+	var newColor = "rgba(" + color.slice(5,lastcomma) + ", " + (transparency / 100) + ")";
 	jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color',newColor)
 }
 function slide_change(transparency) {
-				var color = jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color');
-				var lastcomma = color.lastIndexOf(',');
-				if (transparency != 100) {
-					var newColor = color.slice(0,lastcomma) + "," + transparency / 100 + ")";
-				} else {
-					var newColor = color;
-				}
-				jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color',newColor);
+	var color = jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color');
+	if(color.indexOf('rgba') == -1){
+		color = color.replace('rgb','rgba');
+		color = color.replace(')',',1)');
+	}
+	var lastcomma = color.lastIndexOf(',');
+	var newColor = "rgba(" + color.slice(5,lastcomma) + ", " + (transparency / 100) + ")";
+	jQuery("input[name=_infoscreen_colorscheme]:checked").parent().css('background-color',newColor);
 }
 jQuery("#postimagediv").bind("DOMNodeInserted",function(){
     jQuery(".layout-selector").each(function() {
