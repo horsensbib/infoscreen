@@ -58,6 +58,11 @@ body > .post {
 			right: 4%;
 			bottom: 20px;
 		}
+
+		@media all and (max-width:256px) {
+			padding-bottom: 20px;
+			.branding {bottom: 0;}
+		}
 	}
 
 	.layout-img {
@@ -79,7 +84,16 @@ body > .post {
 		bottom: 0;
 		height: 96%;
 		padding: 2% 4%;
-		.branding {bottom:30px;}
+		.branding {
+			bottom:30px;
+
+			@media all and (max-width:256px) {
+				bottom:5px;
+			}
+			@media all and (min-width:257px) and (max-width:600px) {
+				bottom:20px;
+			}
+		}
 	}
 
 	.layout-img-left,
@@ -122,6 +136,11 @@ body > .post {
 		}
 		h1 {clear: none;}
 		.entry-content {}
+
+		@media all and (max-width:256px) {
+			padding-bottom: 20px;
+			.branding {bottom: 0;}
+		}
 	}
 
 	.layout-img-top {bottom:0;}
