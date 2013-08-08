@@ -126,3 +126,23 @@
 		}
 	}
 }
+
+
+/*
+ * Slide Preview
+ * ===============
+ */
+#infoscreen-page-preview {
+	.inside {
+		position: relative;
+		padding-bottom: 56.25%;
+		height: 0;
+	}
+}
+.slide-preview {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}

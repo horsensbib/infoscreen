@@ -26,6 +26,15 @@ body > .post {
 	border-top-color: #fff;
 	padding: 20px 0;
 	position: absolute;
+	@media all and (max-width:256px) {
+		padding: 5px 0;
+	}
+	@media all and (min-width:257px) and (max-width:600px) {
+		padding: 10px 0;
+	}
+	@media all and (min-width:601px) and (max-width:1024px) {
+		padding: 20px 0;
+	}	
 }
 .flexslider .slides {
 	overflow: hidden;

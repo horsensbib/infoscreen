@@ -97,6 +97,15 @@ body > .post {
   border-top-color: #fff;
   padding: 20px 0;
   position: absolute; }
+  @media all and (max-width: 256px) {
+    .branding {
+      padding: 5px 0; } }
+  @media all and (min-width: 257px) and (max-width: 600px) {
+    .branding {
+      padding: 10px 0; } }
+  @media all and (min-width: 601px) and (max-width: 1024px) {
+    .branding {
+      padding: 20px 0; } }
 
 .flexslider .slides {
   overflow: hidden; }
@@ -232,7 +241,14 @@ textarea {
   font-family: sans-serif;
   font-size: 4rem;
   line-height: 1.5; }
-  @media all and (max-width: 600px) {
+  @media all and (max-width: 256px) {
+    body,
+    button,
+    input,
+    select,
+    textarea {
+      font-size: 0.5rem; } }
+  @media all and (min-width: 257px) and (max-width: 600px) {
     body,
     button,
     input,
@@ -255,7 +271,10 @@ h1 {
   font-size: 7rem;
   line-height: 1.25em;
   margin: 0 0 .25em; }
-  @media all and (max-width: 600px) {
+  @media all and (max-width: 256px) {
+    h1 {
+      font-size: 0.875rem; } }
+  @media all and (min-width: 257px) and (max-width: 600px) {
     h1 {
       font-size: 3.5rem; } }
   @media all and (min-width: 601px) and (max-width: 1024px) {
@@ -264,7 +283,10 @@ h1 {
 
 h2 {
   font-size: 5rem; }
-  @media all and (max-width: 600px) {
+  @media all and (max-width: 256px) {
+    h2 {
+      font-size: 0.625rem; } }
+  @media all and (min-width: 257px) and (max-width: 600px) {
     h2 {
       font-size: 2.5rem; } }
   @media all and (min-width: 601px) and (max-width: 1024px) {
@@ -273,7 +295,10 @@ h2 {
 
 h3 {
   font-size: 4.5rem; }
-  @media all and (max-width: 600px) {
+  @media all and (max-width: 256px) {
+    h3 {
+      font-size: 0.5625rem; } }
+  @media all and (min-width: 257px) and (max-width: 600px) {
     h3 {
       font-size: 2.25rem; } }
   @media all and (min-width: 601px) and (max-width: 1024px) {
@@ -282,7 +307,10 @@ h3 {
 
 h4 {
   font-size: 4rem; }
-  @media all and (max-width: 600px) {
+  @media all and (max-width: 256px) {
+    h4 {
+      font-size: 0.5rem; } }
+  @media all and (min-width: 257px) and (max-width: 600px) {
     h4 {
       font-size: 2rem; } }
   @media all and (min-width: 601px) and (max-width: 1024px) {
@@ -291,7 +319,10 @@ h4 {
 
 h5 {
   font-size: 4rem; }
-  @media all and (max-width: 600px) {
+  @media all and (max-width: 256px) {
+    h5 {
+      font-size: 0.5rem; } }
+  @media all and (min-width: 257px) and (max-width: 600px) {
     h5 {
       font-size: 2rem; } }
   @media all and (min-width: 601px) and (max-width: 1024px) {

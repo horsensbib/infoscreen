@@ -13,9 +13,9 @@ function infoscreen_create_preview_metabox() {
 		__( 'Preview', 'infoscreen_page_preview' ),
 		'preview_metabox',
 		'post',
-		'normal',
+		'side',
 		'high'
-				);
+		);
 	}
 }
 function wp_exist_post($id) {
@@ -27,15 +27,14 @@ function preview_metabox() {
 	$frame_src = get_permalink();
 	if(get_post_meta(get_the_ID(), '_infoscreen_colorscheme')){
 	?>
-		<iframe style="width: 100%; height: 980px"src="<?php echo $frame_src; ?>"></iframe>
+		<iframe class="slide-preview" src="<?php echo $frame_src; ?>" frameborder="0"></iframe>
 	<?php } else { ?>
-		<label>Save the post to see a preview</label>
+		<p><?php _e('Please save the slide to see a preview','infoscreen'); ?></p>
 	<?php }	?>
 <input
 	type="hidden" name="infoscreen_preview_noncename"
 	id="infoscreen_preview_noncename"
 	value="<?php wp_create_nonce( plugin_basename(__FILE__) ); ?>" />
-
 <?php 
 }
 
