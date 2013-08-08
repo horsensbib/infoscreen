@@ -27,7 +27,7 @@ function preview_metabox() {
 	$frame_src = get_permalink();
 	if(get_post_meta(get_the_ID(), '_infoscreen_colorscheme')){
 	?>
-		<iframe class="slide-preview" src="<?php echo $frame_src; ?>" frameborder="0"></iframe>
+		<iframe id="slide-preview-id"class="slide-preview" src="<?php echo $frame_src; ?>" frameborder="0" onload="iframe_loaded()"></iframe>
 	<?php } else { ?>
 		<p><?php _e('Please save the slide to see a preview','infoscreen'); ?></p>
 	<?php }	?>
@@ -35,6 +35,13 @@ function preview_metabox() {
 	type="hidden" name="infoscreen_preview_noncename"
 	id="infoscreen_preview_noncename"
 	value="<?php wp_create_nonce( plugin_basename(__FILE__) ); ?>" />
+<script>
+function iframe_loaded() {
+	jQuery('#slide-preview-id').contents().find('#wpadminbar').remove();
+	jQuery('#slide-preview-id').contents().find('html').css('position','relative');
+	jQuery('#slide-preview-id').contents().find('html').css('top','-28px');
+}
+</script>
 <?php 
 }
 
