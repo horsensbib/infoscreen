@@ -335,6 +335,7 @@ jQuery(window).load(function() {
 				} ?>",
 			animationSpeed: 2000,
 			controlNav: false,
+			directionNav: false,
 			slideshow: false,
 			after: function( slider ){
 		    	// If we weren't advancing to the next slide from the auto_advance_slide() function(from user controls for instance), we need to fix some things
