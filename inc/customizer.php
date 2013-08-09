@@ -178,11 +178,12 @@ $options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_o
 			if($col == 3){
 				echo "<td class='infoscreen-color-picker'> ";
 				echo "";
-				?>
+				?>		
+				<div class="colorscheme_transparency_slider">
+					<label>%</label><input style="border: 0; color: #f6931f; font-weight: bold; width: 30px" id="colorscheme_transparency_field<?php echo $row ?>" name="infoscreen_theme_options[colorscheme_transparency_field<?php echo $row?>]" type="text"/>
+				</div>
 				<div id="slide<?php echo $row; ?>" style="width: 200px"></div>
-				<label>%</label>
-				<input id="colorscheme_transparency_field<?php echo $row ?>" name="infoscreen_theme_options[colorscheme_transparency_field<?php echo $row?>]" type="text" style="border: 0; color: #f6931f; font-weight: bold; width: 30px" />
-				
+		
 				<script> jQuery(document).ready(function($){ 
 				 	slide_init_value("slide<?php echo $row; ?>", "colorscheme_transparency_field<?php echo $row; ?>", <?php echo $options['colorscheme_transparency_field'.$row]?>);
 				}); </script>
@@ -275,12 +276,14 @@ function appendRow(){
 	
 	bg_field.innerHTML="<input type='text' name='infoscreen_theme_options[colorscheme_bg_field" + rowCount + "]' id='colorscheme_bg_field" + rowCount + "' value='' class='my-color-field'>";
 	bg_field.className="infoscreen-color-picker";
-	
-	transparency_field.innerHTML="<div id='slide" + rowCount + "' style='width: 200px'><label>%</label><input id='colorscheme_transparency_field" + rowCount + "' name='infoscreen_theme_options[colorscheme_transparency_field" + rowCount + "]' type='text' style='border: 0; color: #f6931f; font-weight: bold; width: 30px'/>";
+
+	transparency_field.innerHTML="<label>%</label><input style='border: 0; color: #f6931f; font-weight: bold; width: 30px' id='colorscheme_transparency_field" + rowCount + "' name='infoscreen_theme_options[colorscheme_transparency_field" + rowCount + "]' type='text'/><div id='slide" + rowCount + "' style='width: 200px'></div>";
 	transparency_field.className="infoscreen-color-picker";
+	//transparency_field.innerHTML="<div id='slide" + rowCount + "' style='width: 200px'><label>%</label><input id='colorscheme_transparency_field" + rowCount + "' name='infoscreen_theme_options[colorscheme_transparency_field" + rowCount + "]' type='text' style='border: 0; color: #f6931f; font-weight: bold; width: 30px'/>";
+	//transparency_field.className="infoscreen-color-picker";
 	
 	
-	remove_btn.innerHTML="<input type='button' class='button' value='remove' onclick='deleteRow(\"infoscreen_theme_options[colorscheme_name" + rowCount + "]\")' />";
+	remove_btn.innerHTML="<input type='button' class='button' value='Delete' onclick='deleteRow(\"infoscreen_theme_options[colorscheme_name" + rowCount + "]\")' />";
 
 	slide_init_value("slide"+rowCount, "colorscheme_transparency_field"+rowCount);
 	jQuery('.my-color-field').wpColorPicker();
