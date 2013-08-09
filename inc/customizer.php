@@ -312,7 +312,7 @@ jQuery(document).ready(function($){
 								if(!resObj.getAttribute('data-hasqtip')){
 									jQuery(resObj).qtip({
 										content: {
-											text: 'A unique name must be chosen'
+											text: '<?php _e("A unique name must be chosen","infoscreen"); ?>'
 										},
 										show: {
 											solo: false,
@@ -370,7 +370,7 @@ function isUnique() {
 <p class="add-scheme">
 	<input type="button"
 	   class="button"
-	   value="Add New Color Scheme"
+	   value="<?php _e('Add New Color Scheme','infoscreen'); ?>"
 	   id="appendBtn"
 	   onClick="appendRow()" />
 </p>
@@ -390,10 +390,10 @@ function theme_infoscreen_settings_logo() {
 	/>
 <input
 	id="upload_logo_button" type="button" class="button"
-	value="<?php _e( 'Upload Logo', 'infoscreen' ); ?>" 
+	value="<?php _e( 'Set Logo', 'infoscreen' ); ?>" 
 	/>
 	<input id="remove_logo_button" type="button" class="button"
-	value="<?php _e( 'Remove Logo', 'infoscreen' ); ?>"
+	value="<?php _e( 'Delete Logo', 'infoscreen' ); ?>"
 	onClick="remove_logo()"
 	/>
 	<script>
