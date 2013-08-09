@@ -381,6 +381,8 @@ function isUnique() {
 */
 function theme_infoscreen_settings_logo() {
 	$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
+
+	theme_infoscreen_settings_logo_preview();
 	?>
 <input
 	type="hidden" id="logo_url" name="infoscreen_theme_options[logo]"
@@ -401,7 +403,6 @@ function theme_infoscreen_settings_logo() {
 		jQuery("#logo_url").val('');
 	}</script>
 <?php
-theme_infoscreen_settings_logo_preview();
 }
 
 /**
@@ -410,7 +411,7 @@ theme_infoscreen_settings_logo_preview();
 function theme_infoscreen_settings_logo_preview() {
 	$options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_options());
 	?>
-<div id="upload_logo_preview" style="min-height: 100px;">
+<div id="upload_logo_preview">
 	<img id="preview_placeholder" style="max-width: 100%;"
 		src="<?php echo esc_url( $options['logo'] ); ?>" />
 </div>
