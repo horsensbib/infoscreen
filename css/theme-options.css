@@ -40,8 +40,35 @@
   text-align: right; }
 
 /*
- * Layout Controls
+ * Logo Uploader
  * ===============
+ */
+#upload_logo_preview {
+  background: #ddd;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 0 0 12px; }
+
+/*
+ * Category Animations
+ * ===================
+ */
+#meta_box_animation table {
+  width: 100%;
+  border-collapse: collapse; }
+  #meta_box_animation table tr:nth-child(even) {
+    background: #eee; }
+  #meta_box_animation table th {
+    text-align: left;
+    border-bottom: 1px solid #ccc; }
+  #meta_box_animation table th,
+  #meta_box_animation table td {
+    padding: .5em 1em;
+    position: relative; }
+
+/*
+ * Slide Layout Controls
+ * =====================
  */
 .layout-controls {
   overflow: hidden; }
