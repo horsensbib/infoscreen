@@ -279,9 +279,6 @@ function appendRow(){
 
 	transparency_field.innerHTML="<label>%</label><input style='border: 0; color: #f6931f; font-weight: bold; width: 30px' id='colorscheme_transparency_field" + rowCount + "' name='infoscreen_theme_options[colorscheme_transparency_field" + rowCount + "]' type='text'/><div id='slide" + rowCount + "' style='width: 200px'></div>";
 	transparency_field.className="infoscreen-color-picker";
-	//transparency_field.innerHTML="<div id='slide" + rowCount + "' style='width: 200px'><label>%</label><input id='colorscheme_transparency_field" + rowCount + "' name='infoscreen_theme_options[colorscheme_transparency_field" + rowCount + "]' type='text' style='border: 0; color: #f6931f; font-weight: bold; width: 30px'/>";
-	//transparency_field.className="infoscreen-color-picker";
-	
 	
 	remove_btn.innerHTML="<input type='button' class='button' value='Delete' onclick='deleteRow(\"infoscreen_theme_options[colorscheme_name" + rowCount + "]\")' />";
 
