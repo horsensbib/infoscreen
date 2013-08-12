@@ -85,7 +85,7 @@ function add_infoscreen_meta_boxes(){
 		<div id="poststuff" class="metabox-holder<?php echo 2 == $screen_layout_columns ? ' has-right-sidebar' : ''; ?>">
 							<?php do_meta_boxes($page, 'normal', $data); ?>
 							<?php do_meta_boxes($page, 'additional', $data); ?>
-					<br class="clear"/>
+					<br class="clear" />
 				</div>	
 		<script type="text/javascript">
 			//<![CDATA[
@@ -468,7 +468,7 @@ function theme_infoscreen_settings_fonts() {
 	$current_title_weight = $options['title_font-weight'];
 	$current_title_style = $options['title_font-style'];
 	?>	
-		<label>Title</label>
+		<p><strong><?php _e('Headlines','infoscreen'); ?></strong></p>
 		<ul class="layout-controls fonts title"></ul>
 		<script>
 			for (var i = 0; i < default_fonts.length; i++){
@@ -484,7 +484,7 @@ function theme_infoscreen_settings_fonts() {
 				$hook_element.append("<li class='layout-selector fonts title'><input type='radio' name='infoscreen_theme_options[title_font-family]' data-bold='"+ google_fonts[$font].weight +"' data-italic='"+ google_fonts[$font].italic +"' data-bolditalic='"+ google_fonts[$font].bolditalic +"' id='title_fonts_"+ $font_no_spaces +"' value='google "+ $font +"'/><label style='font-family: "+ $font +"' for='title_fonts_" + $font_no_spaces + "'>"+ $font +"</label></li>");
 			}
 			</script>
-			<label>Body</label>
+			<p><strong><?php _e('Paragraphs','infoscreen'); ?></strong></p>
 			<ul class="layout-controls fonts body"></ul>
 			<script>
 			for (var i = 0; i < default_fonts.length; i++){
@@ -568,7 +568,7 @@ function theme_infoscreen_settings_animations() {
 	?>
 	<table>
 		<tr>
-			<th class="infoscreen-animation-category"><?php _e( 'Category', 'infoscreen' ); ?></th>
+			<th class="infoscreen-animation-category"><?php _e( 'Display Location', 'infoscreen' ); ?></th>
 			<th class="infoscreen-animation-radio"><?php _e( 'Animation', 'infoscreen' ); ?></th>
 			<th class="infoscreen-animation-number"><?php _e( 'Time', 'infoscreen' ); ?></th>
 		</tr>
@@ -576,8 +576,8 @@ function theme_infoscreen_settings_animations() {
 		<tr>
 			<td><?php echo $cat_array[$i]->name; ?></td>
 			<td>
-				<input type="radio" name="infoscreen_theme_options[animation_<?php echo $cat_array[$i]->cat_ID; ?>]" value="fade" <?php echo ($cat_options['animation_' . $cat_array[$i]->cat_ID] == 'fade') ? 'checked':($cat_options['animation_' . $cat_array[$i]->cat_ID] == '') ? 'checked' : ''; ?>>Fade<br>
-				<input type="radio" name="infoscreen_theme_options[animation_<?php echo $cat_array[$i]->cat_ID; ?>]" value="slide" <?php echo ($cat_options['animation_' . $cat_array[$i]->cat_ID] == 'slide') ? 'checked':''; ?>>Slide<br>
+				<p><input type="radio" name="infoscreen_theme_options[animation_<?php echo $cat_array[$i]->cat_ID; ?>]" value="fade" <?php echo ($cat_options['animation_' . $cat_array[$i]->cat_ID] == 'fade') ? 'checked':($cat_options['animation_' . $cat_array[$i]->cat_ID] == '') ? 'checked' : ''; ?>> <?php _e('Fade','infoscreen'); ?></p>
+				<p><input type="radio" name="infoscreen_theme_options[animation_<?php echo $cat_array[$i]->cat_ID; ?>]" value="slide" <?php echo ($cat_options['animation_' . $cat_array[$i]->cat_ID] == 'slide') ? 'checked':''; ?>> <?php _e('Slide','infoscreen'); ?></p>
 			</td>
 			<td>
 				<input type="number" style='width: 4em' name="infoscreen_theme_options[time_<?php echo $cat_array[$i]->cat_ID; ?>]" value="<?php echo ($cat_options['time_' . $cat_array[$i]->cat_ID] == "") ? '10' : $cat_options['time_'.$cat_array[$i]->cat_ID]; ?>" />
@@ -613,7 +613,7 @@ function infoscreen_theme_options_validate($input) {
 function infoscreen_theme_options_render_page() { ?>
 <div class="wrap">
 	<?php screen_icon(); ?>
-	<h2>Theme options</h2>
+	<h2><?php _e( 'InfoScreen Theme options','infoscreen'); ?></h2>
 	<?php settings_errors(); ?>
 
 	<form method="post" action="options.php">

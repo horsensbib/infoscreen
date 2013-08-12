@@ -250,7 +250,7 @@ add_action('add_meta_boxes', 'rename_thumb_metabox' );
  * ============================ */
 function rename_category_metabox() {
 	remove_meta_box( 'categorydiv', 'post', 'side' );
-	add_meta_box('categorydiv', __('Screen Locations'), 'post_categories_meta_box', 'post', 'side', 'high');
+	add_meta_box('categorydiv', __('Display Locations'), 'post_categories_meta_box', 'post', 'side', 'high');
 }
 add_action('add_meta_boxes', 'rename_category_metabox' );
 
@@ -266,7 +266,7 @@ function edit_admin_menus() {
 	
 	$submenu['edit.php'][5][0] = __('All slides');
 	$submenu['edit.php'][10][0] = __('Add a slide');
-	$submenu['edit.php'][15][0] = __('Screen Locations'); // Rename categories to meal types
+	$submenu['edit.php'][15][0] = __('Display Locations'); // Rename categories to meal types
 }
 add_action( 'admin_menu', 'edit_admin_menus' );
 

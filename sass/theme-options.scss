@@ -88,6 +88,26 @@
 
 
 /*
+ * Fonts
+ * =====
+ */
+#meta_box_fonts {
+	.layout-controls {
+		background: #eee;
+		border: 1px solid #ccc;
+		box-shadow: inset 0 5px 10px rgba(0,0,0,.1);
+		padding: 8px 12px;
+	}
+	label {
+		box-shadow: 0 1px 3px rgba(0,0,0,.1);
+		min-height: 36px;
+	}
+	input:checked ~ label {
+		box-shadow: 0 1px 0 #fff;
+	}
+}
+
+/*
  * Slide Layout Controls
  * =====================
  */
