@@ -114,7 +114,7 @@ function infoscreen_get_default_theme_options() {
  * Add to appearance menu
 */
 function add_infoscreen_appearance_menu() {
-	$page = add_theme_page('InfoScreen Settings', 'InfoScreen', 'edit_theme_options', 'infoscreen-settings', 'infoscreen_theme_options_render_page');
+	$page = add_theme_page('InfoScreen Settings', __('InfoScreen Settings','infoscreen'), 'edit_theme_options', 'infoscreen-settings', 'infoscreen_theme_options_render_page');
 }
 add_action('admin_menu', 'add_infoscreen_appearance_menu');
 
