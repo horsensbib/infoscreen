@@ -23,7 +23,16 @@
     #colorfields .infoscreen-colorscheme-name input {
       width: 100%; }
   #colorfields .infoscreen-color-picker {
-    width: 25%; }
+    width: 25%;
+    position: relative; }
+  #colorfields .transparency-amount {
+    width: 30px; }
+  #colorfields .colorscheme_transparency_slider {
+    width: 50px;
+    float: left; }
+  #colorfields .ui-slider {
+    left: 55px;
+    top: 5px; }
   #colorfields .wp-picker-input-wrap {
     width: 150px; }
   #colorfields .wp-picker-input-wrap,

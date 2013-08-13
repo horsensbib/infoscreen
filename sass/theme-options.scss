@@ -29,6 +29,18 @@
 	}
 	.infoscreen-color-picker {
 		width:25%;
+		position: relative;
+	}
+	.transparency-amount {
+		width:30px;
+	}
+	.colorscheme_transparency_slider {
+		width:50px;
+		float:left;
+	}
+	.ui-slider {
+		left: 55px;
+		top: 5px;
 	}
 	.wp-picker-input-wrap {
 		width: 150px;

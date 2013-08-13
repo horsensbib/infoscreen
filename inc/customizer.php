@@ -180,7 +180,7 @@ $options = get_option('infoscreen_theme_options', infoscreen_get_default_theme_o
 				echo "";
 				?>		
 				<div class="colorscheme_transparency_slider">
-					<label>%</label><input style="border: 0; color: #f6931f; font-weight: bold; width: 30px" id="colorscheme_transparency_field<?php echo $row ?>" name="infoscreen_theme_options[colorscheme_transparency_field<?php echo $row?>]" type="text"/>
+					<label for="colorscheme_transparency_field<?php echo $row ?>">%</label><input class="transparency-amount" id="colorscheme_transparency_field<?php echo $row ?>" name="infoscreen_theme_options[colorscheme_transparency_field<?php echo $row?>]" type="text"/>
 				</div>
 				<div id="slide<?php echo $row; ?>" style="width: 200px"></div>
 		
@@ -277,7 +277,7 @@ function appendRow(){
 	bg_field.innerHTML="<input type='text' name='infoscreen_theme_options[colorscheme_bg_field" + rowCount + "]' id='colorscheme_bg_field" + rowCount + "' value='' class='my-color-field'>";
 	bg_field.className="infoscreen-color-picker";
 
-	transparency_field.innerHTML="<label>%</label><input style='border: 0; color: #f6931f; font-weight: bold; width: 30px' id='colorscheme_transparency_field" + rowCount + "' name='infoscreen_theme_options[colorscheme_transparency_field" + rowCount + "]' type='text'/><div id='slide" + rowCount + "' style='width: 200px'></div>";
+	transparency_field.innerHTML="<div class='colorscheme_transparency_slider'><label for='colorscheme_transparency_field" + rowCount + "'>%</label><input class='transparency-amount' id='colorscheme_transparency_field" + rowCount + "' name='infoscreen_theme_options[colorscheme_transparency_field" + rowCount + "]' type='text'/></div><div id='slide" + rowCount + "' style='width: 200px'></div>";
 	transparency_field.className="infoscreen-color-picker";
 	
 	remove_btn.innerHTML="<input type='button' class='button' value='Delete' onclick='deleteRow(\"infoscreen_theme_options[colorscheme_name" + rowCount + "]\")' />";
