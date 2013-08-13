@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: InfoScreen\n"
-"POT-Creation-Date: 2013-08-13 16:42+0100\n"
-"PO-Revision-Date: 2013-08-13 16:45+0100\n"
+"POT-Creation-Date: 2013-08-13 16:47+0100\n"
+"PO-Revision-Date: 2013-08-13 16:48+0100\n"
 "Last-Translator: Morten Brunbjerg Bech <bech@rephlex.dk>\n"
 "Language-Team: Horsens Kommunes Biblioteker <mbb@horsens.dk>\n"
 "Language: da_DK\n"
@@ -296,7 +296,7 @@ msgstr "Baggrundsfarve"
 msgid "Transparency"
 msgstr "Gennemsigtighed"
 
-#: ../inc/customizer.php:196
+#: ../inc/customizer.php:196 ../inc/customizer.php:283
 msgid "Delete"
 msgstr "Slet"
 
