@@ -77,10 +77,10 @@ add_action('admin_init', 'infoscreen_init');
 */
 function add_infoscreen_meta_boxes(){
 	global $screen_layout_columns;
-	add_meta_box('meta_box_logo', 'Logo','theme_infoscreen_settings_logo', $page, 'normal', 'core');
-	add_meta_box('meta_box_colorfields', 'Colorschemes', 'theme_infoscreen_settings_colorfields', $page, 'normal', 'core');
-	add_meta_box('meta_box_animation', 'Animations', 'theme_infoscreen_settings_animations', $page, 'normal', 'core');
-	add_meta_box('meta_box_fonts', 'Fonts', 'theme_infoscreen_settings_fonts', $page, 'normal', 'core');
+	add_meta_box('meta_box_logo', __('Logo','infoscreen'),'theme_infoscreen_settings_logo', $page, 'normal', 'core');
+	add_meta_box('meta_box_colorfields', __('Color Schemes','infoscreen'), 'theme_infoscreen_settings_colorfields', $page, 'normal', 'core');
+	add_meta_box('meta_box_animation', __('Animations','infoscreen'), 'theme_infoscreen_settings_animations', $page, 'normal', 'core');
+	add_meta_box('meta_box_fonts', __('Fonts','infoscreen'), 'theme_infoscreen_settings_fonts', $page, 'normal', 'core');
 	?>
 		<div id="poststuff" class="metabox-holder<?php echo 2 == $screen_layout_columns ? ' has-right-sidebar' : ''; ?>">
 							<?php do_meta_boxes($page, 'normal', $data); ?>
@@ -618,6 +618,7 @@ function infoscreen_theme_options_render_page() { ?>
 
 	<form method="post" action="options.php">
 		<?php
+		submit_button();
 		settings_fields('infoscreen_options');
 		do_settings_sections('theme_options');
 		submit_button();
