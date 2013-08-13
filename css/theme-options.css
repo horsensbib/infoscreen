@@ -6,14 +6,14 @@
   width: 100%;
   border-collapse: collapse; }
   #colorfields tr:nth-child(even) {
-    background: #eee; }
+    background: #f1f1f1; }
     #colorfields tr:nth-child(even) .wp-picker-container,
     #colorfields tr:nth-child(even) .wp-picker-input-wrap,
     #colorfields tr:nth-child(even) .wp-picker-holder {
-      background: #eee; }
+      background: #f1f1f1; }
   #colorfields th {
     text-align: left;
-    border-bottom: 1px solid #ccc; }
+    border-bottom: 1px solid #ddd; }
   #colorfields th,
   #colorfields td {
     padding: .5em 1em;
@@ -54,7 +54,7 @@
  */
 #upload_logo_preview {
   background: #eee;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin: 0 0 12px; }
@@ -65,12 +65,13 @@
  */
 #meta_box_animation table {
   width: 100%;
-  border-collapse: collapse; }
+  border-collapse: collapse;
+  margin-bottom: 12px; }
   #meta_box_animation table tr:nth-child(even) {
-    background: #eee; }
+    background: #f1f1f1; }
   #meta_box_animation table th {
     text-align: left;
-    border-bottom: 1px solid #ccc; }
+    border-bottom: 1px solid #ddd; }
   #meta_box_animation table th,
   #meta_box_animation table td {
     padding: .5em 1em;
@@ -81,8 +82,8 @@
  * =====
  */
 #meta_box_fonts .layout-controls {
-  background: #eee;
-  border: 1px solid #ccc;
+  background: #f1f1f1;
+  border: 1px solid #ddd;
   box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.1);
   padding: 8px 12px; }
 #meta_box_fonts label {

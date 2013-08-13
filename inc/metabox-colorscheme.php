@@ -13,7 +13,7 @@ function infoscreen_create_colorscheme_metabox() {
 	if( function_exists( 'add_meta_box' )) {
 		add_meta_box(
 		'infoscreen-page-colorscheme',
-		__( 'Color scheme', 'infoscreen_page_colorscheme' ),
+		__( 'Color scheme', 'infoscreen' ),
 		'colorscheme_metabox',
 		'post',
 		'normal',
@@ -59,7 +59,7 @@ function colorscheme_metabox() {
 		id="infoscreen_colorscheme_noncename"
 		value="<?php wp_create_nonce( plugin_basename(__FILE__) ) ?>" />
 	</div>
-	<label>Transparency</label>
+	<label><?php _e('Transparency','infoscreen'); ?></label>
 	<div id="slider" style="width: 200px"></div>
 	<div> 
 	<label for="amount">%</label>

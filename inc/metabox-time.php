@@ -10,7 +10,7 @@ function infoscreen_create_time_metabox() {
 	if( function_exists( 'add_meta_box' )) {
 		add_meta_box(
 		'infoscreen-page-time',
-		__( 'Time', 'infoscreen_page_time' ),
+		__( 'Time', 'infoscreen' ),
 		'time_metabox',
 		'post',
 		'normal',
@@ -25,11 +25,11 @@ function time_metabox() {
 	if($currentvalue == null){
 		$currentvalue = $options['time_' . $cat[0]->cat_ID];
 	}
-	echo "<label>Slide is shown for</label>";
+	echo "<label>" . _e("Slide is shown for","infoscreen") . "</label> ";
 	echo "<input name='_infoscreen_time' style='width: 4em' type='number' value='";
 	echo $currentvalue;
 	echo "'/>";
-	echo "<label>seconds</label>";
+	echo " <label>" . _e("seconds","infoscreen") . "</label>";
 	?>
 <input
 	type="hidden" name="infoscreen_time_noncename"

@@ -10,7 +10,7 @@ function infoscreen_create_preview_metabox() {
 	if( function_exists( 'add_meta_box' )) {
 		add_meta_box(
 		'infoscreen-page-preview',
-		__( 'Preview', 'infoscreen_page_preview' ),
+		__( 'Preview', 'infoscreen' ),
 		'preview_metabox',
 		'post',
 		'side',

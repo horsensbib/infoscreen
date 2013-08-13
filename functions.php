@@ -5,6 +5,14 @@
  * @package InfoScreen
  * @since InfoScreen 1.0
  */
+ 
+/**
+ * 
+ * ===================*/
+add_action('after_setup_theme', 'my_theme_setup');
+function my_theme_setup(){
+	load_theme_textdomain('infoscreen', get_template_directory() . '/languages');
+}
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -70,6 +78,12 @@ function infoscreen_setup() {
 	require( get_template_directory() . '/inc/custom_functions.php' );
 	
 	require( get_template_directory() . '/inc/custom-settings-css.php');
+	
+	/**
+	 * Custom editor styles
+	 * http://codex.wordpress.org/Function_Reference/add_editor_style
+	 */
+	//  add_editor_style('editor-styles.css');
 	
 	/**
 	 * Make theme available for translation
@@ -241,7 +255,7 @@ add_action('add_meta_boxes', 'move_submit_metabox' );
  * ============================= */
 function rename_thumb_metabox() {
 	remove_meta_box( 'postimagediv', 'post', 'side' );
-	add_meta_box('postimagediv', __('Background Image'), 'post_thumbnail_meta_box', 'post', 'side', 'high');
+	add_meta_box('postimagediv', __('Background Image','infoscreen'), 'post_thumbnail_meta_box', 'post', 'side', 'high');
 }
 add_action('add_meta_boxes', 'rename_thumb_metabox' );
 
@@ -250,7 +264,7 @@ add_action('add_meta_boxes', 'rename_thumb_metabox' );
  * ============================ */
 function rename_category_metabox() {
 	remove_meta_box( 'categorydiv', 'post', 'side' );
-	add_meta_box('categorydiv', __('Display Locations'), 'post_categories_meta_box', 'post', 'side', 'high');
+	add_meta_box('categorydiv', __('Display Locations','infoscreen'), 'post_categories_meta_box', 'post', 'side', 'high');
 }
 add_action('add_meta_boxes', 'rename_category_metabox' );
 
@@ -262,11 +276,11 @@ function edit_admin_menus() {
 	global $menu;
 	global $submenu;
 	
-	$menu[5][0] = __('Slideshow'); // Change Posts to Recipes
+	$menu[5][0] = __('Slideshow', 'infoscreen'); // Change Posts to Recipes
 	
-	$submenu['edit.php'][5][0] = __('All slides');
-	$submenu['edit.php'][10][0] = __('Add a slide');
-	$submenu['edit.php'][15][0] = __('Display Locations'); // Rename categories to meal types
+	$submenu['edit.php'][5][0] = __('All slides', 'infoscreen');
+	$submenu['edit.php'][10][0] = __('Add a slide', 'infoscreen');
+	$submenu['edit.php'][15][0] = __('Display Locations', 'infoscreen'); // Rename categories to meal types
 }
 add_action( 'admin_menu', 'edit_admin_menus' );
 
@@ -277,16 +291,16 @@ add_action( 'admin_menu', 'edit_admin_menus' );
 function change_post_object_label() {
 	global $wp_post_types;
 	$labels = &$wp_post_types['post']->labels;
-	$labels->name = __('All Slides');
-	$labels->singular_name = __('Slide');
-	$labels->add_new = __('Add Slide');
-	$labels->add_new_item = __('Add Slide');
-	$labels->edit_item = __('Edit Slide');
-	$labels->new_item = __('Slide');
-	$labels->view_item = __('View Slide');
-	$labels->search_items = __('Search Slides');
-	$labels->not_found = __('No Slides found');
-	$labels->not_found_in_trash = __('No Slides found in Trash');
+	$labels->name = __('All Slides', 'infoscreen');
+	$labels->singular_name = __('Slide', 'infoscreen');
+	$labels->add_new = __('Add Slide', 'infoscreen');
+	$labels->add_new_item = __('Add Slide', 'infoscreen');
+	$labels->edit_item = __('Edit Slide', 'infoscreen');
+	$labels->new_item = __('Slide', 'infoscreen');
+	$labels->view_item = __('View Slide', 'infoscreen');
+	$labels->search_items = __('Search Slides', 'infoscreen');
+	$labels->not_found = __('No Slides found', 'infoscreen');
+	$labels->not_found_in_trash = __('No Slides found in Trash', 'infoscreen');
 }
 add_action( 'init', 'change_post_object_label' );
 

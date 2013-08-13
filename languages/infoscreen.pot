@@ -1,0 +1,419 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: InfoScreen\n"
+"POT-Creation-Date: 2013-08-13 15:48+0100\n"
+"PO-Revision-Date: 2013-08-13 15:48+0100\n"
+"Last-Translator: Morten Brunbjerg Bech <bech@rephlex.dk>\n"
+"Language-Team: Horsens Public Library <mbb@horsens.dk>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ./\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: ../inc\n"
+
+#: ../404.php:16
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: ../404.php:20
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+
+#: ../404.php:27
+msgid "Most Used Categories"
+msgstr ""
+
+#: ../404.php:35
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr ""
+
+#: ../comments.php:39 ../comments.php:59
+msgid "Comment navigation"
+msgstr ""
+
+#: ../comments.php:40 ../comments.php:60
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: ../comments.php:41 ../comments.php:61
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: ../comments.php:71
+msgid "Comments are closed."
+msgstr ""
+
+#: ../content-page.php:17 ../content-single.php:19 ../content.php:38
+#: ../image.php:94
+msgid "Pages:"
+msgstr ""
+
+#: ../content-page.php:19 ../content-single.php:57 ../image.php:35
+#: ../image.php:108 ../inc/template-tags.php:76 ../inc/template-tags.php:97
+msgid "Edit"
+msgstr ""
+
+#: ../content-single.php:25 ../content-single.php:28
+msgid ", "
+msgstr ""
+
+#: ../content-single.php:33
+#, php-format
+msgid ""
+"This entry was tagged %2$s. Bookmark the <a href=\"%3$s\" title=\"Permalink "
+"to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+
+#: ../content-single.php:35
+#, php-format
+msgid ""
+"Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark"
+"\">permalink</a>."
+msgstr ""
+
+#: ../content-single.php:41
+#, php-format
+msgid ""
+"This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" "
+"title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+
+#: ../content-single.php:43
+#, php-format
+msgid ""
+"This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title="
+"\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+
+#: ../content.php:37
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../footer.php:49
+#, php-format
+msgid "Proudly powered by %s"
+msgstr ""
+
+#: ../footer.php:51
+#, php-format
+msgid "Theme: %1$s by %2$s."
+msgstr ""
+
+#: ../functions.php:186
+msgid "Sidebar"
+msgstr ""
+
+#: ../functions.php:241
+msgid "Publish"
+msgstr ""
+
+#: ../functions.php:250
+msgid "Background Image"
+msgstr ""
+
+#: ../functions.php:259 ../functions.php:275
+msgid "Display Locations"
+msgstr ""
+
+#: ../functions.php:271
+msgid "Slideshow"
+msgstr ""
+
+#: ../functions.php:273
+msgid "All slides"
+msgstr ""
+
+#: ../functions.php:274
+msgid "Add a slide"
+msgstr ""
+
+#: ../functions.php:286
+msgid "All Slides"
+msgstr ""
+
+#: ../functions.php:287 ../functions.php:291 ../inc/customizer.php:580
+msgid "Slide"
+msgstr ""
+
+#: ../functions.php:288 ../functions.php:289
+msgid "Add Slide"
+msgstr ""
+
+#: ../functions.php:290
+msgid "Edit Slide"
+msgstr ""
+
+#: ../functions.php:292
+msgid "View Slide"
+msgstr ""
+
+#: ../functions.php:293
+msgid "Search Slides"
+msgstr ""
+
+#: ../functions.php:294
+msgid "No Slides found"
+msgstr ""
+
+#: ../functions.php:295
+msgid "No Slides found in Trash"
+msgstr ""
+
+#: ../image.php:24
+#, php-format
+msgid ""
+"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+"\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size "
+"image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" "
+"rel=\"gallery\">%8$s</a>"
+msgstr ""
+
+#: ../image.php:39
+msgid "&larr; Previous"
+msgstr ""
+
+#: ../image.php:40
+msgid "Next &rarr;"
+msgstr ""
+
+#: ../image.php:100
+#, php-format
+msgid ""
+"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a "
+"comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" "
+"title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr ""
+
+#: ../image.php:102
+#, php-format
+msgid ""
+"Comments are closed, but you can leave a trackback: <a class=\"trackback-link"
+"\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
+"\">Trackback URL</a>."
+msgstr ""
+
+#: ../image.php:104
+msgid ""
+"Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond"
+"\" title=\"Post a comment\">post a comment</a>."
+msgstr ""
+
+#: ../image.php:106
+msgid "Both comments and trackbacks are currently closed."
+msgstr ""
+
+#: ../no-results.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: ../no-results.php:20
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: ../no-results.php:24
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: ../no-results.php:29
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: ../search.php:17
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: ../sidebar.php:18
+msgid "Archives"
+msgstr ""
+
+#: ../sidebar.php:25
+msgid "Meta"
+msgstr ""
+
+#: ../inc/customizer.php:80
+msgid "Logo"
+msgstr ""
+
+#: ../inc/customizer.php:81
+msgid "Color Schemes"
+msgstr ""
+
+#: ../inc/customizer.php:82
+msgid "Animations"
+msgstr ""
+
+#: ../inc/customizer.php:83
+msgid "Fonts"
+msgstr ""
+
+#: ../inc/customizer.php:117
+msgid "InfoScreen Settings"
+msgstr ""
+
+#: ../inc/customizer.php:129
+msgid "Color Scheme Name"
+msgstr ""
+
+#: ../inc/customizer.php:130
+msgid "Font Color"
+msgstr ""
+
+#: ../inc/customizer.php:131
+msgid "Background Color"
+msgstr ""
+
+#: ../inc/customizer.php:132
+msgid "Transparency"
+msgstr ""
+
+#: ../inc/customizer.php:315
+msgid "A unique name must be chosen"
+msgstr ""
+
+#: ../inc/customizer.php:373
+msgid "Add New Color Scheme"
+msgstr ""
+
+#: ../inc/customizer.php:393
+msgid "Insert Logo"
+msgstr ""
+
+#: ../inc/customizer.php:396
+msgid "Delete Logo"
+msgstr ""
+
+#: ../inc/customizer.php:471
+msgid "Headlines"
+msgstr ""
+
+#: ../inc/customizer.php:487
+msgid "Paragraphs"
+msgstr ""
+
+#: ../inc/customizer.php:571
+msgid "Display Location"
+msgstr ""
+
+#: ../inc/customizer.php:572
+msgid "Animation"
+msgstr ""
+
+#: ../inc/customizer.php:573 ../inc/metabox-time.php:13
+msgid "Time"
+msgstr ""
+
+#: ../inc/customizer.php:579
+msgid "Fade"
+msgstr ""
+
+#: ../inc/customizer.php:616
+msgid "InfoScreen Theme options"
+msgstr ""
+
+#: ../inc/extras.php:75
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: ../inc/metabox-colorscheme.php:16
+msgid "Color scheme"
+msgstr ""
+
+#: ../inc/metabox-layout.php:13
+msgid "Layout"
+msgstr ""
+
+#: ../inc/metabox-layout.php:34
+msgid "Background only"
+msgstr ""
+
+#: ../inc/metabox-layout.php:42
+msgid "Background to the Left"
+msgstr ""
+
+#: ../inc/metabox-layout.php:50
+msgid "Background to the Right"
+msgstr ""
+
+#: ../inc/metabox-layout.php:58
+msgid "Content only"
+msgstr ""
+
+#: ../inc/metabox-layout.php:66
+msgid "Content at the Bottom"
+msgstr ""
+
+#: ../inc/metabox-layout.php:74
+msgid "Content at the Top"
+msgstr ""
+
+#: ../inc/metabox-layout.php:82
+msgid "Content to the Left"
+msgstr ""
+
+#: ../inc/metabox-layout.php:90
+msgid "Content to the Right"
+msgstr ""
+
+#: ../inc/metabox-preview.php:13
+msgid "Preview"
+msgstr ""
+
+#: ../inc/metabox-preview.php:32
+msgid "Please save the slide to see a preview"
+msgstr ""
+
+#: ../inc/template-tags.php:37
+msgid "Post navigation"
+msgstr ""
+
+#: ../inc/template-tags.php:47
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#: ../inc/template-tags.php:51
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../inc/template-tags.php:76
+msgid "Pingback:"
+msgstr ""
+
+#: ../inc/template-tags.php:86
+#, php-format
+msgid "%s <span class=\"says\">says:</span>"
+msgstr ""
+
+#: ../inc/template-tags.php:89
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: ../inc/template-tags.php:121
+#, php-format
+msgid ""
+"Posted on <a href=\"%1$s\" title=\"%2$s\" rel=\"bookmark\"><time class="
+"\"entry-date\" datetime=\"%3$s\">%4$s</time></a><span class=\"byline\"> by "
+"<span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s"
+"\" rel=\"author\">%7$s</a></span></span>"
+msgstr ""
+
+#: ../inc/template-tags.php:127
+#, php-format
+msgid "View all posts by %s"
+msgstr ""

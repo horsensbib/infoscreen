@@ -1,0 +1,449 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: InfoScreen\n"
+"POT-Creation-Date: 2013-08-13 16:42+0100\n"
+"PO-Revision-Date: 2013-08-13 16:45+0100\n"
+"Last-Translator: Morten Brunbjerg Bech <bech@rephlex.dk>\n"
+"Language-Team: Horsens Kommunes Biblioteker <mbb@horsens.dk>\n"
+"Language: da_DK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ./\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: ../inc\n"
+
+#: ../404.php:16
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Ups! Den side kan vi ikke finde."
+
+#: ../404.php:20
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+"Der blev ikke fundet noget på dette sted. Prøv evt. et link herunder eller "
+"prøv at søge."
+
+#: ../404.php:27
+msgid "Most Used Categories"
+msgstr "Oftest brugte kategorier"
+
+#: ../404.php:35
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr "Prøv at kigge i de månedlige arkiver. %1$s"
+
+#: ../comments.php:39 ../comments.php:59
+msgid "Comment navigation"
+msgstr "Kommentar-navigation"
+
+#: ../comments.php:40 ../comments.php:60
+msgid "&larr; Older Comments"
+msgstr "&larr; Ældre kommentarer"
+
+#: ../comments.php:41 ../comments.php:61
+msgid "Newer Comments &rarr;"
+msgstr "Nyere kommentarer &rarr;"
+
+#: ../comments.php:71
+msgid "Comments are closed."
+msgstr "Der kan ikke kommenteres."
+
+#: ../content-page.php:17 ../content-single.php:19 ../content.php:38
+#: ../image.php:94
+msgid "Pages:"
+msgstr "Sider:"
+
+#: ../content-page.php:19 ../content-single.php:57 ../image.php:35
+#: ../image.php:108 ../inc/template-tags.php:76 ../inc/template-tags.php:97
+msgid "Edit"
+msgstr "Redigér"
+
+#: ../content-single.php:25 ../content-single.php:28
+msgid ", "
+msgstr ","
+
+#: ../content-single.php:33
+#, php-format
+msgid ""
+"This entry was tagged %2$s. Bookmark the <a href=\"%3$s\" title=\"Permalink "
+"to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Dette indlæg blev tagged %2$s. Lav et bogmærke til <a href=\"%3$s\" title="
+"\"Permalink til %4$s\" rel=\"bookmark\">permalinket</a>."
+
+#: ../content-single.php:35
+#, php-format
+msgid ""
+"Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark"
+"\">permalink</a>."
+msgstr ""
+"Lav et bogmærke til <a href=\"%3$s\" title=\"Permalink til %4$s\" rel="
+"\"bookmark\">permalinket</a>."
+
+#: ../content-single.php:41
+#, php-format
+msgid ""
+"This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" "
+"title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Dette indlæg blev publiceret i %1$s og tagged %2$s. Lav et bogmærke til <a "
+"href=\"%3$s\" title=\"Permalink til %4$s\" rel=\"bookmark\">permalinket</a>."
+
+#: ../content-single.php:43
+#, php-format
+msgid ""
+"This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title="
+"\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Dette indlæg blev publiceret i %1$s. Lav et bogmærke til <a href=\"%3$s\" "
+"title=\"Permalink til %4$s\" rel=\"bookmark\">permalinket</a>."
+
+#: ../content.php:37
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Læs mere <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../footer.php:49
+#, php-format
+msgid "Proudly powered by %s"
+msgstr "Kører stolt på %s"
+
+#: ../footer.php:51
+#, php-format
+msgid "Theme: %1$s by %2$s."
+msgstr "Tema: %1$s af %2$s."
+
+#: ../functions.php:194
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: ../functions.php:249
+msgid "Publish"
+msgstr "Publicér"
+
+#: ../functions.php:258
+msgid "Background Image"
+msgstr "Baggrundsbillede"
+
+#: ../functions.php:267 ../functions.php:283
+msgid "Display Locations"
+msgstr "Skærmplaceringer"
+
+#: ../functions.php:279
+msgid "Slideshow"
+msgstr "Diasshow"
+
+#: ../functions.php:281
+msgid "All slides"
+msgstr "Alle dias"
+
+#: ../functions.php:282
+msgid "Add a slide"
+msgstr "Tilføj et dias"
+
+#: ../functions.php:294
+msgid "All Slides"
+msgstr "Alle dias"
+
+#: ../functions.php:295 ../functions.php:299 ../inc/customizer.php:580
+msgid "Slide"
+msgstr "Glid ind"
+
+#: ../functions.php:296 ../functions.php:297
+msgid "Add Slide"
+msgstr "Tilføj dias"
+
+#: ../functions.php:298
+msgid "Edit Slide"
+msgstr "Redigér dias"
+
+#: ../functions.php:300
+msgid "View Slide"
+msgstr "Vis dias"
+
+#: ../functions.php:301
+msgid "Search Slides"
+msgstr "Søg efter dias"
+
+#: ../functions.php:302
+msgid "No Slides found"
+msgstr "Der blev ikke fundet nogen dias"
+
+#: ../functions.php:303
+msgid "No Slides found in Trash"
+msgstr "Der blev ikke fundet nogen dias i papirkurven"
+
+#: ../image.php:24
+#, php-format
+msgid ""
+"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+"\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size "
+"image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" "
+"rel=\"gallery\">%8$s</a>"
+msgstr ""
+"Publiceret <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+"\"%1$s\">%2$s</time></span> kl. <a href=\"%3$s\" title=\"Link til billed i "
+"fold størrelse\">%4$s &times; %5$s</a> i <a href=\"%6$s\" title=\"Vend "
+"tilbage til %7$s\" rel=\"gallery\">%8$s</a>"
+
+#: ../image.php:39
+msgid "&larr; Previous"
+msgstr "&larr; Forrige"
+
+#: ../image.php:40
+msgid "Next &rarr;"
+msgstr "Næste &rarr;"
+
+#: ../image.php:100
+#, php-format
+msgid ""
+"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a "
+"comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" "
+"title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr ""
+
+#: ../image.php:102
+#, php-format
+msgid ""
+"Comments are closed, but you can leave a trackback: <a class=\"trackback-link"
+"\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
+"\">Trackback URL</a>."
+msgstr ""
+
+#: ../image.php:104
+msgid ""
+"Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond"
+"\" title=\"Post a comment\">post a comment</a>."
+msgstr ""
+
+#: ../image.php:106
+msgid "Both comments and trackbacks are currently closed."
+msgstr ""
+
+#: ../no-results.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: ../no-results.php:20
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: ../no-results.php:24
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: ../no-results.php:29
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: ../search.php:17
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Søgeresultat efter: %s"
+
+#: ../sidebar.php:18
+msgid "Archives"
+msgstr "Arkiv"
+
+#: ../sidebar.php:25
+msgid "Meta"
+msgstr "Meta"
+
+#: ../inc/customizer.php:80
+msgid "Logo"
+msgstr "Logo"
+
+#: ../inc/customizer.php:81
+msgid "Color Schemes"
+msgstr "Farveskema"
+
+#: ../inc/customizer.php:82
+msgid "Animations"
+msgstr "Animationer"
+
+#: ../inc/customizer.php:83
+msgid "Fonts"
+msgstr "Skrifttyper"
+
+#: ../inc/customizer.php:117
+msgid "InfoScreen Settings"
+msgstr "InfoScreen indstillinger"
+
+#: ../inc/customizer.php:129
+msgid "Color Scheme Name"
+msgstr "Navn på farveskema"
+
+#: ../inc/customizer.php:130
+msgid "Font Color"
+msgstr "Skriftfarve"
+
+#: ../inc/customizer.php:131
+msgid "Background Color"
+msgstr "Baggrundsfarve"
+
+#: ../inc/customizer.php:132 ../inc/metabox-colorscheme.php:62
+msgid "Transparency"
+msgstr "Gennemsigtighed"
+
+#: ../inc/customizer.php:196
+msgid "Delete"
+msgstr "Slet"
+
+#: ../inc/customizer.php:315
+msgid "A unique name must be chosen"
+msgstr "Der skal vælges et unikt navn"
+
+#: ../inc/customizer.php:373
+msgid "Add New Color Scheme"
+msgstr "Tilføj nyt farveskema"
+
+#: ../inc/customizer.php:393
+msgid "Insert Logo"
+msgstr "Indsæt logo"
+
+#: ../inc/customizer.php:396
+msgid "Delete Logo"
+msgstr "Slet logo"
+
+#: ../inc/customizer.php:471
+msgid "Headlines"
+msgstr "Overskrifter"
+
+#: ../inc/customizer.php:487
+msgid "Paragraphs"
+msgstr "Brødtekst"
+
+#: ../inc/customizer.php:571
+msgid "Display Location"
+msgstr "Skærmplacering"
+
+#: ../inc/customizer.php:572
+msgid "Animation"
+msgstr "Animation"
+
+#: ../inc/customizer.php:573 ../inc/metabox-time.php:13
+msgid "Time"
+msgstr "Tid"
+
+#: ../inc/customizer.php:579
+msgid "Fade"
+msgstr "Udton"
+
+#: ../inc/customizer.php:616
+msgid "InfoScreen Theme options"
+msgstr "InfoScreen temaindstillinger"
+
+#: ../inc/extras.php:75
+#, php-format
+msgid "Page %s"
+msgstr "Side %s"
+
+#: ../inc/metabox-colorscheme.php:16
+msgid "Color scheme"
+msgstr "Farveskema"
+
+#: ../inc/metabox-layout.php:13
+msgid "Layout"
+msgstr "Layout"
+
+#: ../inc/metabox-layout.php:34
+msgid "Background only"
+msgstr "Kun baggrund"
+
+#: ../inc/metabox-layout.php:42
+msgid "Background to the Left"
+msgstr "Baggrund til venstre"
+
+#: ../inc/metabox-layout.php:50
+msgid "Background to the Right"
+msgstr "Baggrund til højre"
+
+#: ../inc/metabox-layout.php:58
+msgid "Content only"
+msgstr "Kun indhold"
+
+#: ../inc/metabox-layout.php:66
+msgid "Content at the Bottom"
+msgstr "Indhold i bunden"
+
+#: ../inc/metabox-layout.php:74
+msgid "Content at the Top"
+msgstr "Indhold i toppen"
+
+#: ../inc/metabox-layout.php:82
+msgid "Content to the Left"
+msgstr "Indhold til venstre"
+
+#: ../inc/metabox-layout.php:90
+msgid "Content to the Right"
+msgstr "Indhold til højre"
+
+#: ../inc/metabox-preview.php:13
+msgid "Preview"
+msgstr "Forhåndsvisning"
+
+#: ../inc/metabox-preview.php:32
+msgid "Please save the slide to see a preview"
+msgstr "Gem venligst diaset for at se en forhåndsvisning"
+
+#: ../inc/metabox-time.php:28
+msgid "Slide is shown for"
+msgstr "Diasshow vises i"
+
+#: ../inc/metabox-time.php:32
+msgid "seconds"
+msgstr "sekunder"
+
+#: ../inc/template-tags.php:37
+msgid "Post navigation"
+msgstr "Indlægsnavigation"
+
+#: ../inc/template-tags.php:47
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Ældre indlæg"
+
+#: ../inc/template-tags.php:51
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Nyere indlæg <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../inc/template-tags.php:76
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: ../inc/template-tags.php:86
+#, php-format
+msgid "%s <span class=\"says\">says:</span>"
+msgstr "%s <span class=\"says\">siger:</span>"
+
+#: ../inc/template-tags.php:89
+msgid "Your comment is awaiting moderation."
+msgstr "Din kommentar afventer godkendelse."
+
+#: ../inc/template-tags.php:121
+#, php-format
+msgid ""
+"Posted on <a href=\"%1$s\" title=\"%2$s\" rel=\"bookmark\"><time class="
+"\"entry-date\" datetime=\"%3$s\">%4$s</time></a><span class=\"byline\"> by "
+"<span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s"
+"\" rel=\"author\">%7$s</a></span></span>"
+msgstr ""
+"Publiceret den <a href=\"%1$s\" title=\"%2$s\" rel=\"bookmark\"><time class="
+"\"entry-date\" datetime=\"%3$s\">%4$s</time></a><span class=\"byline\"> af "
+"<span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s"
+"\" rel=\"author\">%7$s</a></span></span>"
+
+#: ../inc/template-tags.php:127
+#, php-format
+msgid "View all posts by %s"
+msgstr "Vis alle indlæg af %s"
