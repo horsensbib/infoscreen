@@ -9,6 +9,7 @@
  */
 
 get_header(); ?>
+	<ul class="slides">
 
 		<?php if ( have_posts() ) : ?>
 
@@ -31,4 +32,5 @@ get_header(); ?>
 
 		<?php endif; ?>
 
+	</ul> <!--.slides-->
 <?php get_footer(); ?>

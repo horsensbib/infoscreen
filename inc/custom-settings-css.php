@@ -4,17 +4,13 @@ add_action('wp_head', 'dynamic_stylesheet');
 function dynamic_stylesheet(){
 	$options = get_option('infoscreen_theme_options');
 	
-	if ($_SERVER['SERVER_NAME'] == 'horsensbibliotek.dk' || 'sandbox.wp') {
-		$title_font = 'Hermes';
-		$body_font = 'Helvetica, Arial';
-	} else {
-		$title_font = $options['title_font-family'];
-		$body_font = $options['body_font-family'];
-	}
 	?>
 <style>
 	<?php
-	if ($_SERVER['SERVER_NAME'] == 'horsensbibliotek.dk' || 'sandbox.wp') {
+	// Make sure we get the right font for Horsens Public Library.
+	if ($_SERVER['SERVER_NAME'] == 'horsensbibliotek.dk') {
+		$title_font = 'Hermes';
+		$body_font = 'Helvetica, Arial';
 	?>
 @font-face {
 	font-family: 'Hermes';
@@ -26,7 +22,10 @@ function dynamic_stylesheet(){
 	     url('http://<?php echo $_SERVER['SERVER_NAME']; ?>/wp-content/themes/bibliozine-2/fonts/hermes-webfont.ttf') format('truetype'),
        url('http://<?php echo $_SERVER['SERVER_NAME']; ?>/wp-content/themes/bibliozine-2/fonts/hermes-webfont.svg#HermesRegular') format('svg');
 }
-<?php
+	<?php
+	} else {
+		$title_font = $options['title_font-family'];
+		$body_font = $options['body_font-family'];
 	}
 	if ($title_font != $body_font){
 		if (strpos($title_font,'google') !== false) {

@@ -73,6 +73,7 @@ a img {
 
 html,
 body {
+  background-color: black;
   height: 100%;
   margin: 0;
   padding: 0; }
@@ -86,6 +87,18 @@ body {
 body > .post {
   height: auto;
   min-height: 100%; }
+
+.content-area {
+  width: 90%;
+  margin: 0 auto;
+  padding: 1em 0; }
+  .content-area .widget {
+    width: 45%;
+    float: left; }
+    .content-area .widget:nth-child(even) {
+      margin-right: 5%; }
+    .content-area .widget:nth-child(odd) {
+      margin-left: 5%; }
 
 .slide-content {
   background: rgba(0, 0, 0, 0.7);
@@ -145,8 +158,8 @@ body > .post {
   .flexslider .slides .layout-txt-right {
     top: 0;
     bottom: 0;
-    height: 96%;
-    padding: 2% 4%; }
+    height: 84%;
+    padding: 6% 4%; }
     .flexslider .slides .layout-img-left .branding,
     .flexslider .slides .layout-img-right .branding,
     .flexslider .slides .layout-txt-left .branding,
@@ -288,6 +301,9 @@ textarea {
     select,
     textarea {
       font-size: 2.66667rem; } }
+
+.site-content {
+  font-size: 2rem; }
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
@@ -450,7 +466,13 @@ th {
   font-weight: bold; }
 
 /* Links */
-a {
+.content-area a {
+  color: #cccccc; }
+  .content-area a:hover, .content-area a:active {
+    color: white;
+    text-decoration: none; }
+
+.slides a {
   color: white;
   text-decoration: none; }
 

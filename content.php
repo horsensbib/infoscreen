@@ -6,9 +6,9 @@
 ?>
 <li id="post-<?php the_ID(); ?>" <?php post_class('slide'); ?> style="background-image:url('<?php infoscreen_img_src('slide-img'); ?>');">
 	<div class="slide-content <?php 
-	$options = get_option('infoscreen_theme_options');
+	/* $options = get_option('infoscreen_theme_options');
 	for ($i = 1; $i <= $options['colorschemes']; $i++){
-		if($options['csid'.$i] == get_post_meta(get_the_ID(), '_infoscreen_colorscheme', true)){
+		if ($options['csid'.$i] == get_post_meta(get_the_ID(), '_infoscreen_colorscheme', true)){
 			$font = hex2rgb($options['colorscheme_font_field'.$i]);
 			$bg = hex2rgb($options['colorscheme_bg_field'.$i]);
 		}
@@ -16,7 +16,27 @@
 			$font = hex2rgb($options['colorscheme_font_field1']);
 			$bg = hex2rgb($options['colorscheme_bg_field1']);
 		}
+	} */
+	
+	$options = get_option('infoscreen_theme_options');
+	$currentid = get_post_meta(get_the_ID(), '_infoscreen_colorscheme', true);
+	$colorscheme_exsists = 0;
+	for ($i = 1; $i <= $options['colorschemes']; $i++){
+		if($currentid == $options['csid'.$i]){
+			$colorscheme_exsists = 1;
+			$font = hex2rgb($options['colorscheme_font_field'.$i]);
+			$bg = hex2rgb($options['colorscheme_bg_field'.$i]);
+		}
+		else if($currentid == null){
+			$font = hex2rgb($options['colorscheme_font_field1']);
+			$bg = hex2rgb($options['colorscheme_bg_field1']);
+		} 
 	}
+	if($colorscheme_exsists == 0){
+			$font = hex2rgb($options['colorscheme_font_field1']);
+			$bg = hex2rgb($options['colorscheme_bg_field1']);
+	}
+	
 		echo get_post_meta(get_the_ID(), '_infoscreen_layout', true). '"';
 		$transparency_value = get_post_meta(get_the_ID(), '_infoscreen_transparency', true)/100;
 		if (get_post_meta(get_the_ID(), '_infoscreen_layout', true) != 'layout-img') {

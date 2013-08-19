@@ -24,4 +24,3 @@
 	
 <body <?php body_class('flexslider'); ?>>
 	<?php do_action( 'before' ); ?>
-	<ul class="slides">

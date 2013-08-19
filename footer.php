@@ -20,7 +20,6 @@ foreach( $myposts as $post ) : setup_postdata($post); ?>
 
 <?php endforeach; ?>
 
-		</ul> <!--.slides-->
 <header id="masthead" class="site-header" role="banner">
 	<hgroup>
 		<h1 class="site-title">

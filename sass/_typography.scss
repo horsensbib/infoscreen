@@ -21,6 +21,9 @@ textarea {
 		font-size: $default-font-size / 1.5;
 	}
 }
+.site-content {
+	font-size: $default-font-size / 2;
+}
 
 /* Headings */
 h1,h2,h3,h4,h5,h6 {
@@ -188,7 +191,15 @@ th {
 
 
 /* Links */
-a {
+.content-area a {
+	color: darken($bodytext-color, 20%);
+	&:hover,
+	&:active {
+		color: $bodytext-color;
+		text-decoration: none;
+	}
+}
+.slides a {
 	color: $bodytext-color;
 	text-decoration: none;
 }

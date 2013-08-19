@@ -1,8 +1,9 @@
-// Slide Layouts
+// Layouts
 // =============
 
 html,
 body {
+	background-color: $background-color;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -16,6 +17,26 @@ body > .post {
   min-height: 100%;
 }
 
+// Page Layouts
+// ============
+.content-area {
+	width: 90%;
+	margin: 0 auto;
+	padding: 1em 0;
+	.widget {
+		width: 45%;
+		float: left;
+		&:nth-child(even) {
+			margin-right: 5%;
+		}
+		&:nth-child(odd) {
+			margin-left: 5%;
+		}
+	}
+}
+
+// Slide Layouts
+// =============
 .slide-content {
 	background: rgba(0,0,0,.7);
 	position: absolute;
@@ -82,8 +103,8 @@ body > .post {
 	.layout-txt-right {
 		top:0;
 		bottom: 0;
-		height: 96%;
-		padding: 2% 4%;
+		height: 84%;
+		padding: 6% 4%;
 		.branding {
 			bottom:30px;
 
