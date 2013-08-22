@@ -106,7 +106,7 @@ function infoscreen_setup() {
 	/**
 	 * Enable support for Post Formats
 	 * =============================== */
-	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
+	// add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
 }
 endif; // infoscreen_setup
 add_action( 'after_setup_theme', 'infoscreen_setup' );
@@ -152,23 +152,23 @@ function infoscreen_img_src($size) {
 		// default image, if no post thumbnail
 		global $post;
 		if (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-img') {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/moss.jpg';
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-rowers.jpg';
 		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-txt') {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/cloud.jpg';
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-pier.jpg';
 		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-img-left') {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/sunset-hair.jpg';
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-sailing.jpg';
 		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-img-right') {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/cactus.jpg';
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-camera.jpg';
 		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-img-top') {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/girl-flowers.jpg';
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-sailors.jpg';
 		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-img-bottom') {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/tracks.jpg';
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-stockholmtram.jpg';
 		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-txt-left') {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/walking.jpg';
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-brooklynbridge.jpg';
 		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-txt-right') {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/fishing.jpg';
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-backpacking.jpg';
 		} else {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/grass.jpg';
+			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-yosemite.jpg';
 		}
 	} else {
 		// get post thumbnail

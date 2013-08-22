@@ -159,7 +159,7 @@ body > .post {
     top: 0;
     bottom: 0;
     height: 84%;
-    padding: 6% 4%; }
+    padding: 6% 4% 1.75em; }
     .flexslider .slides .layout-img-left .branding,
     .flexslider .slides .layout-img-right .branding,
     .flexslider .slides .layout-txt-left .branding,
