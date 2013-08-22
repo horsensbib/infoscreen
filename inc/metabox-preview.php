@@ -27,7 +27,7 @@ function preview_metabox() {
 	$frame_src = get_permalink();
 	if(get_post_meta(get_the_ID(), '_infoscreen_colorscheme')){
 	?>
-		<iframe id="slide-preview-id"class="slide-preview" src="<?php echo $frame_src; ?>" frameborder="0" onload="iframe_loaded()"></iframe>
+		<iframe id="slide-preview-id"class="slide-preview" src="<?php echo $frame_src; ?>" frameborder="1" onload="iframe_loaded()"></iframe>
 	<?php } else { ?>
 		<p><?php _e('Please save the slide to see a preview','infoscreen'); ?></p>
 	<?php }	?>
