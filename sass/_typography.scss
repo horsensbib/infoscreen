@@ -15,7 +15,7 @@ textarea {
 		font-size: $default-font-size / 8;
 	}
 	@media all and (min-width:257px) and (max-width:600px) {
-		font-size: $default-font-size / 2;
+		font-size: $default-font-size / 3;
 	}
 	@media all and (min-width:601px) and (max-width:1024px) {
 		font-size: $default-font-size / 1.5;
@@ -37,7 +37,7 @@ h1 {
 		font-size: $h1-font-size / 8;
 	}
 	@media all and (min-width:257px) and (max-width:600px) {
-		font-size: $h1-font-size / 2;
+		font-size: $h1-font-size / 3;
 	}
 	@media all and (min-width:601px) and (max-width:1024px) {
 		font-size: $h1-font-size / 1.5;
@@ -49,7 +49,7 @@ h2 {
 		font-size: $h2-font-size / 8;
 	}
 	@media all and (min-width:257px) and (max-width:600px) {
-		font-size: $h2-font-size / 2;
+		font-size: $h2-font-size / 3;
 	}
 	@media all and (min-width:601px) and (max-width:1024px) {
 		font-size: $h2-font-size / 1.5;
@@ -61,7 +61,7 @@ h3 {
 		font-size: $h3-font-size / 8;
 	}
 	@media all and (min-width:257px) and (max-width:600px) {
-		font-size: $h3-font-size / 2;
+		font-size: $h3-font-size / 3;
 	}
 	@media all and (min-width:601px) and (max-width:1024px) {
 		font-size: $h3-font-size / 1.5;
@@ -73,7 +73,7 @@ h4 {
 		font-size: $h4-font-size / 8;
 	}
 	@media all and (min-width:257px) and (max-width:600px) {
-		font-size: $h4-font-size / 2;
+		font-size: $h4-font-size / 3;
 	}
 	@media all and (min-width:601px) and (max-width:1024px) {
 		font-size: $h4-font-size / 1.5;
@@ -85,7 +85,7 @@ h5 {
 		font-size: $h5-font-size / 8;
 	}
 	@media all and (min-width:257px) and (max-width:600px) {
-		font-size: $h5-font-size / 2;
+		font-size: $h5-font-size / 3;
 	}
 	@media all and (min-width:601px) and (max-width:1024px) {
 		font-size: $h5-font-size / 1.5;
@@ -104,7 +104,7 @@ p {
 	margin-bottom: 1.5em;
 }
 ul, ol {
-	margin: 0 0 1.5em 3em;
+	margin: 0 0 1.5em 1em;
 }
 ul {
 	list-style: disc;

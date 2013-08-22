@@ -48,7 +48,7 @@ function layout_metabox() {
 	<input type="radio" name="_infoscreen_layout" id="layout-img-right" value="layout-img-right" <?php echo ($currentvalue == 'layout-img-right')? 'checked="checked"':''; ?> />
 	<label for="layout-img-right">
 		<?php _e('Background to the Right','infoscreen') ?>
-		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/Layout-img-right.png">
+		<img src="<?php echo get_template_directory_uri(); ?>/img/thumbnails/layout-img-right.png">
 	</label>
 	</li>
 
