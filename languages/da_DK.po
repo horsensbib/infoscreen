@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: InfoScreen\n"
-"POT-Creation-Date: 2013-08-13 16:47+0100\n"
-"PO-Revision-Date: 2013-08-13 16:48+0100\n"
+"POT-Creation-Date: 2013-08-26 14:04+0100\n"
+"PO-Revision-Date: 2013-08-26 14:12+0100\n"
 "Last-Translator: Morten Brunbjerg Bech <bech@rephlex.dk>\n"
 "Language-Team: Horsens Kommunes Biblioteker <mbb@horsens.dk>\n"
 "Language: da_DK\n"
@@ -29,14 +29,14 @@ msgstr ""
 "Der blev ikke fundet noget på dette sted. Prøv evt. et link herunder eller "
 "prøv at søge."
 
-#: ../404.php:27
-msgid "Most Used Categories"
-msgstr "Oftest brugte kategorier"
+#: ../404.php:23 ../functions.php:267 ../functions.php:283
+#: ../functions.php:310
+msgid "Display Locations"
+msgstr "Skærmplaceringer"
 
-#: ../404.php:35
-#, php-format
-msgid "Try looking in the monthly archives. %1$s"
-msgstr "Prøv at kigge i de månedlige arkiver. %1$s"
+#: ../404.php:25 ../functions.php:281
+msgid "All slides"
+msgstr "Alle dias"
 
 #: ../comments.php:39 ../comments.php:59
 msgid "Comment navigation"
@@ -54,7 +54,7 @@ msgstr "Nyere kommentarer &rarr;"
 msgid "Comments are closed."
 msgstr "Der kan ikke kommenteres."
 
-#: ../content-page.php:17 ../content-single.php:19 ../content.php:38
+#: ../content-page.php:17 ../content-single.php:19 ../content.php:63
 #: ../image.php:94
 msgid "Pages:"
 msgstr "Sider:"
@@ -104,16 +104,16 @@ msgstr ""
 "Dette indlæg blev publiceret i %1$s. Lav et bogmærke til <a href=\"%3$s\" "
 "title=\"Permalink til %4$s\" rel=\"bookmark\">permalinket</a>."
 
-#: ../content.php:37
+#: ../content.php:62
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Læs mere <span class=\"meta-nav\">&rarr;</span>"
 
-#: ../footer.php:49
+#: ../footer.php:48
 #, php-format
 msgid "Proudly powered by %s"
 msgstr "Kører stolt på %s"
 
-#: ../footer.php:51
+#: ../footer.php:50
 #, php-format
 msgid "Theme: %1$s by %2$s."
 msgstr "Tema: %1$s af %2$s."
@@ -130,17 +130,9 @@ msgstr "Publicér"
 msgid "Background Image"
 msgstr "Baggrundsbillede"
 
-#: ../functions.php:267 ../functions.php:283
-msgid "Display Locations"
-msgstr "Skærmplaceringer"
-
 #: ../functions.php:279
 msgid "Slideshow"
 msgstr "Diasshow"
-
-#: ../functions.php:281
-msgid "All slides"
-msgstr "Alle dias"
 
 #: ../functions.php:282
 msgid "Add a slide"
@@ -178,6 +170,47 @@ msgstr "Der blev ikke fundet nogen dias"
 msgid "No Slides found in Trash"
 msgstr "Der blev ikke fundet nogen dias i papirkurven"
 
+#: ../functions.php:311 ../inc/customizer.php:571
+msgid "Display Location"
+msgstr "Skærmplacering"
+
+#: ../functions.php:312
+msgid "Search Display Locations"
+msgstr "Søg en skærmplacering"
+
+#: ../functions.php:314
+msgid "All Display Locations"
+msgstr "Alle skærmplaceringer"
+
+#: ../functions.php:315
+msgid "Parent Display Location"
+msgstr "Overordnet skærmplacering"
+
+#: ../functions.php:316
+msgid "Parent Display Location:"
+msgstr "Overordnet skærmplacering:"
+
+#: ../functions.php:317
+msgid "Edit Display Location"
+msgstr "Rediger skærmplacering"
+
+#: ../functions.php:318
+msgid "View Display Location"
+msgstr "Vis skærmplacering"
+
+#: ../functions.php:319
+msgid "Update Display Location"
+msgstr "Opdater skærmplacering"
+
+#: ../functions.php:320
+msgid "Add Display Location"
+msgstr "Tilføj skærmplacering"
+
+#: ../functions.php:321
+#, fuzzy
+msgid "New Display Location Name"
+msgstr "Nyt navn til skærmplacering"
+
 #: ../image.php:24
 #, php-format
 msgid ""
@@ -206,6 +239,10 @@ msgid ""
 "comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" "
 "title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
 msgstr ""
+"<a class=\"comment-link\" href=\"#respond\" title=\"Skriv en kommentar"
+"\">Skriv en kommentar</a> eller læg et trackback: <a class=\"trackback-link"
+"\" href=\"%s\" title=\"Trackback URL til dit indlæg\" rel=\"trackback"
+"\">Trackback URL</a>."
 
 #: ../image.php:102
 #, php-format
@@ -214,38 +251,47 @@ msgid ""
 "\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
 "\">Trackback URL</a>."
 msgstr ""
+"Der er lukket for kommentarer, men du kan lave et trackback: <a class="
+"\"trackback-link\" href=\"%s\" title=\"Trackback URL til dit indlæg\" rel="
+"\"trackback\">Trackback URL</a>."
 
 #: ../image.php:104
 msgid ""
 "Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond"
 "\" title=\"Post a comment\">post a comment</a>."
 msgstr ""
+"Der er lukket for trackbacks men du kan <a class=\"comment-link\" href="
+"\"#respond\" title=\"Skriv en kommentar\">skrive en kommentar</a>."
 
 #: ../image.php:106
 msgid "Both comments and trackbacks are currently closed."
-msgstr ""
+msgstr "Der er både lukket for kommentarer og trackbacks."
 
 #: ../no-results.php:14
 msgid "Nothing Found"
-msgstr ""
+msgstr "Intet fundet"
 
 #: ../no-results.php:20
 #, php-format
 msgid ""
 "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr ""
+msgstr "Klar til at udgive dit første indlæg? <a href=\"%1$s\">Begynd her</a>."
 
 #: ../no-results.php:24
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords."
 msgstr ""
+"Der var desværre ikke noget, der matchede dine søgeord. Prøv venligst igen "
+"med nogle andre søgeord."
 
 #: ../no-results.php:29
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
 msgstr ""
+"Vi kan vist desværre ikke finde det, du leder efter. Måske kan det hjælpe at "
+"søge."
 
 #: ../search.php:17
 #, php-format
@@ -323,10 +369,6 @@ msgstr "Overskrifter"
 #: ../inc/customizer.php:487
 msgid "Paragraphs"
 msgstr "Brødtekst"
-
-#: ../inc/customizer.php:571
-msgid "Display Location"
-msgstr "Skærmplacering"
 
 #: ../inc/customizer.php:572
 msgid "Animation"
@@ -447,3 +489,9 @@ msgstr ""
 #, php-format
 msgid "View all posts by %s"
 msgstr "Vis alle indlæg af %s"
+
+#~ msgid "Most Used Categories"
+#~ msgstr "Oftest brugte kategorier"
+
+#~ msgid "Try looking in the monthly archives. %1$s"
+#~ msgstr "Prøv at kigge i de månedlige arkiver. %1$s"

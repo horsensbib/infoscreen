@@ -304,6 +304,28 @@ function change_post_object_label() {
 }
 add_action( 'init', 'change_post_object_label' );
 
+function change_tax_object_label() {
+	global $wp_taxonomies;
+	$labels = &$wp_taxonomies['category']->labels;
+	$labels->name = __('Display Locations', 'infoscreen');
+	$labels->singular_name = __('Display Location', 'infoscreen');
+	$labels->search_items = __('Search Display Locations', 'infoscreen');
+	// $labels->popular_items = __('Popular Locations', 'infoscreen');
+	$labels->all_items = __('All Display Locations', 'infoscreen');
+	$labels->parent_item = __('Parent Display Location', 'infoscreen');
+	$labels->parent_item_colon = __('Parent Display Location:', 'infoscreen');
+	$labels->edit_item = __('Edit Display Location', 'infoscreen');
+	$labels->view_item = __('View Display Location', 'infoscreen');
+	$labels->update_item = __('Update Display Location', 'infoscreen');
+	$labels->add_new_item = __('Add Display Location', 'infoscreen');
+	$labels->new_item_name = __('New Display Location Name', 'infoscreen');
+	// $labels->separate_items_with_commas = __('Separate locations with commas', 'infoscreen');
+	// $labels->add_or_remove_items = __('Add or remove locations', 'infoscreen');
+	// $labels->choose_from_most_used = __('View Slide', 'infoscreen');
+	// $labels->not_found = __('No Slides found', 'infoscreen');
+}
+add_action( 'init', 'change_tax_object_label' );
+
 /**
  * Slide Show
  * ========== */

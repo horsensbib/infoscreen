@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: InfoScreen\n"
-"POT-Creation-Date: 2013-08-13 15:48+0100\n"
-"PO-Revision-Date: 2013-08-13 15:48+0100\n"
+"POT-Creation-Date: 2013-08-26 14:03+0100\n"
+"PO-Revision-Date: 2013-08-26 14:04+0100\n"
 "Last-Translator: Morten Brunbjerg Bech <bech@rephlex.dk>\n"
 "Language-Team: Horsens Public Library <mbb@horsens.dk>\n"
 "Language: en_US\n"
@@ -27,13 +27,13 @@ msgid ""
 "below or a search?"
 msgstr ""
 
-#: ../404.php:27
-msgid "Most Used Categories"
+#: ../404.php:23 ../functions.php:267 ../functions.php:283
+#: ../functions.php:310
+msgid "Display Locations"
 msgstr ""
 
-#: ../404.php:35
-#, php-format
-msgid "Try looking in the monthly archives. %1$s"
+#: ../404.php:25 ../functions.php:281
+msgid "All slides"
 msgstr ""
 
 #: ../comments.php:39 ../comments.php:59
@@ -52,7 +52,7 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: ../content-page.php:17 ../content-single.php:19 ../content.php:38
+#: ../content-page.php:17 ../content-single.php:19 ../content.php:63
 #: ../image.php:94
 msgid "Pages:"
 msgstr ""
@@ -94,78 +94,110 @@ msgid ""
 "\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr ""
 
-#: ../content.php:37
+#: ../content.php:62
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: ../footer.php:49
+#: ../footer.php:48
 #, php-format
 msgid "Proudly powered by %s"
 msgstr ""
 
-#: ../footer.php:51
+#: ../footer.php:50
 #, php-format
 msgid "Theme: %1$s by %2$s."
 msgstr ""
 
-#: ../functions.php:186
+#: ../functions.php:194
 msgid "Sidebar"
 msgstr ""
 
-#: ../functions.php:241
+#: ../functions.php:249
 msgid "Publish"
 msgstr ""
 
-#: ../functions.php:250
+#: ../functions.php:258
 msgid "Background Image"
 msgstr ""
 
-#: ../functions.php:259 ../functions.php:275
-msgid "Display Locations"
-msgstr ""
-
-#: ../functions.php:271
+#: ../functions.php:279
 msgid "Slideshow"
 msgstr ""
 
-#: ../functions.php:273
-msgid "All slides"
-msgstr ""
-
-#: ../functions.php:274
+#: ../functions.php:282
 msgid "Add a slide"
 msgstr ""
 
-#: ../functions.php:286
+#: ../functions.php:294
 msgid "All Slides"
 msgstr ""
 
-#: ../functions.php:287 ../functions.php:291 ../inc/customizer.php:580
+#: ../functions.php:295 ../functions.php:299 ../inc/customizer.php:580
 msgid "Slide"
 msgstr ""
 
-#: ../functions.php:288 ../functions.php:289
+#: ../functions.php:296 ../functions.php:297
 msgid "Add Slide"
 msgstr ""
 
-#: ../functions.php:290
+#: ../functions.php:298
 msgid "Edit Slide"
 msgstr ""
 
-#: ../functions.php:292
+#: ../functions.php:300
 msgid "View Slide"
 msgstr ""
 
-#: ../functions.php:293
+#: ../functions.php:301
 msgid "Search Slides"
 msgstr ""
 
-#: ../functions.php:294
+#: ../functions.php:302
 msgid "No Slides found"
 msgstr ""
 
-#: ../functions.php:295
+#: ../functions.php:303
 msgid "No Slides found in Trash"
+msgstr ""
+
+#: ../functions.php:311 ../inc/customizer.php:571
+msgid "Display Location"
+msgstr ""
+
+#: ../functions.php:312
+msgid "Search Display Locations"
+msgstr ""
+
+#: ../functions.php:314
+msgid "All Display Locations"
+msgstr ""
+
+#: ../functions.php:315
+msgid "Parent Display Location"
+msgstr ""
+
+#: ../functions.php:316
+msgid "Parent Display Location:"
+msgstr ""
+
+#: ../functions.php:317
+msgid "Edit Display Location"
+msgstr ""
+
+#: ../functions.php:318
+msgid "View Display Location"
+msgstr ""
+
+#: ../functions.php:319
+msgid "Update Display Location"
+msgstr ""
+
+#: ../functions.php:320
+msgid "Add Display Location"
+msgstr ""
+
+#: ../functions.php:321
+msgid "New Display Location Name"
 msgstr ""
 
 #: ../image.php:24
@@ -278,8 +310,12 @@ msgstr ""
 msgid "Background Color"
 msgstr ""
 
-#: ../inc/customizer.php:132
+#: ../inc/customizer.php:132 ../inc/metabox-colorscheme.php:62
 msgid "Transparency"
+msgstr ""
+
+#: ../inc/customizer.php:196 ../inc/customizer.php:283
+msgid "Delete"
 msgstr ""
 
 #: ../inc/customizer.php:315
@@ -304,10 +340,6 @@ msgstr ""
 
 #: ../inc/customizer.php:487
 msgid "Paragraphs"
-msgstr ""
-
-#: ../inc/customizer.php:571
-msgid "Display Location"
 msgstr ""
 
 #: ../inc/customizer.php:572
@@ -377,6 +409,14 @@ msgstr ""
 
 #: ../inc/metabox-preview.php:32
 msgid "Please save the slide to see a preview"
+msgstr ""
+
+#: ../inc/metabox-time.php:28
+msgid "Slide is shown for"
+msgstr ""
+
+#: ../inc/metabox-time.php:32
+msgid "seconds"
 msgstr ""
 
 #: ../inc/template-tags.php:37
