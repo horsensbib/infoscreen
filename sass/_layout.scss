@@ -103,16 +103,15 @@ body > .post {
 	.layout-txt-right {
 		top:0;
 		bottom: 0;
-		height: 84%;
-		padding: 6% 4% 1.75em;
+		padding: 6% 4% 0;
 		.branding {
-			bottom:30px;
+			bottom:20px;
 
 			@media all and (max-width:256px) {
 				bottom:5px;
 			}
 			@media all and (min-width:257px) and (max-width:600px) {
-				bottom:20px;
+				bottom:10px;
 			}
 		}
 	}

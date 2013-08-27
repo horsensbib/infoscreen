@@ -158,13 +158,12 @@ body > .post {
   .flexslider .slides .layout-txt-right {
     top: 0;
     bottom: 0;
-    height: 84%;
-    padding: 6% 4% 1.75em; }
+    padding: 6% 4% 0; }
     .flexslider .slides .layout-img-left .branding,
     .flexslider .slides .layout-img-right .branding,
     .flexslider .slides .layout-txt-left .branding,
     .flexslider .slides .layout-txt-right .branding {
-      bottom: 30px; }
+      bottom: 20px; }
       @media all and (max-width: 256px) {
         .flexslider .slides .layout-img-left .branding,
         .flexslider .slides .layout-img-right .branding,
@@ -176,7 +175,7 @@ body > .post {
         .flexslider .slides .layout-img-right .branding,
         .flexslider .slides .layout-txt-left .branding,
         .flexslider .slides .layout-txt-right .branding {
-          bottom: 20px; } }
+          bottom: 10px; } }
   .flexslider .slides .layout-img-left,
   .flexslider .slides .layout-img-right {
     width: 30%; }
