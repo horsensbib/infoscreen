@@ -1,24 +1,14 @@
 /*
 Theme Name: InfoScreen
-Theme URI: http://underscores.me/
+Theme URI: https://github.com/horsensbib/infoscreen
 Author: Morten Brunbjerg Bech & Jacob Bjørn Hansens @ Horsens Public Library
 Author URI: http://horsensbibliotek.dk/
-Description: This theme is for use with large screen information displays in public places.
+Description: This theme is intended for use with large screen information displays in public places. Please don't try to build a regular website or blog with this theme! InfoScreen is supposed to make it easy to setup good looking slideshows for information displays in different locations, setup color schemes and typography that fits your brand for the entire slideshow, and choose between a variety of layouts for each slide. Default vintage photos from New Old Stock: http://http://nos.twnsnd.co/.
 Version: 0.2
-License: GNU General Public License
-License URI: license.txt
-Tags: Information Displays,
-
-InfoScreen is a WordPress theme meant for use on information displays in public places.
-
-InfoScreen is supposed to make it easy to:
-
-1. Setup good looking slideshows for information displays in different locations
-2. Setup color schemes and typography that fits your brand for the entire slideshow
-3. Choose between a variety of layouts and transitions for each slide
-
-Default vintage photos from New Old Stock: http://http://nos.twnsnd.co/.
-
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: black, blue, brown, gray, green, orange, pink, purple, red, silver, tan, white, yellow, dark, light, one-column, left-sidebar, right-sidebar, custom-background, custom-colors, full-width-template, flexible-width, theme-options, translation-ready
+Text Domain: infoscreen
 */
 
 @import "css/infoscreen.css";
