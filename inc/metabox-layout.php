@@ -150,7 +150,7 @@ function layout() {
 		the_post_thumbnail('category-post-thumbnail');
 	} else { 	// Else, display a default image
 	?><img class="attachment-category-post-thumbnail wp-post-image"
-			src="<?php bloginfo('stylesheet_directory'); ?>/graphics/horsens-bibliotek-230x90.jpg" />
+			src="<?php get_stylesheet_directory_uri(); ?>/img/newoldstock-sailing.jpg" />
 			<?php }?> </a> <header>
 			<h2 class="entry-title">
 				<a href="<?php the_permalink() ?>" rel="bookmark"

@@ -137,7 +137,7 @@ function infoscreen_register_custom_background() {
 		define( 'BACKGROUND_COLOR', $args['default-color'] );
 		if ( ! empty( $args['default-image'] ) )
 			define( 'BACKGROUND_IMAGE', $args['default-image'] );
-		add_custom_background();
+		add_theme_support( 'custom-background', $args );
 	}
 }
 add_action( 'after_setup_theme', 'infoscreen_register_custom_background' );
@@ -152,23 +152,23 @@ function infoscreen_img_src($size) {
 		// default image, if no post thumbnail
 		global $post;
 		if (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-img') {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-rowers.jpg';
+			$img_url = '' . get_stylesheet_directory_uri() . '/img/newoldstock-rowers.jpg';
 		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-txt') {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-pier.jpg';
+			$img_url = '' . get_stylesheet_directory_uri() . '/img/newoldstock-pier.jpg';
 		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-img-left') {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-sailing.jpg';
+			$img_url = '' . get_stylesheet_directory_uri() . '/img/newoldstock-sailing.jpg';
 		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-img-right') {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-camera.jpg';
+			$img_url = '' . get_stylesheet_directory_uri() . '/img/newoldstock-camera.jpg';
 		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-img-top') {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-sailors.jpg';
+			$img_url = '' . get_stylesheet_directory_uri() . '/img/newoldstock-sailors.jpg';
 		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-img-bottom') {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-stockholmtram.jpg';
+			$img_url = '' . get_stylesheet_directory_uri() . '/img/newoldstock-stockholmtram.jpg';
 		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-txt-left') {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-brooklynbridge.jpg';
+			$img_url = '' . get_stylesheet_directory_uri() . '/img/newoldstock-brooklynbridge.jpg';
 		} elseif (get_post_meta(get_the_ID(), '_infoscreen_layout', true) == 'layout-txt-right') {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-backpacking.jpg';
+			$img_url = '' . get_stylesheet_directory_uri() . '/img/newoldstock-backpacking.jpg';
 		} else {
-			$img_url = '' . get_bloginfo('stylesheet_directory') . '/img/newoldstock-yosemite.jpg';
+			$img_url = '' . get_stylesheet_directory_uri() . '/img/newoldstock-yosemite.jpg';
 		}
 	} else {
 		// get post thumbnail
@@ -445,8 +445,3 @@ jQuery(window).load(function() {
 <?php
 }
 add_action('wp_footer', 'slideshow');
-
-/**
- * Implement the Custom Header feature
- */
-//require( get_template_directory() . '/inc/custom-header.php' );
