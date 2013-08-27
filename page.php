@@ -20,16 +20,17 @@ get_header(); ?>
 
 				<?php get_template_part( 'content', 'page' ); ?>
 
-				<?php
-					// If comments are open or we have at least one comment, load up the comment template
-					if ( comments_open() || '0' != get_comments_number() )
-						comments_template();
-				?>
-
 			<?php endwhile; // end of the loop. ?>
+
+			<div class="widget">
+				<h2 class="widgettitle"><?php _e( 'Display Locations', 'infoscreen' ); ?></h2>
+				<ul>
+				<?php wp_list_categories( array( 'orderby' => 'name', 'order' => 'ASC', 'show_count' => 1, 'title_li' => '<a href="' . esc_url( home_url( '/' )) . '">' . __('All slides','infoscreen') . '</a>' ) ); ?>
+				</ul>
+			</div><!-- .widget -->
+
+			<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
 
 		</div><!-- #content -->
 	</div><!-- #primary -->
-
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
