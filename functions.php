@@ -83,7 +83,7 @@ function infoscreen_setup() {
 	 * Custom editor styles
 	 * http://codex.wordpress.org/Function_Reference/add_editor_style
 	 */
-	//  add_editor_style('editor-styles.css');
+	add_editor_style('css/editor-styles.css');
 	
 	/**
 	 * Make theme available for translation
