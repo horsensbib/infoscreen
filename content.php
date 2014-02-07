@@ -3,8 +3,13 @@
  * @package InfoScreen
  * @since InfoScreen 1.0
  */
+	
+	$options = get_option('infoscreen_theme_options');
 ?>
-<li id="post-<?php the_ID(); ?>" <?php post_class('slide'); ?> style="background-image:url('<?php infoscreen_img_src('slide-img'); ?>');">
+<li id="post-<?php the_ID(); ?>" <?php post_class('slide'); ?> <?php
+	if( !has_shortcode( $post->post_content, 'mbYTPlayer') ) { ?>
+		style="background-image:url('<?php infoscreen_img_src('slide-img'); ?>');"
+	<?php } ?>>
 	<div class="slide-content <?php 
 	/* $options = get_option('infoscreen_theme_options');
 	for ($i = 1; $i <= $options['colorschemes']; $i++){
@@ -18,7 +23,6 @@
 		}
 	} */
 	
-	$options = get_option('infoscreen_theme_options');
 	$currentid = get_post_meta(get_the_ID(), '_infoscreen_colorscheme', true);
 	$colorscheme_exsists = 0;
 	for ($i = 1; $i <= $options['colorschemes']; $i++){
@@ -59,7 +63,8 @@
 		</header>
 		<!-- .entry-header -->
 		<div class="entry-content">
-			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'infoscreen' ) ); ?>
+			<?php 
+			the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'infoscreen' ) ); ?>
 			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'infoscreen' ), 'after' => '</div>' ) ); ?>
 		</div>
 		<!-- .entry-content -->

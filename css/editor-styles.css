@@ -104,6 +104,13 @@ textarea {
     select,
     textarea {
       font-size: 2.66667rem; } }
+  @media all and (min-width: 1921px) {
+    body,
+    button,
+    input,
+    select,
+    textarea {
+      font-size: 8rem; } }
 
 .site-content {
   font-size: 2rem; }
@@ -125,6 +132,9 @@ h1 {
   @media all and (min-width: 601px) and (max-width: 1024px) {
     h1 {
       font-size: 4.66667rem; } }
+  @media all and (min-width: 1921px) {
+    h1 {
+      font-size: 14rem; } }
 
 h2 {
   font-size: 5rem; }
@@ -137,6 +147,9 @@ h2 {
   @media all and (min-width: 601px) and (max-width: 1024px) {
     h2 {
       font-size: 3.33333rem; } }
+  @media all and (min-width: 1921px) {
+    h2 {
+      font-size: 10rem; } }
 
 h3 {
   font-size: 4.5rem; }
@@ -149,6 +162,9 @@ h3 {
   @media all and (min-width: 601px) and (max-width: 1024px) {
     h3 {
       font-size: 3rem; } }
+  @media all and (min-width: 1921px) {
+    h3 {
+      font-size: 9rem; } }
 
 h4 {
   font-size: 4rem; }
@@ -161,6 +177,9 @@ h4 {
   @media all and (min-width: 601px) and (max-width: 1024px) {
     h4 {
       font-size: 2.66667rem; } }
+  @media all and (min-width: 1921px) {
+    h4 {
+      font-size: 8rem; } }
 
 h5 {
   font-size: 4rem; }
@@ -173,6 +192,9 @@ h5 {
   @media all and (min-width: 601px) and (max-width: 1024px) {
     h5 {
       font-size: 2.66667rem; } }
+  @media all and (min-width: 1921px) {
+    h5 {
+      font-size: 8rem; } }
 
 hr {
   background-color: #ccc;
