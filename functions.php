@@ -79,6 +79,8 @@ function infoscreen_setup() {
 	
 	require( get_template_directory() . '/inc/custom-settings-css.php');
 	
+	require( get_template_directory() . '/inc/tinymce-extensions.php');
+	
 	/**
 	 * Custom editor styles
 	 * http://codex.wordpress.org/Function_Reference/add_editor_style
