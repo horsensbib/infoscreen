@@ -79,7 +79,7 @@ button,
 input,
 select,
 textarea {
-  color: black;
+  color: #000;
   font-family: sans-serif;
   font-size: 4rem;
   line-height: 1.5; }
@@ -96,14 +96,14 @@ textarea {
     input,
     select,
     textarea {
-      font-size: 1.33333rem; } }
-  @media all and (min-width: 601px) and (max-width: 1024px) {
+      font-size: 1.3333333333rem; } }
+  @media all and (min-width: 601px) and (max-width: 1280px) {
     body,
     button,
     input,
     select,
     textarea {
-      font-size: 2.66667rem; } }
+      font-size: 2.6666666667rem; } }
   @media all and (min-width: 1921px) {
     body,
     button,
@@ -128,10 +128,10 @@ h1 {
       font-size: 0.875rem; } }
   @media all and (min-width: 257px) and (max-width: 600px) {
     h1 {
-      font-size: 2.33333rem; } }
-  @media all and (min-width: 601px) and (max-width: 1024px) {
+      font-size: 2.3333333333rem; } }
+  @media all and (min-width: 601px) and (max-width: 1280px) {
     h1 {
-      font-size: 4.66667rem; } }
+      font-size: 4.6666666667rem; } }
   @media all and (min-width: 1921px) {
     h1 {
       font-size: 14rem; } }
@@ -143,10 +143,10 @@ h2 {
       font-size: 0.625rem; } }
   @media all and (min-width: 257px) and (max-width: 600px) {
     h2 {
-      font-size: 1.66667rem; } }
-  @media all and (min-width: 601px) and (max-width: 1024px) {
+      font-size: 1.6666666667rem; } }
+  @media all and (min-width: 601px) and (max-width: 1280px) {
     h2 {
-      font-size: 3.33333rem; } }
+      font-size: 3.3333333333rem; } }
   @media all and (min-width: 1921px) {
     h2 {
       font-size: 10rem; } }
@@ -159,7 +159,7 @@ h3 {
   @media all and (min-width: 257px) and (max-width: 600px) {
     h3 {
       font-size: 1.5rem; } }
-  @media all and (min-width: 601px) and (max-width: 1024px) {
+  @media all and (min-width: 601px) and (max-width: 1280px) {
     h3 {
       font-size: 3rem; } }
   @media all and (min-width: 1921px) {
@@ -173,10 +173,10 @@ h4 {
       font-size: 0.5rem; } }
   @media all and (min-width: 257px) and (max-width: 600px) {
     h4 {
-      font-size: 1.33333rem; } }
-  @media all and (min-width: 601px) and (max-width: 1024px) {
+      font-size: 1.3333333333rem; } }
+  @media all and (min-width: 601px) and (max-width: 1280px) {
     h4 {
-      font-size: 2.66667rem; } }
+      font-size: 2.6666666667rem; } }
   @media all and (min-width: 1921px) {
     h4 {
       font-size: 8rem; } }
@@ -188,10 +188,10 @@ h5 {
       font-size: 0.5rem; } }
   @media all and (min-width: 257px) and (max-width: 600px) {
     h5 {
-      font-size: 1.33333rem; } }
-  @media all and (min-width: 601px) and (max-width: 1024px) {
+      font-size: 1.3333333333rem; } }
+  @media all and (min-width: 601px) and (max-width: 1280px) {
     h5 {
-      font-size: 2.66667rem; } }
+      font-size: 2.6666666667rem; } }
   @media all and (min-width: 1921px) {
     h5 {
       font-size: 8rem; } }
@@ -294,11 +294,11 @@ th {
 .content-area a {
   color: black; }
   .content-area a:hover, .content-area a:active {
-    color: black;
+    color: #000;
     text-decoration: none; }
 
 .slides a {
-  color: black;
+  color: #000;
   text-decoration: none; }
 
 /* =Media
