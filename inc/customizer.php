@@ -441,6 +441,7 @@ function theme_infoscreen_settings_fonts() {
 		push_font_to_array('Old Standard TT', '700', true, false);
 		push_font_to_array('Open Sans', '800', true, '800');
 		push_font_to_array('Playfair Display', '900', true, '900');
+		push_font_to_array('Poppins', '900', true, '900');
 		push_font_to_array('PT Sans', '700', true, '700');
 		push_font_to_array('PT Sans Narrow', '700', false, false);
 		push_font_to_array('PT Serif', '700', true, '700');
@@ -461,14 +462,14 @@ function theme_infoscreen_settings_fonts() {
 			return google_fonts[font].italic;
 		}
 		function get_bolditalic_by_name(font){
-			return google_fotns[font].bolditalic;
+			return google_fonts[font].bolditalic;
 		}
 	</script>
 	<?php 
 	$current_title_weight = $options['title_font-weight'];
 	$current_title_style = $options['title_font-style'];
 	?>	
-		<p><strong><?php _e('Headlines','infoscreen'); ?></strong></p>
+		<h3><?php _e('Headlines','infoscreen'); ?></h3>
 		<ul class="layout-controls fonts title"></ul>
 		<script>
 			for (var i = 0; i < default_fonts.length; i++){
@@ -483,10 +484,11 @@ function theme_infoscreen_settings_fonts() {
 				var $font_no_spaces = key.replace(/ /g, '');
 				$hook_element.append("<li class='layout-selector fonts title'><input type='radio' name='infoscreen_theme_options[title_font-family]' data-bold='"+ google_fonts[$font].weight +"' data-italic='"+ google_fonts[$font].italic +"' data-bolditalic='"+ google_fonts[$font].bolditalic +"' id='title_fonts_"+ $font_no_spaces +"' value='google "+ $font +"'/><label style='font-family: "+ $font +"' for='title_fonts_" + $font_no_spaces + "'>"+ $font +"</label></li>");
 			}
-			</script>
-			<p><strong><?php _e('Paragraphs','infoscreen'); ?></strong></p>
-			<ul class="layout-controls fonts body"></ul>
-			<script>
+		</script>
+
+		<h3><?php _e('Paragraphs','infoscreen'); ?></h3>
+		<ul class="layout-controls fonts body"></ul>
+		<script>
 			for (var i = 0; i < default_fonts.length; i++){
 				var $hook_element = jQuery(".layout-controls.fonts.body");
 				var $font = default_fonts[i];
