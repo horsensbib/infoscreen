@@ -468,9 +468,21 @@ function theme_infoscreen_settings_fonts() {
 	<?php 
 	$current_title_weight = $options['title_font-weight'];
 	$current_title_style = $options['title_font-style'];
+
+	$current_body_weight = $options['body_font-weight'];
+	$current_body_style = $options['body_font-style'];
 	?>	
 		<h3><?php _e('Headlines','infoscreen'); ?></h3>
 		<ul class="layout-controls fonts title"></ul>
+		<p>
+			<input type="checkbox" id="title_font-weight" name="infoscreen_theme_options[title_font-weight]" />
+			<label for="title_font-weight"><?php _e( 'Bold', 'infoscreen' ); ?></label>
+
+			<input type="checkbox" id="title_font-style" name="infoscreen_theme_options[title_font-style]" />
+			<label for="title_font-style"><?php _e( 'Italic', 'infoscreen' ); ?></label>
+		</p>
+		<!-- p>Current font weight: <?php echo $current_title_weight; ?> | Current font style: <?php echo $current_title_style; ?></p -->
+
 		<script>
 			for (var i = 0; i < default_fonts.length; i++){
 				var $hook_element = jQuery(".layout-controls.fonts.title");
@@ -486,8 +498,12 @@ function theme_infoscreen_settings_fonts() {
 			}
 		</script>
 
+		<hr />
+
 		<h3><?php _e('Paragraphs','infoscreen'); ?></h3>
 		<ul class="layout-controls fonts body"></ul>
+		<input type="hidden" id="body_font-weight" name="infoscreen_theme_options[body_font-weight]" />
+		<!-- p>Current font weight: <?php echo $current_body_weight; ?></p -->
 		<script>
 			for (var i = 0; i < default_fonts.length; i++){
 				var $hook_element = jQuery(".layout-controls.fonts.body");
@@ -503,59 +519,68 @@ function theme_infoscreen_settings_fonts() {
 			}
 		</script>
 		<script>
-		function font_weight_change(){
-			if(!jQuery('#title_font-weight').attr('checked')){
-				jQuery('.fonts').each(function(){
-					jQuery(this).children().eq(1).css('font-weight', '');
-					if(jQuery('#title_font-style').attr('checked')){
-						font_style_change();
-					}
-				});
-			} else {
-				jQuery('.fonts').each(function(){
-					var dataBoldWeight = jQuery(this).children().first().attr('data-bold');
-					var dataBoldItalic = jQuery(this).children().first().attr('data-bolditalic');
-					if(dataBoldWeight != "false"){
-						jQuery(this).children().eq(1).css('font-weight', dataBoldWeight);
-					}
-					if(dataBoldItalic == "false"){
-						jQuery(this).children().eq(1).css('font-style', '');
-					}
-				});
-			}		
-		}
-		function font_style_change(i){
-			if(!jQuery('#title_font-style').attr('checked')){
-				jQuery('.fonts').each(function(){
-					jQuery(this).children().eq(1).css('font-style', ''); 
-					if(jQuery('#title_font-weight').attr('checked')){
-						font_weight_change();
-					}
-				});
-			} else {
-				jQuery('.fonts').each(function(){
-					var dataItalic = jQuery(this).children().first().attr('data-italic');
-					var dataBoldItalic = jQuery(this).children().first().attr('data-bolditalic');
-					if(dataItalic == "true"){
-						jQuery(this).children().eq(1).css('font-style', 'italic');
-					}
-					if(dataBoldItalic == "false"){
-						jQuery(this).children().eq(1).css('font-weight','');
-					}
-				});
+		jQuery(document).ready(function($){
+			// Set 'checked' on TITLE font-family radio button. 
+			$('.fonts.title').each(function(){
+			 	if($(this).find('input').val() == "<?php echo $options['title_font-family']; ?>"){
+			 		 $(this).find('input').attr('checked', true);
+					 // Get the font-weight and set it to TITLE font-weight checkbox:
+					 var bold = $(this).find('input').attr('data-bold');					
+					 $('#title_font-weight').val(bold);
+					 // Get the font-style and set it to TITLE font-style checkbox:
+					 var italic = $(this).find('input').attr('data-italic');					
+					 $('#title_font-style').val(italic);
+				}
+			});
+			// Set 'checked' on TITLE font-weight checkbox.
+			if (jQuery('#title_font-weight').val() == "<?php echo $options['title_font-weight']; ?>") {
+				jQuery('#title_font-weight').attr('checked', true);
 			}
-		}
-		jQuery(document).ready(function($){ 
-			jQuery('.fonts.title').each(function(){
-			 	if(jQuery(this).find('input').val() == "<?php echo $options['title_font-family']; ?>"){
-			 		jQuery(this).find('input').attr('checked', true);
+			// Set 'checked' on TITLE font-style checkbox.
+			if (jQuery('#title_font-style').val() == "<?php echo $options['title_font-style']; ?>") {
+				jQuery('#title_font-style').attr('checked', true);
+			}
+			
+			function font_weight_change(){
+				if($('#title_font-weight').attr('checked')){
+					 $('.fonts.title').each(function(){
+						var dataBoldWeight = $(this).children().first().attr('data-bold');
+						if(dataBoldWeight != "false"){
+							$(this).children().eq(1).css('font-weight', dataBoldWeight);
+						}
+					});
+				}		
+			}
+			font_weight_change();
+
+			function font_style_change(){
+				if($('#title_font-style').attr('checked')){
+					 $('.fonts.title').each(function(){
+						var dataItalic = $(this).children().first().attr('data-italic');
+						if(dataItalic == 'true'){
+							$(this).children().eq(1).css('font-style', 'italic');
+						}
+					});
 				}
-			});
-			jQuery('.fonts.body').each(function(){
-			 	if(jQuery(this).find('input').val() == "<?php echo $options['body_font-family']; ?>"){
-			 		jQuery(this).find('input').attr('checked', true);
+			}
+			font_style_change();
+
+			// Set 'checked' on BODY font family radio button. 
+			$('.fonts.body').each(function() {
+			 	if($(this).find('input').val() == "<?php echo $options['body_font-family']; ?>") {
+			 		$(this).find('input').attr('checked', true);
 				}
+				// Get the font-weight and set it to the BODY font-weight hidden input:
+				$(this).find('input').on('change', function() {
+					var bodyBold = $(this).attr('data-bold');
+					if (bodyBold != 'false') {
+						$('#body_font-weight').val(bodyBold);
+					} else {
+						$('#body_font-weight').val('');
+					}
+				});
 			});
+
 		});
 		</script>
 <?php
